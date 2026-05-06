@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="celsiusAFahrenheit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="celsius" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="celsiusAFahrenheitResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="celsiusAFahrenheitResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fahrenheitACelsius">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fahrenheit" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fahrenheitACelsiusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fahrenheitACelsiusResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="celsiusAKelvin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="celsius" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="celsiusAKelvinResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="celsiusAKelvinResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kelvinACelsius">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kelvin" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kelvinACelsiusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kelvinACelsiusResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fahrenheitAKelvin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fahrenheit" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fahrenheitAKelvinResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fahrenheitAKelvinResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kelvinAFahrenheit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kelvin" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kelvinAFahrenheitResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kelvinAFahrenheitResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metrosAPies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metros" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metrosAPiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metrosAPiesResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="piesAMetros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pies" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="piesAMetrosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="piesAMetrosResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metrosAPulgadas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metros" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metrosAPulgadasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metrosAPulgadasResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pulgadasAMetros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pulgadas" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pulgadasAMetrosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pulgadasAMetrosResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kilometrosAMillas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kilometros" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kilometrosAMillasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kilometrosAMillasResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="millasAKilometros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="millas" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="millasAKilometrosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="millasAKilometrosResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kilogramosALibras">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kilogramos" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kilogramosALibrasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kilogramosALibrasResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="librasAKilogramos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="libras" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="librasAKilogramosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="librasAKilogramosResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gramosAOnzas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gramos" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gramosAOnzasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gramosAOnzasResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="onzasAGramos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="onzas" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="onzasAGramosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="onzasAGramosResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="litrosAGalones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="litros" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="litrosAGalonesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="litrosAGalonesResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="galonesALitros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="galones" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="galonesALitrosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="galonesALitrosResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mililitrosAOnzasFluidas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mililitros" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mililitrosAOnzasFluidasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mililitrosAOnzasFluidasResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="onzasFluidasAMililitros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="onzasFluidas" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="onzasFluidasAMililitrosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="onzasFluidasAMililitrosResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metrosCuadradosAPiesCuadrados">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metrosCuadrados" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metrosCuadradosAPiesCuadradosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="metrosCuadradosAPiesCuadradosResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="piesCuadradosAMetrosCuadrados">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="piesCuadrados" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="piesCuadradosAMetrosCuadradosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="piesCuadradosAMetrosCuadradosResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hectareasAAcres">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hectareas" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hectareasAAcresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hectareasAAcresResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="acresAHectareas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="acres" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="acresAHectareasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="acresAHectareasResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

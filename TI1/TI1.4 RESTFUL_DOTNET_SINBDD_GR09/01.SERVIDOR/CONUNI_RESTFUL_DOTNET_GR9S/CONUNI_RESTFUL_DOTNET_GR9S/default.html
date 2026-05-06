@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monsters Inc. Converter RESTful API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+        }
+        .endpoint {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        .endpoint code {
+            background: #e0e0e0;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+        .method {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .get { background: #28a745; color: white; }
+        .post { background: #007bff; color: white; }
+        .info {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Monsters Inc. Converter RESTful API v1.0</h1>
+        <p style="text-align: center; font-size: 1.2em; color: #666;">
+            Powered by Sullivan's Energy ⚡
+        </p>
+
+        <div class="info">
+            <strong>📡 Base URL:</strong> <code id="baseUrl"></code><br>
+            <strong>📚 Documentación:</strong> <a href="/api/conversion/endpoints" target="_blank">Ver todos los endpoints</a>
+        </div>
+
+        <h2>🚀 Endpoints Principales</h2>
+        
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion</code> - Información del servicio
+        </div>
+        
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/info</code> - Información básica
+        </div>
+        
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/endpoints</code> - Lista completa de endpoints
+        </div>
+        
+        <div class="endpoint">
+            <span class="method post">POST</span>
+            <code>/api/conversion/convertir</code> - Conversión genérica
+        </div>
+
+        <h2>🌡️ Conversiones de Temperatura</h2>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/temperatura/celsius-to-fahrenheit?celsius=100</code>
+        </div>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/temperatura/fahrenheit-to-celsius?fahrenheit=212</code>
+        </div>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/temperatura/celsius-to-kelvin?celsius=0</code>
+        </div>
+
+        <h2>📏 Conversiones de Longitud</h2>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/longitud/metros-to-pies?metros=1</code>
+        </div>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/longitud/pies-to-metros?pies=3.28084</code>
+        </div>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/longitud/kilometros-to-millas?kilometros=1</code>
+        </div>
+
+        <h2>⚖️ Conversiones de Peso</h2>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/peso/kilogramos-to-libras?kilogramos=1</code>
+        </div>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/peso/libras-to-kilogramos?libras=2.20462</code>
+        </div>
+
+        <h2>💧 Conversiones de Volumen</h2>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/volumen/litros-to-galones?litros=1</code>
+        </div>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/volumen/galones-to-litros?galones=1</code>
+        </div>
+
+        <h2>📐 Conversiones de Área</h2>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/area/metros-cuadrados-to-pies-cuadrados?metrosCuadrados=1</code>
+        </div>
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/conversion/area/hectareas-to-acres?hectareas=1</code>
+        </div>
+
+        <div class="info" style="margin-top: 30px;">
+            <strong>💡 Nota:</strong> Todos los cálculos se realizan directamente en el servidor.<br>
+            <strong>🔗 Prueba ahora:</strong> <a href="/api/conversion" target="_blank">/api/conversion</a>
+        </div>
+    </div>
+
+    <script>
+        // Obtener la URL base automáticamente
+        document.getElementById('baseUrl').textContent = window.location.origin + '/api/conversion';
+    </script>
+</body>
+</html>
+
+

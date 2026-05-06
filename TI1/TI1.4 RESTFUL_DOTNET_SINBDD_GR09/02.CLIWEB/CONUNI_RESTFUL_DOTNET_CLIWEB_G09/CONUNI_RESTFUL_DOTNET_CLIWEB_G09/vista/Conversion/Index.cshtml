@@ -1,0 +1,277 @@
+@{
+    ViewData["Title"] = "Unit Converter";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unit Converter</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3ab4d9",
+                        "accent-pink": "#f67e80",
+                        "accent-yellow": "#f6de88",
+                        "accent-purple": "#9e7cc5",
+                        "accent-lightblue": "#afe0f8",
+                        "text-primary": "#1f2937",
+                        "text-secondary": "#6b7280"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24;
+            vertical-align: middle;
+        }
+        select.form-input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.5em 1.5em;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' fill='rgb(107, 114, 128)' viewBox='0 0 256 256'%3e%3cpath d='M181.66,170.34a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-48-48a8,8,0,0,1,11.32-11.32L128,212.69l42.34-42.35A8,8,0,0,1,181.66,170.34Zm-96-84.68L128,43.31l42.34,42.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48-48A8,8,0,0,0,85.66,85.66Z'%3e%3c/path%3e%3c/svg%3e");
+        }
+    </style>
+</head>
+<body class="bg-white font-display text-text-primary">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between whitespace-nowrap bg-primary text-white px-6 sm:px-10 md:px-20 lg:px-40 py-4">
+<div class="flex items-center gap-3">
+<div class="size-6 text-white">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">MONSTERS INC. — Sistema de Conversiones</h2>
+</div>
+<div class="flex items-center gap-4">
+  <span class="hidden sm:block text-sm">Usuario: @ViewBag.Usuario</span>
+  <button id="btnLogout" class="rounded px-3 py-1 bg-red-400 hover:bg-red-500 text-white">Cerrar sesión</button>
+</div>
+</header>
+<main class="flex h-full grow flex-col items-stretch p-0">
+  
+
+  <div class="w-full border-b border-gray-200 bg-white">
+    <div class="mx-auto w-full max-w-5xl px-4 py-3 flex gap-3 overflow-x-auto">
+      <button data-cat="temperatura" class="tab-cat px-4 py-2 rounded bg-gray-800 text-white shadow ring-2 ring-black/10">TEMPERATURA</button>
+      <button data-cat="longitud" class="tab-cat px-4 py-2 rounded bg-accent-purple text-white">LONGITUD</button>
+      <button data-cat="peso" class="tab-cat px-4 py-2 rounded bg-accent-pink text-white">PESO</button>
+      <button data-cat="volumen" class="tab-cat px-4 py-2 rounded bg-accent-yellow text-white">VOLUMEN</button>
+      <button data-cat="area" class="tab-cat px-4 py-2 rounded bg-accent-lightblue text-white">AREA</button>
+    </div>
+  </div>
+
+  <section class="mx-auto w-full max-w-4xl px-4 py-10">
+    <h2 id="title-cat" class="text-center text-xl font-semibold mb-8">CONVERSIONES DE TEMPERATURA</h2>
+    <div class="grid grid-cols-1 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] items-center gap-4">
+        <label class="text-sm text-text-secondary">Valor a convertir:</label>
+        <input id="amount" class="form-input rounded-lg border border-gray-300 bg-gray-50 h-12 p-3" type="number" step="0.01" placeholder="0.00"/>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] items-center gap-4">
+        <label class="text-sm text-text-secondary">Tipo de conversión:</label>
+        <select id="opSelect" class="form-input rounded-lg border border-gray-300 bg-gray-50 h-12 p-3"></select>
+      </div>
+      <div class="flex justify-center">
+        <button id="btnConvert" class="rounded-lg h-12 px-8 bg-primary text-white text-base font-bold tracking-wide hover:bg-primary/90">CONVERTIR</button>
+      </div>
+      <div class="rounded-lg bg-gray-100 p-6 text-center">
+        <div class="text-text-secondary mb-2">Resultado aparecerá aquí</div>
+        <div id="resultText" class="text-primary text-4xl font-bold">--</div>
+      </div>
+    </div>
+  </section>
+
+  
+</main>
+<footer class="mt-auto w-full bg-gray-800 text-white text-xs px-4 py-2 flex items-center justify-between">
+  <div>Monsters Inc. Converter Enterprise Edition v1.0 - © 2024</div>
+  <button id="btnHelp" class="underline">¿Tienes alguna duda?</button>
+</footer>
+
+<!-- Modal Ayuda -->
+<div id="modalHelp" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="relative mx-auto mt-24 w-11/12 max-w-lg rounded-lg bg-white p-6 shadow-xl">
+    <h3 class="text-lg font-semibold mb-2">¿Cómo usar el conversor?</h3>
+    <p class="text-sm text-slate-600 mb-4">Seleccione el tipo de conversión en las pestañas, ingrese el valor, elija la conversión en la lista y presione "Convertir". Todas las conversiones se realizan en el servidor (API REST), aquí no se hacen cálculos locales.</p>
+    <ul class="list-disc pl-5 text-sm text-slate-700 mb-4">
+      <li>Temperatura: Celsius, Fahrenheit, Kelvin</li>
+      <li>Longitud: Metros, Pies, Pulgadas, Kilómetros, Millas</li>
+      <li>Peso: Kilogramos, Libras, Gramos, Onzas</li>
+      <li>Volumen: Litros, Galones, Mililitros, Onzas Fluidas</li>
+      <li>Área: m², ft², Hectáreas, Acres</li>
+    </ul>
+    <div class="flex justify-end gap-2">
+      <button id="closeHelp" class="rounded bg-primary text-white px-4 py-2 hover:bg-primary/90">Entendido</button>
+    </div>
+  </div>
+  </div>
+
+<!-- Modal Cerrar Sesión -->
+<div id="modalLogout" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="relative mx-auto mt-28 w-11/12 max-w-md rounded-lg bg-white p-6 shadow-xl">
+    <h3 class="text-lg font-semibold mb-3">Confirmar salida</h3>
+    <p class="text-sm text-slate-700 mb-5">¿Desea cerrar sesión ahora?</p>
+    <div class="flex justify-end gap-2">
+      <button id="cancelLogout" class="rounded border border-gray-300 px-4 py-2 hover:bg-gray-50">Cancelar</button>
+      <form method="post" action="@Url.Action("Logout", "Login")" style="display:inline;">
+        <button type="submit" class="rounded bg-red-500 text-white px-4 py-2 hover:bg-red-600">Cerrar sesión</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  window.API_BASE = '@Url.Action("Convertir", "Conversion")';
+  function normalize(s){ return (s||'').toString().trim().toLowerCase(); }
+  const ops = {
+    temperatura: [
+      {t:'Celsius → Fahrenheit', from:'celsius', to:'fahrenheit'},
+      {t:'Fahrenheit → Celsius', from:'fahrenheit', to:'celsius'},
+      {t:'Celsius → Kelvin', from:'celsius', to:'kelvin'},
+      {t:'Kelvin → Celsius', from:'kelvin', to:'celsius'},
+      {t:'Fahrenheit → Kelvin', from:'fahrenheit', to:'kelvin'},
+      {t:'Kelvin → Fahrenheit', from:'kelvin', to:'fahrenheit'}
+    ],
+    longitud: [
+      {t:'Metros → Pies', from:'metros', to:'pies'},
+      {t:'Pies → Metros', from:'pies', to:'metros'},
+      {t:'Metros → Pulgadas', from:'metros', to:'pulgadas'},
+      {t:'Pulgadas → Metros', from:'pulgadas', to:'metros'},
+      {t:'Kilómetros → Millas', from:'kilometros', to:'millas'},
+      {t:'Millas → Kilómetros', from:'millas', to:'kilometros'}
+    ],
+    peso: [
+      {t:'Kilogramos → Libras', from:'kilogramos', to:'libras'},
+      {t:'Libras → Kilogramos', from:'libras', to:'kilogramos'},
+      {t:'Gramos → Onzas', from:'gramos', to:'onzas'},
+      {t:'Onzas → Gramos', from:'onzas', to:'gramos'}
+    ],
+    volumen: [
+      {t:'Litros → Galones', from:'litros', to:'galones'},
+      {t:'Galones → Litros', from:'galones', to:'litros'},
+      {t:'Mililitros → Onzas Fluidas', from:'mililitros', to:'onzasFluidas'},
+      {t:'Onzas Fluidas → Mililitros', from:'onzasFluidas', to:'mililitros'}
+    ],
+    area: [
+      {t:'m² → ft²', from:'metrosCuadrados', to:'piesCuadrados'},
+      {t:'ft² → m²', from:'piesCuadrados', to:'metrosCuadrados'},
+      {t:'Hectáreas → Acres', from:'hectareas', to:'acres'},
+      {t:'Acres → Hectáreas', from:'acres', to:'hectareas'}
+    ]
+  };
+
+  let categoria = 'temperatura';
+  const opSelect = document.getElementById('opSelect');
+  const title = document.getElementById('title-cat');
+
+  function renderOps(){
+    opSelect.innerHTML = '';
+    ops[categoria].forEach((o,i)=>{
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = o.t;
+      opSelect.appendChild(opt);
+    });
+    title.textContent = 'CONVERSIONES DE ' + categoria.toUpperCase();
+    // resaltar tab activa
+    document.querySelectorAll('.tab-cat').forEach(b=>{
+      const colors = {
+        'temperatura': 'bg-gray-800',
+        'longitud': 'bg-accent-purple',
+        'peso': 'bg-accent-pink',
+        'volumen': 'bg-accent-yellow',
+        'area': 'bg-accent-lightblue'
+      };
+      
+      const textColors = {
+        'temperatura': 'text-white',
+        'longitud': 'text-white',
+        'peso': 'text-white',
+        'volumen': 'text-white',
+        'area': 'text-white'
+      };
+      
+      if (b.dataset.cat === categoria) {
+        // Botón activo: gris oscuro
+        b.className = 'tab-cat px-4 py-2 rounded bg-gray-800 text-white shadow ring-2 ring-black/10';
+      } else {
+        // Botones inactivos: sus colores originales
+        b.className = 'tab-cat px-4 py-2 rounded ' + colors[b.dataset.cat] + ' ' + textColors[b.dataset.cat];
+      }
+    });
+  }
+  renderOps();
+
+  document.querySelectorAll('.tab-cat').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ categoria = btn.dataset.cat; renderOps(); setResult('--'); });
+  });
+
+  document.getElementById('btnConvert').addEventListener('click', async ()=>{
+    const amount = parseFloat(document.getElementById('amount').value);
+    if (isNaN(amount)) { setResult('Ingrese un número válido'); return; }
+    const sel = ops[categoria][parseInt(opSelect.value||'0',10)];
+    try{
+      const body = { valor: amount, unidadOrigen: sel.from, unidadDestino: sel.to, categoria: categoria };
+      const resp = await fetch(window.API_BASE, { 
+        method:'POST', 
+        headers:{'Content-Type':'application/json'}, 
+        body: JSON.stringify(body) 
+      });
+      if (!resp.ok) { 
+        const errorData = await resp.json().catch(() => null);
+        setResult('Error: ' + (errorData?.mensaje || resp.statusText)); 
+        return; 
+      }
+      const data = await resp.json();
+      if (data && data.exito) {
+        setResult((data.valorConvertido ?? 0).toFixed(4) + ' ' + data.unidadDestino);
+      } else {
+        setResult(data.mensaje || 'Conversión no válida');
+      }
+    } catch(e){ 
+      setResult('ERROR: Algo monstruoso pasó. Servidor inactivo.'); 
+      console.error(e);
+    }
+  });
+  function setResult(text){ document.getElementById('resultText').textContent = text; }
+  // Modales
+  const modalHelp = document.getElementById('modalHelp');
+  const modalLogout = document.getElementById('modalLogout');
+  document.getElementById('btnHelp').addEventListener('click', ()=> modalHelp.classList.remove('hidden'));
+  document.getElementById('closeHelp').addEventListener('click', ()=> modalHelp.classList.add('hidden'));
+  document.getElementById('btnLogout').addEventListener('click', ()=> modalLogout.classList.remove('hidden'));
+  document.getElementById('cancelLogout').addEventListener('click', ()=> modalLogout.classList.add('hidden'));
+</script>
+</body>
+</html>
+

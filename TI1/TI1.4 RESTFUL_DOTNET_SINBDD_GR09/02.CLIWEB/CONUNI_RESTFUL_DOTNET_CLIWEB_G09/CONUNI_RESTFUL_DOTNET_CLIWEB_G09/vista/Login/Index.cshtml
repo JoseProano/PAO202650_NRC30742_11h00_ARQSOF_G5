@@ -1,0 +1,95 @@
+@{
+    ViewData["Title"] = "Iniciar Sesión - Conversiones";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar Sesión - Conversiones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#3ab4d9",
+            secondary: "#f67e80",
+            "accent-yellow": "#f6de88",
+            "accent-purple": "#9e7cc5",
+            "background-light": "#f7fafc",
+            "background-dark": "#101822",
+          },
+          fontFamily: { display: ["Space Grotesk", "sans-serif"] },
+          borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-background-light">
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <div class="flex flex-1">
+      <main class="flex w-full flex-1">
+        <div class="grid w-full grid-cols-1 md:grid-cols-2">
+          <!-- Panel izquierdo con logo -->
+          <div class="relative hidden h-full flex-col justify-between p-10 text-white md:flex" style="background-color: #3ab4d9;">
+            <div class="relative z-10 flex flex-col items-center justify-center flex-1">
+              <div class="mb-8">
+                <img src="~/images/logo.png" alt="Logo Monsters Inc." class="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 mx-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                <div style="display:none; width:192px; height:192px; background: rgba(255,255,255,0.2); border-radius:50%; margin: 0 auto;"></div>
+              </div>
+            </div>
+            <div class="relative z-10 text-center">
+              <h2 class="text-3xl font-bold tracking-tight mb-2">MONSTERS INC.</h2>
+              <p class="text-base text-white/90 mb-2">Sistema de Conversiones</p>
+              <p class="text-sm text-white/70 italic">Enterprise Edition v1.0</p>
+            </div>
+          </div>
+
+          <!-- Panel derecho: formulario -->
+          <div class="flex items-center justify-center p-6 sm:p-12" style="background-color: #f3f4f6;">
+            <div class="w-full max-w-md space-y-8">
+              <header class="text-center mb-6">
+                <h2 class="text-2xl font-bold tracking-tight" style="color: #3ab4d9;">LOGUÉATE</h2>
+              </header>
+
+              <div class="flex flex-col gap-4 mb-6">
+                <p class="text-gray-700 text-sm">Ingrese sus credenciales para acceder</p>
+                @if (ViewBag.Error != null)
+                {
+                  <div class="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">@ViewBag.Error</div>
+                }
+              </div>
+
+              <form class="space-y-6" method="post" action="@Url.Action("Index", "Login")">
+                <div class="space-y-4">
+                  <label class="flex flex-col flex-1">
+                    <p class="text-gray-700 text-sm font-medium mb-2">Usuario:</p>
+                    <input name="username" autocomplete="username" class="w-full rounded border border-gray-300 bg-white text-gray-800 h-10 px-4" placeholder="MONSTER" type="text" required />
+                  </label>
+                  <label class="flex flex-col flex-1">
+                    <p class="text-gray-700 text-sm font-medium mb-2">Contraseña:</p>
+                    <input name="password" autocomplete="current-password" class="w-full rounded border border-gray-300 bg-white text-gray-800 h-10 px-4" placeholder="MONSTER9" type="password" required />
+                  </label>
+                </div>
+                <div class="flex gap-3">
+                  <button class="flex h-10 flex-1 items-center justify-center rounded px-4 text-base font-medium text-white hover:opacity-90" style="background-color: #3ab4d9;" type="submit">ACCEDER</button>
+                  <button class="flex h-10 flex-1 items-center justify-center rounded px-4 text-base font-medium text-white hover:opacity-90" style="background-color: #f67e80;" type="button" onclick="window.close()">SALIR</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
+
+

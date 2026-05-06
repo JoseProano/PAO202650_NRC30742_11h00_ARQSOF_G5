@@ -1,0 +1,18 @@
+Grupo 2
+
+Darwin Valdiviezo (Líder)
+Francisco Terán
+William Leon
+
+Inge, la evidencia la envía Darwin Valdiviezo (mi persona) a través de la plataforma MiCampus, los documentos
+se encuentran en el siguiente enlace de OneDrive:
+
+Link largo: https://uespe-my.sharepoint.com/:f:/g/personal/asalmeida4_espe_edu_ec/Eu5zdgUZ2kJHlLcp7IcrRUwBwKrbN451QIKYE43_sofPJQ?e=iPeeE7
+Link corto: https://acortar.link/dnwpxM
+
+Este es el proyecto Taller TI1.1. SOAP sin BDD en JAVA, se encuentra en formato ZIP.
+
+Las credenciales:
+
+-Usuario: MONSTER
+-Password: MONSTER9

@@ -1,0 +1,65 @@
+# ==============================
+# Java
+# ==============================
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+target/
+build/
+.classpath
+.project
+.settings/
+*.iml
+.idea/
+nbproject/
+nbactions.xml
+nb-configuration.xml
+out/
+*.nbm
+
+# Android builds
+app/build/
+*.apk
+*.aab
+local.properties
+
+# ==============================
+# .NET / C#
+# ==============================
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+.vs/
+*.DotSettings
+*.ncrunchsolution
+*.ncrunchproject
+packages/
+*.nupkg
+TestResults/
+
+# ==============================
+# Windows
+# ==============================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ==============================
+# IDEs
+# ==============================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ==============================
+# Logs
+# ==============================
+*.log
+logs/
