@@ -1,5 +1,7 @@
 using System;
 using System.Drawing;
+using System.Net.Http;
+using System.Text;
 using System.Windows.Forms;
 using CONUNI_SOAP_DOTNET_CLIESC_G09.servicio;
 
@@ -21,9 +23,13 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.vista
         private static readonly Color GRIS_CLARO = Color.FromArgb(240, 240, 240);
         private static readonly Color AZUL_MEDIO = Color.FromArgb(33, 169, 218); // Para el panel izquierdo
 
-        private const string USUARIO_CORRECTO = "MONSTER";
-        private const string CONTRASENA_CORRECTA = "MONSTER9";
         private const int MAX_INTENTOS = 3;
+
+        /// <summary>
+        /// URL del endpoint de autenticación. Las credenciales residen SOLO en el servidor SOAP.
+        /// </summary>
+        private static readonly string AUTH_URL =
+            "http://localhost:8085/CONUNI_SOAP_DOTNET_GR09/WSConversion/login";
 
         private Panel panelPrincipal;
         private Panel panelIzquierdo;
@@ -440,11 +446,13 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.vista
 
         private void VerificarCredenciales()
         {
-            string usuario = txtUsuario.Text.Trim().ToUpper();
+            string usuario    = txtUsuario.Text.Trim().ToUpper();
             string contrasena = txtContrasena.Text.Trim();
             intentos++;
 
-            if (USUARIO_CORRECTO == usuario && CONTRASENA_CORRECTA == contrasena)
+            bool esValido = ValidarCredencialesEnServidor(usuario, contrasena);
+
+            if (esValido)
             {
                 lblMensaje.Text = "¡Autenticación exitosa! Bienvenido al sistema.";
                 lblMensaje.ForeColor = AZUL_PRINCIPAL;
@@ -486,6 +494,26 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.vista
                     txtContrasena.Text = "";
                     txtUsuario.Focus();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Llama al servidor SOAP para validar las credenciales.
+        /// El cliente NUNCA almacena ni conoce las credenciales correctas.
+        /// </summary>
+        private bool ValidarCredencialesEnServidor(string usuario, string contrasena)
+        {
+            try
+            {
+                // Para SOAP, usamos el cliente WCF generado (si existe) o una llamada HTTP raw
+                var clienteSOAP = new ClienteConversionSoap(System.Configuration.ConfigurationManager.AppSettings["UrlServicioSOAP"]);
+                return clienteSOAP.Login(usuario, contrasena);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al conectar con el servidor: {ex.Message}",
+                    "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
         }
 

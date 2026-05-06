@@ -6,6 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Ventana de login profesional para Monsters Inc. Converter
@@ -22,8 +26,9 @@ public class VentanaLogin extends JFrame {
     private static final Color GRIS_OSCURO = new Color(60, 60, 60);
     private static final Color GRIS_CLARO = new Color(240, 240, 240);
 
-    private static final String USUARIO_CORRECTO = "MONSTER";
-    private static final String CONTRASENA_CORRECTA = "MONSTER9";
+    // Las credenciales residen SOLO en el servidor.
+    private static final String AUTH_URL =
+            "http://localhost:8080/CONUNI_RESTFUL_JAVA_GR09/api/auth/login";
     private static final int MAX_INTENTOS = 3;
 
     private JPanel panelPrincipal;
@@ -301,10 +306,31 @@ public class VentanaLogin extends JFrame {
     }
 
     private void verificarCredenciales() {
-        String usuario = txtUsuario.getText().trim();
+        String usuario    = txtUsuario.getText().trim().toUpperCase();
         String contrasena = new String(txtContrasena.getPassword()).trim();
         intentos++;
-        if (USUARIO_CORRECTO.equals(usuario) && CONTRASENA_CORRECTA.equals(contrasena)) {
+
+        boolean esValido = false;
+        try {
+            URI uri = URI.create(AUTH_URL);
+            HttpURLConnection conn = (HttpURLConnection) uri.toURL().openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            conn.setDoOutput(true);
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(5000);
+            String body = "{\"usuario\":\"" + usuario + "\",\"contrasena\":\"" + contrasena + "\"}";
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(body.getBytes(StandardCharsets.UTF_8));
+            }
+            esValido = conn.getResponseCode() == HttpURLConnection.HTTP_OK;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                "Error al conectar con el servidor: " + ex.getMessage(),
+                "Error de conexión", JOptionPane.WARNING_MESSAGE);
+        }
+
+        if (esValido) {
             lblMensaje.setText("¡Autenticación exitosa! Bienvenido al sistema.");
             lblMensaje.setForeground(AZUL_PRINCIPAL);
             lblIntento.setText("");

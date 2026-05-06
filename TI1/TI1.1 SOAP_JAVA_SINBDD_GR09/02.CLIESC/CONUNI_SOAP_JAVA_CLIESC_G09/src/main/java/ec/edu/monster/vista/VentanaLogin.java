@@ -1,5 +1,6 @@
 package ec.edu.monster.vista;
 
+import ec.edu.monster.servicios.ClienteConversionSOAP;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,10 +25,10 @@ public class VentanaLogin extends JFrame {
     private static final Color GRIS_OSCURO = new Color(60, 60, 60);
     private static final Color GRIS_CLARO = new Color(240, 240, 240);
     
-    // Credenciales correctas
-    private static final String USUARIO_CORRECTO = "MONSTER";
-    private static final String CONTRASENA_CORRECTA = "MONSTER9";
+    // Las credenciales residen SOLO en el servidor SOAP.
     private static final int MAX_INTENTOS = 3;
+
+    private final ClienteConversionSOAP clienteSOAP = new ClienteConversionSOAP();
     
     // Componentes principales
     private JPanel panelPrincipal;
@@ -417,33 +418,32 @@ public class VentanaLogin extends JFrame {
     }
     
     private void verificarCredenciales() {
-        String usuario = txtUsuario.getText().trim();
+        String usuario    = txtUsuario.getText().trim().toUpperCase();
         String contrasena = new String(txtContrasena.getPassword()).trim();
-        
         intentos++;
-        
-        if (USUARIO_CORRECTO.equals(usuario) && CONTRASENA_CORRECTA.equals(contrasena)) {
-            // Login exitoso
+
+        boolean esValido = false;
+        try {
+            // Delegar validación al servidor SOAP
+            esValido = clienteSOAP.login(usuario, contrasena);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                "Error al conectar con el servidor: " + ex.getMessage(),
+                "Error de conexión", JOptionPane.WARNING_MESSAGE);
+        }
+
+        if (esValido) {
             lblMensaje.setText("¡Autenticación exitosa! Bienvenido al sistema.");
             lblMensaje.setForeground(AZUL_PRINCIPAL);
             lblIntento.setText("");
             loginExitoso = true;
-            
-            // Cambiar color del botón
             btnIngresar.setBackground(AZUL_PRINCIPAL);
             btnIngresar.setText("ACCEDIENDO...");
             btnIngresar.setEnabled(false);
-            
-            // Cerrar ventana de login después de un breve delay
-            Timer timer = new Timer(2000, e -> {
-                dispose();
-                abrirVentanaPrincipal();
-            });
+            Timer timer = new Timer(2000, e -> { dispose(); abrirVentanaPrincipal(); });
             timer.setRepeats(false);
             timer.start();
-            
         } else {
-            // Credenciales incorrectas
             if (intentos >= MAX_INTENTOS) {
                 lblMensaje.setText("ACCESO DENEGADO");
                 lblMensaje.setForeground(ROJO_MONSTER);
@@ -452,11 +452,9 @@ public class VentanaLogin extends JFrame {
                 btnIngresar.setEnabled(false);
                 btnIngresar.setBackground(GRIS_CLARO);
                 btnIngresar.setText("BLOQUEADO");
-                
                 Timer timer = new Timer(3000, e -> System.exit(0));
                 timer.setRepeats(false);
                 timer.start();
-                
             } else {
                 lblMensaje.setText("Credenciales incorrectas");
                 lblMensaje.setForeground(ROJO_MONSTER);

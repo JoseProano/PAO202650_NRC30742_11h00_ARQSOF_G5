@@ -1,4 +1,6 @@
 using System;
+using System.Net.Http;
+using System.Text;
 using System.Windows.Forms;
 
 namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
@@ -8,8 +10,9 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
     /// </summary>
     public partial class LoginForm : Form
     {
-        private const string USUARIO_VALIDO = "MONSTER";
-        private const string CONTRASENA_VALIDA = "MONSTER9";
+        // Las credenciales residen SOLO en el servidor REST.
+        private static readonly string AUTH_URL =
+            "http://localhost/CONUNI_RESTFUL_DOTNET_GR9S/api/auth/login";
         private int intentos = 0;
         private const int MAX_INTENTOS = 3;
 
@@ -137,13 +140,15 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
 
         private void ValidarLogin()
         {
-            string usuario = txtUsuario.Text.Trim().ToUpper();
+            string usuario    = txtUsuario.Text.Trim().ToUpper();
             string contrasena = txtContrasena.Text;
 
-            if (usuario == USUARIO_VALIDO && contrasena == CONTRASENA_VALIDA)
+            bool esValido = ValidarCredencialesEnServidor(usuario, contrasena);
+
+            if (esValido)
             {
                 LoginExitoso = true;
-                MessageBox.Show("¡Login exitoso!\nBienvenido al sistema Monsters Inc. Converter RESTful", 
+                MessageBox.Show("¡Login exitoso!\nBienvenido al sistema Monsters Inc. Converter RESTful",
                     "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -152,21 +157,46 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
             {
                 intentos++;
                 lblIntentos.Text = $"Intentos restantes: {MAX_INTENTOS - intentos}";
-                
+
                 if (intentos >= MAX_INTENTOS)
                 {
-                    MessageBox.Show("ACCESO DENEGADO\nDemasiados intentos fallidos.\nContacte al administrador del sistema.", 
+                    MessageBox.Show("ACCESO DENEGADO\nDemasiados intentos fallidos.\nContacte al administrador del sistema.",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.DialogResult = DialogResult.Cancel;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Credenciales incorrectas.\nIntente nuevamente.", 
+                    MessageBox.Show("Credenciales incorrectas.\nIntente nuevamente.",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtContrasena.Clear();
                     txtContrasena.Focus();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Llama al endpoint REST del servidor para validar las credenciales.
+        /// El cliente NUNCA almacena ni conoce las credenciales correctas.
+        /// </summary>
+        private bool ValidarCredencialesEnServidor(string usuario, string contrasena)
+        {
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    httpClient.Timeout = System.TimeSpan.FromSeconds(10);
+                    string body = $"{{\"Usuario\":\"{usuario}\",\"Contrasena\":\"{contrasena}\"}}";
+                    var content = new StringContent(body, Encoding.UTF8, "application/json");
+                    var response = httpClient.PostAsync(AUTH_URL, content).GetAwaiter().GetResult();
+                    return response.IsSuccessStatusCode;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al conectar con el servidor: {ex.Message}",
+                    "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
         }
 

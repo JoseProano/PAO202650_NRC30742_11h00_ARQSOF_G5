@@ -29,8 +29,26 @@ public class ClienteConversionSOAP {
             this.servicio = null;
         }
     }
-    
-    // Conversiones de temperatura
+
+    // ========== MÉTODO DE AUTENTICACIÓN ==========
+
+    /**
+     * Llama a la operación {@code login} del servidor SOAP para validar credenciales.
+     * El cliente NUNCA almacena ni conoce las credenciales correctas.
+     *
+     * @param usuario   nombre de usuario ingresado
+     * @param contrasena contraseña ingresada
+     * @return {@code true} si el servidor confirma las credenciales
+     * @throws Exception si hay error de comunicación con el servidor
+     */
+    public boolean login(String usuario, String contrasena) throws Exception {
+        if (servicio == null) {
+            throw new Exception("Servicio SOAP no disponible. Verifique que el servidor esté en línea.");
+        }
+        return servicio.login(usuario, contrasena);
+    }
+
+
     public Conversion convertirTemperatura(String operacion, double valor) {
         if (servicio == null) {
             Conversion error = new Conversion();
