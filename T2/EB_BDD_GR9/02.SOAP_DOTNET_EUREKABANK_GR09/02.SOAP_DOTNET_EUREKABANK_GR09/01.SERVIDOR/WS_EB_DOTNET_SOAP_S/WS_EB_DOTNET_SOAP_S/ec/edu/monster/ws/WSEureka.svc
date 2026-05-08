@@ -1,0 +1,4 @@
+<%@ ServiceHost Language="C#" Debug="true" Service="WS_EB_DOTNET_SOAP_S.ec.edu.monster.ws.WSEureka" CodeBehind="WSEureka.svc.cs" %>
+
+
+

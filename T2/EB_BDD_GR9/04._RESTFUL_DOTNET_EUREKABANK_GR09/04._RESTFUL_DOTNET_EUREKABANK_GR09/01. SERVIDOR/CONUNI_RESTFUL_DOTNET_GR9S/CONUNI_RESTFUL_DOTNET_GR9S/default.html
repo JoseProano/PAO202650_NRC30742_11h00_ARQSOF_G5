@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EurekaBank RESTful API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #3ab4d9 0%, #afe0f8 100%);
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #3ab4d9;
+            text-align: center;
+            border-bottom: 3px solid #3ab4d9;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #3ab4d9;
+            margin-top: 30px;
+        }
+        .endpoint {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #3ab4d9;
+            border-radius: 5px;
+        }
+        .endpoint code {
+            background: #e0e0e0;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+        .method {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .get { background: #28a745; color: white; }
+        .post { background: #007bff; color: white; }
+        .info {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        a {
+            color: #3ab4d9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏦 EurekaBank RESTful API v1.0</h1>
+        <p style="text-align: center; font-size: 1.2em; color: #666;">
+            Asegura Tu Futuro ⚡
+        </p>
+
+        <div class="info">
+            <strong>📡 Base URL:</strong> <code id="baseUrl"></code><br>
+            <strong>📚 Servicio:</strong> Core Bancario EurekaBank
+        </div>
+
+        <h2>🚀 Endpoints Principales</h2>
+        
+        <div class="endpoint">
+            <span class="method get">GET</span>
+            <code>/api/corebancario/movimientos/{cuenta}</code> - Obtener movimientos de una cuenta<br>
+            <small>Ejemplo: <code>/api/corebancario/movimientos/00100001</code></small>
+        </div>
+        
+        <div class="endpoint">
+            <span class="method post">POST</span>
+            <code>/api/corebancario/deposito?cuenta={cuenta}&importe={importe}</code> - Registrar depósito<br>
+            <small>Ejemplo: <code>/api/corebancario/deposito?cuenta=00100001&importe=100.50</code></small>
+        </div>
+        
+        <div class="endpoint">
+            <span class="method post">POST</span>
+            <code>/api/corebancario/retiro?cuenta={cuenta}&importe={importe}</code> - Registrar retiro<br>
+            <small>Ejemplo: <code>/api/corebancario/retiro?cuenta=00100001&importe=50.25</code></small>
+        </div>
+        
+        <div class="endpoint">
+            <span class="method post">POST</span>
+            <code>/api/corebancario/transferencia?cuentaOrigen={origen}&cuentaDestino={destino}&importe={importe}</code> - Registrar transferencia<br>
+            <small>Ejemplo: <code>/api/corebancario/transferencia?cuentaOrigen=00100001&cuentaDestino=00100002&importe=200.00</code></small>
+        </div>
+
+        <h2>📋 Descripción de Operaciones</h2>
+        
+        <div class="endpoint">
+            <strong>💰 Depósito:</strong> Agrega fondos a una cuenta bancaria. El saldo se incrementa y se registra un movimiento tipo '003'.
+        </div>
+        
+        <div class="endpoint">
+            <strong>💸 Retiro:</strong> Extrae fondos de una cuenta bancaria. Valida que haya saldo suficiente y registra un movimiento tipo '004'.
+        </div>
+        
+        <div class="endpoint">
+            <strong>🔄 Transferencia:</strong> Transfiere fondos entre dos cuentas. Crea dos movimientos: tipo '009' (salida) en origen y tipo '008' (ingreso) en destino.
+        </div>
+        
+        <div class="endpoint">
+            <strong>📊 Movimientos:</strong> Consulta el historial completo de transacciones de una cuenta, ordenado por número de movimiento descendente.
+        </div>
+
+        <h2>📝 Formato de Respuesta</h2>
+        
+        <div class="endpoint">
+            <strong>Operaciones (Depósito/Retiro/Transferencia):</strong><br>
+            <code>{"estado": 1}</code> - Éxito<br>
+            <code>{"estado": -1}</code> - Error
+        </div>
+        
+        <div class="endpoint">
+            <strong>Movimientos:</strong> Array de objetos con la siguiente estructura:<br>
+            <code>
+            [<br>
+            &nbsp;&nbsp;{<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"Cuenta": "00100001",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"NroMov": 1,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"Fecha": "2024-01-15T10:30:00",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"Tipo": "Depósito",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"Accion": "INGRESO",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"Importe": 100.50,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"Tipocodigo": "003",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"Emplcodigo": "0001",<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;"Referencia": ""<br>
+            &nbsp;&nbsp;}<br>
+            ]
+            </code>
+        </div>
+
+        <div class="info" style="margin-top: 30px;">
+            <strong>💡 Nota:</strong> Todas las operaciones se realizan con transacciones atómicas en la base de datos.<br>
+            <strong>🔗 Prueba ahora:</strong> <a href="/api/corebancario/movimientos/00100001" target="_blank">/api/corebancario/movimientos/00100001</a>
+        </div>
+    </div>
+
+    <script>
+        // Obtener la URL base automáticamente
+        document.getElementById('baseUrl').textContent = window.location.origin + '/api/corebancario';
+    </script>
+</body>
+</html>

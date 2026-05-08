@@ -1,0 +1,17 @@
+Grupo 9
+
+Darwin Valdiviezo (Líder)
+William Leon
+Francisco Terán
+
+Inge, la evidencia la envía Andrés Almeida (mi persona) a través de la plataforma MiCampus, los documentos
+se encuentran en el siguiente enlace de OneDrive:
+
+Link largo: https://drive.google.com/drive/folders/1ltjiiBQTUEG4izZaO2nHlRo7FNrlB4v4?usp=drive_link
+
+Este es el proyecto Taller TG1.1. SOAP con BDD en JAVA, se encuentra en formato ZIP.
+
+Las credenciales:
+
+-Usuario: MONSTER
+-Password: MONSTER9

@@ -1,0 +1,74 @@
+-- =============================================
+-- Base de Datos: ticketpremium_db
+-- Motor: MySQL
+-- Usuario: root / Clave: root
+-- =============================================
+
+DROP DATABASE IF EXISTS ticketpremium_db;
+CREATE DATABASE ticketpremium_db;
+USE ticketpremium_db;
+SET NAMES 'utf8';
+
+-- =============================================
+-- TABLA: PARTIDO_FUTBOL
+-- =============================================
+CREATE TABLE PARTIDO_FUTBOL (
+    CODIGO          INT NOT NULL AUTO_INCREMENT,
+    EQUIPO_LOCAL    VARCHAR(100) NOT NULL,
+    EQUIPO_VISITA   VARCHAR(100) NOT NULL,
+    FECHA           DATETIME NOT NULL,
+    LUGAR           VARCHAR(200) NOT NULL,
+    CONSTRAINT PK_PARTIDO_FUTBOL PRIMARY KEY (CODIGO)
+) ENGINE = INNODB;
+
+-- =============================================
+-- TABLA: LOCALIDAD_PARTIDO
+-- =============================================
+CREATE TABLE LOCALIDAD_PARTIDO (
+    ID                  INT NOT NULL AUTO_INCREMENT,
+    CODIGO_PARTIDO      INT NOT NULL,
+    CODIGO_LOCALIDAD    VARCHAR(50) NOT NULL,
+    DISPONIBILIDAD      INT NOT NULL DEFAULT 0,
+    PRECIO              DECIMAL(10,2) NOT NULL,
+    CONSTRAINT PK_LOCALIDAD_PARTIDO PRIMARY KEY (ID),
+    CONSTRAINT FK_LOCALIDAD_PARTIDO
+        FOREIGN KEY (CODIGO_PARTIDO) REFERENCES PARTIDO_FUTBOL(CODIGO)
+        ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = INNODB;
+
+-- =============================================
+-- TABLA: FACTURA (registro de ventas de TicketPremium)
+-- =============================================
+CREATE TABLE FACTURA (
+    ID              INT NOT NULL AUTO_INCREMENT,
+    CODIGO_PARTIDO  INT NOT NULL,
+    NOMBRE_CLIENTE  VARCHAR(200) NOT NULL,
+    FECHA           DATETIME NOT NULL,
+    SUBTOTAL        DECIMAL(10,2) NOT NULL,
+    IVA             DECIMAL(10,2) NOT NULL,
+    TOTAL           DECIMAL(10,2) NOT NULL,
+    CONSTRAINT PK_FACTURA PRIMARY KEY (ID),
+    CONSTRAINT FK_FACTURA_PARTIDO
+        FOREIGN KEY (CODIGO_PARTIDO) REFERENCES PARTIDO_FUTBOL(CODIGO)
+        ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = INNODB;
+
+-- =============================================
+-- TABLA: DETALLE_FACTURA
+-- =============================================
+CREATE TABLE DETALLE_FACTURA (
+    ID                  INT NOT NULL AUTO_INCREMENT,
+    ID_FACTURA          INT NOT NULL,
+    CODIGO_PARTIDO      INT NOT NULL,
+    CODIGO_LOCALIDAD    VARCHAR(50) NOT NULL,
+    CANTIDAD            INT NOT NULL,
+    PRECIO_UNITARIO     DECIMAL(10,2) NOT NULL,
+    SUBTOTAL            DECIMAL(10,2) NOT NULL,
+    CONSTRAINT PK_DETALLE_FACTURA PRIMARY KEY (ID),
+    CONSTRAINT FK_DETALLE_FACTURA
+        FOREIGN KEY (ID_FACTURA) REFERENCES FACTURA(ID)
+        ON DELETE RESTRICT ON UPDATE RESTRICT,
+    CONSTRAINT FK_DETALLE_PARTIDO
+        FOREIGN KEY (CODIGO_PARTIDO) REFERENCES PARTIDO_FUTBOL(CODIGO)
+        ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = INNODB;
