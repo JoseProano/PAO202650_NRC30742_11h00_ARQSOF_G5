@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- 
+    INSTRUCCIONES PARA USAR TU PROPIA IMAGEN:
+    
+    1. Coloca tu imagen en: app/src/main/res/drawable/
+       - Formato: PNG o JPG
+       - Nombre: mi_icono.png (o el que prefieras)
+       - Tamaño recomendado: 512x512 px o más grande (cuadrada)
+    
+    2. Reemplaza "mi_icono" abajo con el nombre de tu imagen (SIN la extensión .png o .jpg)
+       Ejemplo: Si tu imagen se llama "logo.png", escribe "logo"
+    
+    3. Si prefieres mantener las iniciales "SJ", simplemente no coloques ninguna imagen
+       y el sistema usará el diseño por defecto.
+    -->
+    
+    <!-- Si quieres usar tu imagen, descomenta las siguientes líneas y comenta las letras SJ -->
+    <!--
+    <group>
+        <clip-path android:pathData="M0,0h108v108h-108z"/>
+        <bitmap
+            android:src="@drawable/mi_icono"
+            android:gravity="fill" />
+    </group>
+    -->
+    
+    <!-- Por ahora, mantengo las iniciales SJ como respaldo -->
+    <!-- Letra S -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,20 L16,28 L40,28 L40,20 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,20 L16,40 L24,40 L24,20 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,44 L16,52 L40,52 L40,44 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,52 L32,72 L40,72 L40,52 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,68 L16,76 L40,76 L40,68 Z" />
+    
+    <!-- Letra J -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,20 L60,60 L76,60 L76,20 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,60 L60,76 L72,76 C76,76 80,72 80,68 L68,68 C68,70 66,72 64,72 L64,60 Z" />
+</vector>

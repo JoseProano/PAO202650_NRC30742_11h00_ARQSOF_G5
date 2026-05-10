@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 
+    Este archivo usa tu imagen como ícono.
+    
+    INSTRUCCIONES:
+    1. Coloca tu imagen en: app/src/main/res/drawable/
+       - Nombre: mi_icono.png (o el que prefieras)
+       - Tamaño: 512x512 px o más (cuadrada)
+    
+    2. Cambia "mi_icono" abajo por el nombre de tu imagen (SIN extensión)
+       Ejemplo: Si tu imagen es "logo.png", escribe "logo"
+    -->
+    <item>
+        <bitmap
+            android:src="@drawable/mi_icono"
+            android:gravity="center"
+            android:scaleType="centerCrop" />
+    </item>
+</layer-list>
+
