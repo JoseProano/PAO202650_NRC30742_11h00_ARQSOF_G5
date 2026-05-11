@@ -16,7 +16,6 @@ namespace CONUNI_SOAP_DOTNET_GR09
             double temperaturaCelsius = 25.0;
             double metros = 10.0;
             double kilogramos = 5.0;
-            double litros = 2.5;
 
             try
             {
@@ -36,10 +35,6 @@ namespace CONUNI_SOAP_DOTNET_GR09
                 double gramos = kilogramos * 1000;
                 double onzas = client.GramosAOnzas(gramos);
 
-                // Pruebas de volumen
-                double galones = client.LitrosAGalones(litros);
-                double mililitros = litros * 1000;
-                double onzasFluidas = client.MililitrosAOnzasFluidas(mililitros);
 
                 // Reporte
                 Console.WriteLine("=== PRUEBAS DE CONVERSIÓN ===");
@@ -64,10 +59,6 @@ namespace CONUNI_SOAP_DOTNET_GR09
                 Console.WriteLine($"Onzas: {onzas:F2} oz");
                 Console.WriteLine();
 
-                Console.WriteLine("--- VOLUMEN ---");
-                Console.WriteLine($"Litros: {litros} L");
-                Console.WriteLine($"Galones: {galones:F2} gal");
-                Console.WriteLine($"Mililitros: {mililitros} mL");
                 Console.WriteLine($"Onzas fluidas: {onzasFluidas:F2} fl oz");
                 Console.WriteLine();
 
@@ -87,5 +78,4 @@ namespace CONUNI_SOAP_DOTNET_GR09
         }
     }
 }
-
 

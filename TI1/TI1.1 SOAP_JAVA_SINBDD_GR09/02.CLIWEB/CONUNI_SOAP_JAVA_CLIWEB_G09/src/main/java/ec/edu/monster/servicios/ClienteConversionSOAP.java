@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class ClienteConversionSOAP {
     
-    private static final String BASE_URL = "http://10.92.232.246:8080/CONUNI_SOAP_JAVA_GR09/WSConversion";
+    private static final String BASE_URL = "http://localhost:8080/CONUNI_SOAP_JAVA_GR09/WSConversion";
     private static final int TIMEOUT = 30000; // 30 segundos
     
     /**
@@ -119,24 +119,10 @@ public class ClienteConversionSOAP {
                 return "gramos";
             case "onzasAGramos":
                 return "onzas";
-            // Volumen
-            case "litrosAGalones":
-                return "litros";
-            case "galonesALitros":
-                return "galones";
-            case "mililitrosAOnzasFluidas":
-                return "mililitros";
-            case "onzasFluidasAMililitros":
                 return "onzasFluidas";
             // Área
-            case "metrosCuadradosAPiesCuadrados":
                 return "metrosCuadrados";
-            case "piesCuadradosAMetrosCuadrados":
                 return "piesCuadrados";
-            case "hectareasAAcres":
-                return "hectareas";
-            case "acresAHectareas":
-                return "acres";
             default:
                 return "valor";
         }
@@ -286,39 +272,14 @@ public class ClienteConversionSOAP {
         return llamadaSOAP("onzasAGramos", valor);
     }
     
-    // ========== MÉTODOS DE VOLUMEN ==========
     
-    public Conversion litrosAGalones(double valor) {
-        return llamadaSOAP("litrosAGalones", valor);
     }
     
-    public Conversion galonesALitros(double valor) {
-        return llamadaSOAP("galonesALitros", valor);
-    }
     
-    public Conversion mililitrosAOnzasFluidas(double valor) {
-        return llamadaSOAP("mililitrosAOnzasFluidas", valor);
-    }
     
-    public Conversion onzasFluidasAMililitros(double valor) {
-        return llamadaSOAP("onzasFluidasAMililitros", valor);
-    }
     
     // ========== MÉTODOS DE ÁREA ==========
     
-    public Conversion metrosCuadradosAPiesCuadrados(double valor) {
-        return llamadaSOAP("metrosCuadradosAPiesCuadrados", valor);
-    }
     
-    public Conversion piesCuadradosAMetrosCuadrados(double valor) {
-        return llamadaSOAP("piesCuadradosAMetrosCuadrados", valor);
-    }
     
-    public Conversion hectareasAAcres(double valor) {
-        return llamadaSOAP("hectareasAAcres", valor);
-    }
     
-    public Conversion acresAHectareas(double valor) {
-        return llamadaSOAP("acresAHectareas", valor);
-    }
-}

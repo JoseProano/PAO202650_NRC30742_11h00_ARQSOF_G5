@@ -72,10 +72,8 @@ public class ControladorConsola {
                 manejarPeso();
                 break;
             case 4:
-                manejarVolumen();
                 break;
             case 5:
-                manejarArea();
                 break;
             case 6:
                 ejecutarPruebasAutomaticas();
@@ -142,17 +140,12 @@ public class ControladorConsola {
     }
     
     /**
-     * Maneja las conversiones de volumen
      */
-    private void manejarVolumen() {
-        vistaMenu.mostrarMenuVolumen();
         
         int subOpcion = vistaMenu.leerOpcion();
-        String operacion = obtenerOperacionVolumen(subOpcion);
         
         if (operacion != null) {
             double valor = vistaMenu.leerValor();
-            Conversion resultado = clienteSOAP.convertirVolumen(operacion, valor);
             vistaMenu.mostrarResultado(resultado);
         } else {
             vistaMenu.mostrarOpcionInvalida();
@@ -162,15 +155,11 @@ public class ControladorConsola {
     /**
      * Maneja las conversiones de área
      */
-    private void manejarArea() {
-        vistaMenu.mostrarMenuArea();
         
         int subOpcion = vistaMenu.leerOpcion();
-        String operacion = obtenerOperacionArea(subOpcion);
         
         if (operacion != null) {
             double valor = vistaMenu.leerValor();
-            Conversion resultado = clienteSOAP.convertirArea(operacion, valor);
             vistaMenu.mostrarResultado(resultado);
         } else {
             vistaMenu.mostrarOpcionInvalida();
@@ -245,22 +234,12 @@ public class ControladorConsola {
         }
     }
     
-    private String obtenerOperacionVolumen(int opcion) {
         switch (opcion) {
-            case 1: return "litrosAGalones";
-            case 2: return "galonesALitros";
-            case 3: return "mililitrosAOnzasFluidas";
-            case 4: return "onzasFluidasAMililitros";
             default: return null;
         }
     }
     
-    private String obtenerOperacionArea(int opcion) {
         switch (opcion) {
-            case 1: return "metrosCuadradosAPiesCuadrados";
-            case 2: return "piesCuadradosAMetrosCuadrados";
-            case 3: return "hectareasAAcres";
-            case 4: return "acresAHectareas";
             default: return null;
         }
     }
@@ -271,9 +250,5 @@ public class ControladorConsola {
     private void cerrarRecursos() {
         if (vistaMenu != null) {
             vistaMenu.cerrar();
-        }
         if (autenticador != null) {
             autenticador.cerrar();
-        }
-    }
-}

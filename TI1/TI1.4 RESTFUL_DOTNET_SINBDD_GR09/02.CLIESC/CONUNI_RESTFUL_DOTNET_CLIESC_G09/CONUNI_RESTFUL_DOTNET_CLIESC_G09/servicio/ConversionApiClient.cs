@@ -130,48 +130,31 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.servicio
             return await GetConversionAsync($"{_baseUrl}/api/conversion/peso/onzas-to-gramos?onzas={onzas}");
         }
 
-        // ========== VOLUMEN ==========
         
-        public async Task<ConversionResponse> LitrosAGalonesAsync(double litros)
         {
-            return await GetConversionAsync($"{_baseUrl}/api/conversion/volumen/litros-to-galones?litros={litros}");
         }
 
-        public async Task<ConversionResponse> GalonesALitrosAsync(double galones)
         {
-            return await GetConversionAsync($"{_baseUrl}/api/conversion/volumen/galones-to-litros?galones={galones}");
         }
 
-        public async Task<ConversionResponse> MililitrosAOnzasFluidasAsync(double mililitros)
         {
-            return await GetConversionAsync($"{_baseUrl}/api/conversion/volumen/mililitros-to-onzas-fluidas?mililitros={mililitros}");
         }
 
-        public async Task<ConversionResponse> OnzasFluidasAMililitrosAsync(double onzasFluidas)
         {
-            return await GetConversionAsync($"{_baseUrl}/api/conversion/volumen/onzas-fluidas-to-mililitros?onzasFluidas={onzasFluidas}");
         }
 
         // ========== ÁREA ==========
         
-        public async Task<ConversionResponse> MetrosCuadradosAPiesCuadradosAsync(double metrosCuadrados)
         {
-            return await GetConversionAsync($"{_baseUrl}/api/conversion/area/metros-cuadrados-to-pies-cuadrados?metrosCuadrados={metrosCuadrados}");
         }
 
-        public async Task<ConversionResponse> PiesCuadradosAMetrosCuadradosAsync(double piesCuadrados)
         {
-            return await GetConversionAsync($"{_baseUrl}/api/conversion/area/pies-cuadrados-to-metros-cuadrados?piesCuadrados={piesCuadrados}");
         }
 
-        public async Task<ConversionResponse> HectareasAAcresAsync(double hectareas)
         {
-            return await GetConversionAsync($"{_baseUrl}/api/conversion/area/hectareas-to-acres?hectareas={hectareas}");
         }
 
-        public async Task<ConversionResponse> AcresAHectareasAsync(double acres)
         {
-            return await GetConversionAsync($"{_baseUrl}/api/conversion/area/acres-to-hectareas?acres={acres}");
         }
 
         // ========== CONVERSIÓN GENÉRICA ==========
@@ -235,5 +218,4 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.servicio
         }
     }
 }
-
 

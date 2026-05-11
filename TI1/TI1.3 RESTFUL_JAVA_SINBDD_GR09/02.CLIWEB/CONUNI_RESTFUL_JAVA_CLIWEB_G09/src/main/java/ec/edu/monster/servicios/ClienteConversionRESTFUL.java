@@ -31,7 +31,6 @@ public class ClienteConversionRESTFUL {
     
     /**
      * Realiza una llamada RESTFUL al servicio web
-     * @param categoria - Categoría de conversión (temperatura, longitud, peso, volumen, area)
      * @param unidadOrigen - Unidad de origen
      * @param unidadDestino - Unidad de destino
      * @param valor - Valor a convertir
@@ -215,40 +214,14 @@ public class ClienteConversionRESTFUL {
         return llamadaRESTFUL("peso", "onzas", "gramos", valor);
     }
     
-    // ========== MÉTODOS DE VOLUMEN ==========
     
-    public Conversion litrosAGalones(double valor) {
-        return llamadaRESTFUL("volumen", "litros", "galones", valor);
     }
     
-    public Conversion galonesALitros(double valor) {
-        return llamadaRESTFUL("volumen", "galones", "litros", valor);
-    }
     
-    public Conversion mililitrosAOnzasFluidas(double valor) {
-        return llamadaRESTFUL("volumen", "mililitros", "onzasFluidas", valor);
-    }
     
-    public Conversion onzasFluidasAMililitros(double valor) {
-        return llamadaRESTFUL("volumen", "onzasFluidas", "mililitros", valor);
-    }
     
     // ========== MÉTODOS DE ÁREA ==========
     
-    public Conversion metrosCuadradosAPiesCuadrados(double valor) {
-        return llamadaRESTFUL("area", "metrosCuadrados", "piesCuadrados", valor);
-    }
     
-    public Conversion piesCuadradosAMetrosCuadrados(double valor) {
-        return llamadaRESTFUL("area", "piesCuadrados", "metrosCuadrados", valor);
-    }
     
-    public Conversion hectareasAAcres(double valor) {
-        return llamadaRESTFUL("area", "hectareas", "acres", valor);
-    }
     
-    public Conversion acresAHectareas(double valor) {
-        return llamadaRESTFUL("area", "acres", "hectareas", valor);
-    }
-}
-

@@ -12,7 +12,7 @@ import jakarta.xml.ws.WebServiceException;
 public class ClienteConversionSOAP {
     
     // URL del servicio
-    private static final String URL_SERVICIO = "http://10.92.232.246:8080/CONUNI_SOAP_JAVA_GR09/WSConversion?wsdl";
+    private static final String URL_SERVICIO = "http://localhost:8080/CONUNI_SOAP_JAVA_GR09/WSConversion?wsdl";
     
     private WSConversion servicio;
     
@@ -217,120 +217,6 @@ public class ClienteConversionSOAP {
                     resultado = servicio.onzasAGramos(valor);
                     unidadOrigen = "oz";
                     unidadDestino = "g";
-                    break;
-                default:
-                    return new Conversion();
-            }
-            
-            return new Conversion(valor, unidadOrigen, unidadDestino, resultado, operacion);
-            
-        } catch (WebServiceException e) {
-            Conversion error = new Conversion();
-            error.setMensajeError("❌ ERROR DE CONEXIÓN SOAP\n" +
-                                "🔧 El servidor no responde. Verifica que esté encendido en:\n" +
-                                "📍 " + URL_SERVICIO + "\n" +
-                                "⚠️  Detalle: " + e.getMessage());
-            return error;
-        } catch (Exception e) {
-            Conversion error = new Conversion();
-            error.setMensajeError("❌ ERROR EN LA CONVERSIÓN\n" +
-                                "⚠️  Detalle: " + e.getMessage());
-            return error;
-        }
-    }
-    
-    // Conversiones de volumen
-    public Conversion convertirVolumen(String operacion, double valor) {
-        if (servicio == null) {
-            Conversion error = new Conversion();
-            error.setMensajeError("❌ SERVICIO SOAP NO DISPONIBLE\n" +
-                                "🔧 El servidor está apagado. Enciende el servidor en:\n" +
-                                "📍 " + URL_SERVICIO);
-            return error;
-        }
-        
-        try {
-            double resultado = 0;
-            String unidadOrigen = "";
-            String unidadDestino = "";
-            
-            switch (operacion) {
-                case "litrosAGalones":
-                    resultado = servicio.litrosAGalones(valor);
-                    unidadOrigen = "L";
-                    unidadDestino = "gal";
-                    break;
-                case "galonesALitros":
-                    resultado = servicio.galonesALitros(valor);
-                    unidadOrigen = "gal";
-                    unidadDestino = "L";
-                    break;
-                case "mililitrosAOnzasFluidas":
-                    resultado = servicio.mililitrosAOnzasFluidas(valor);
-                    unidadOrigen = "mL";
-                    unidadDestino = "fl oz";
-                    break;
-                case "onzasFluidasAMililitros":
-                    resultado = servicio.onzasFluidasAMililitros(valor);
-                    unidadOrigen = "fl oz";
-                    unidadDestino = "mL";
-                    break;
-                default:
-                    return new Conversion();
-            }
-            
-            return new Conversion(valor, unidadOrigen, unidadDestino, resultado, operacion);
-            
-        } catch (WebServiceException e) {
-            Conversion error = new Conversion();
-            error.setMensajeError("❌ ERROR DE CONEXIÓN SOAP\n" +
-                                "🔧 El servidor no responde. Verifica que esté encendido en:\n" +
-                                "📍 " + URL_SERVICIO + "\n" +
-                                "⚠️  Detalle: " + e.getMessage());
-            return error;
-        } catch (Exception e) {
-            Conversion error = new Conversion();
-            error.setMensajeError("❌ ERROR EN LA CONVERSIÓN\n" +
-                                "⚠️  Detalle: " + e.getMessage());
-            return error;
-        }
-    }
-    
-    // Conversiones de área
-    public Conversion convertirArea(String operacion, double valor) {
-        if (servicio == null) {
-            Conversion error = new Conversion();
-            error.setMensajeError("❌ SERVICIO SOAP NO DISPONIBLE\n" +
-                                "🔧 El servidor está apagado. Enciende el servidor en:\n" +
-                                "📍 " + URL_SERVICIO);
-            return error;
-        }
-        
-        try {
-            double resultado = 0;
-            String unidadOrigen = "";
-            String unidadDestino = "";
-            
-            switch (operacion) {
-                case "metrosCuadradosAPiesCuadrados":
-                    resultado = servicio.metrosCuadradosAPiesCuadrados(valor);
-                    unidadOrigen = "m²";
-                    unidadDestino = "ft²";
-                    break;
-                case "piesCuadradosAMetrosCuadrados":
-                    resultado = servicio.piesCuadradosAMetrosCuadrados(valor);
-                    unidadOrigen = "ft²";
-                    unidadDestino = "m²";
-                    break;
-                case "hectareasAAcres":
-                    resultado = servicio.hectareasAAcres(valor);
-                    unidadOrigen = "ha";
-                    unidadDestino = "ac";
-                    break;
-                case "acresAHectareas":
-                    resultado = servicio.acresAHectareas(valor);
-                    unidadOrigen = "ac";
-                    unidadDestino = "ha";
                     break;
                 default:
                     return new Conversion();

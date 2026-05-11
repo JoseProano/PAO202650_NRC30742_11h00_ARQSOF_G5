@@ -43,27 +43,13 @@
       </div>
     </div>
 
-    <div id="volumen" class="section">
-      <div class="title">Conversiones de Volumen</div>
-      <div class="desc">Litros, galones, mililitros y onzas fluidas</div>
       <div class="row"><div class="fg"><label for="volumeValue">Valor a convertir</label><input type="number" id="volumeValue" step="0.01"></div><div class="unit">L</div></div>
       <div class="buttons">
-        <button class="btn" onclick="convertirVolumen('litrosAGalones')">L → gal</button>
-        <button class="btn" onclick="convertirVolumen('galonesALitros')">gal → L</button>
-        <button class="btn" onclick="convertirVolumen('mililitrosAOnzasFluidas')">mL → fl oz</button>
-        <button class="btn" onclick="convertirVolumen('onzasFluidasAMililitros')">fl oz → mL</button>
       </div>
     </div>
 
-    <div id="area" class="section">
       <div class="title">Conversiones de Área</div>
-      <div class="desc">m², ft², hectáreas y acres</div>
-      <div class="row"><div class="fg"><label for="areaValue">Valor a convertir</label><input type="number" id="areaValue" step="0.01"></div><div class="unit">m²</div></div>
       <div class="buttons">
-        <button class="btn" onclick="convertirArea('metrosCuadradosAPiesCuadrados')">m² → ft²</button>
-        <button class="btn" onclick="convertirArea('piesCuadradosAMetrosCuadrados')">ft² → m²</button>
-        <button class="btn" onclick="convertirArea('hectareasAAcres')">ha → ac</button>
-        <button class="btn" onclick="convertirArea('acresAHectareas')">ac → ha</button>
       </div>
     </div>
   </div>
@@ -77,6 +63,5 @@
     </div>
   </div>
 </div>
-
 
 

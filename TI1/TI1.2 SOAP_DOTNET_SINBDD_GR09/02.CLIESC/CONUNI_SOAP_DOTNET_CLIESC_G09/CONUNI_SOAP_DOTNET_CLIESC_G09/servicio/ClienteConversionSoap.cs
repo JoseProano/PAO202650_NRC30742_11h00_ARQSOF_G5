@@ -488,20 +488,13 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
             }
         }
 
-        // ========== VOLUMEN ==========
 
-        public ConversionResponse LitrosAGalones(double litros)
         {
             try
             {
-                double resultado = _proxy.LitrosAGalones(litros);
                 return new ConversionResponse
                 {
-                    ValorOriginal = litros,
                     ValorConvertido = resultado,
-                    UnidadOrigen = "litros",
-                    UnidadDestino = "galones",
-                    Categoria = "volumen",
                     Exito = true,
                     Mensaje = "Conversión exitosa"
                 };
@@ -516,18 +509,12 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
             }
         }
 
-        public ConversionResponse GalonesALitros(double galones)
         {
             try
             {
-                double resultado = _proxy.GalonesALitros(galones);
                 return new ConversionResponse
                 {
-                    ValorOriginal = galones,
                     ValorConvertido = resultado,
-                    UnidadOrigen = "galones",
-                    UnidadDestino = "litros",
-                    Categoria = "volumen",
                     Exito = true,
                     Mensaje = "Conversión exitosa"
                 };
@@ -542,18 +529,13 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
             }
         }
 
-        public ConversionResponse MililitrosAOnzasFluidas(double mililitros)
         {
             try
             {
-                double resultado = _proxy.MililitrosAOnzasFluidas(mililitros);
                 return new ConversionResponse
                 {
-                    ValorOriginal = mililitros,
                     ValorConvertido = resultado,
-                    UnidadOrigen = "mililitros",
                     UnidadDestino = "onzasFluidas",
-                    Categoria = "volumen",
                     Exito = true,
                     Mensaje = "Conversión exitosa"
                 };
@@ -568,18 +550,14 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
             }
         }
 
-        public ConversionResponse OnzasFluidasAMililitros(double onzasFluidas)
         {
             try
             {
-                double resultado = _proxy.OnzasFluidasAMililitros(onzasFluidas);
                 return new ConversionResponse
                 {
                     ValorOriginal = onzasFluidas,
                     ValorConvertido = resultado,
                     UnidadOrigen = "onzasFluidas",
-                    UnidadDestino = "mililitros",
-                    Categoria = "volumen",
                     Exito = true,
                     Mensaje = "Conversión exitosa"
                 };
@@ -596,18 +574,15 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
 
         // ========== ÁREA ==========
 
-        public ConversionResponse MetrosCuadradosAPiesCuadrados(double metrosCuadrados)
         {
             try
             {
-                double resultado = _proxy.MetrosCuadradosAPiesCuadrados(metrosCuadrados);
                 return new ConversionResponse
                 {
                     ValorOriginal = metrosCuadrados,
                     ValorConvertido = resultado,
                     UnidadOrigen = "metrosCuadrados",
                     UnidadDestino = "piesCuadrados",
-                    Categoria = "area",
                     Exito = true,
                     Mensaje = "Conversión exitosa"
                 };
@@ -622,18 +597,15 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
             }
         }
 
-        public ConversionResponse PiesCuadradosAMetrosCuadrados(double piesCuadrados)
         {
             try
             {
-                double resultado = _proxy.PiesCuadradosAMetrosCuadrados(piesCuadrados);
                 return new ConversionResponse
                 {
                     ValorOriginal = piesCuadrados,
                     ValorConvertido = resultado,
                     UnidadOrigen = "piesCuadrados",
                     UnidadDestino = "metrosCuadrados",
-                    Categoria = "area",
                     Exito = true,
                     Mensaje = "Conversión exitosa"
                 };
@@ -648,18 +620,12 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
             }
         }
 
-        public ConversionResponse HectareasAAcres(double hectareas)
         {
             try
             {
-                double resultado = _proxy.HectareasAAcres(hectareas);
                 return new ConversionResponse
                 {
-                    ValorOriginal = hectareas,
                     ValorConvertido = resultado,
-                    UnidadOrigen = "hectareas",
-                    UnidadDestino = "acres",
-                    Categoria = "area",
                     Exito = true,
                     Mensaje = "Conversión exitosa"
                 };
@@ -674,18 +640,12 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
             }
         }
 
-        public ConversionResponse AcresAHectareas(double acres)
         {
             try
             {
-                double resultado = _proxy.AcresAHectareas(acres);
                 return new ConversionResponse
                 {
-                    ValorOriginal = acres,
                     ValorConvertido = resultado,
-                    UnidadOrigen = "acres",
-                    UnidadDestino = "hectareas",
-                    Categoria = "area",
                     Exito = true,
                     Mensaje = "Conversión exitosa"
                 };
@@ -724,4 +684,3 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
         }
     }
 }
-

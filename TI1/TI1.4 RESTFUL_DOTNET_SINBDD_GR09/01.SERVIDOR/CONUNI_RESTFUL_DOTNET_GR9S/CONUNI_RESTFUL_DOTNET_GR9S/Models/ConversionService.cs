@@ -94,48 +94,31 @@ namespace CONUNI_RESTFUL_DOTNET_GR9S.Models
             return onzas / Conversion.GRAMS_TO_OUNCES;
         }
         
-        // ========== CONVERSIONES DE VOLUMEN ==========
         
-        public double LitrosAGalones(double litros)
         {
-            return litros * Conversion.LITERS_TO_GALLONS;
         }
         
-        public double GalonesALitros(double galones)
         {
-            return galones / Conversion.LITERS_TO_GALLONS;
         }
         
-        public double MililitrosAOnzasFluidas(double mililitros)
         {
-            return mililitros * Conversion.MILLILITERS_TO_FLUID_OUNCES;
         }
         
-        public double OnzasFluidasAMililitros(double onzasFluidas)
         {
-            return onzasFluidas / Conversion.MILLILITERS_TO_FLUID_OUNCES;
         }
         
         // ========== CONVERSIONES DE ÁREA ==========
         
-        public double MetrosCuadradosAPiesCuadrados(double metrosCuadrados)
         {
-            return metrosCuadrados * Conversion.SQUARE_METERS_TO_SQUARE_FEET;
         }
         
-        public double PiesCuadradosAMetrosCuadrados(double piesCuadrados)
         {
-            return piesCuadrados / Conversion.SQUARE_METERS_TO_SQUARE_FEET;
         }
         
-        public double HectareasAAcres(double hectareas)
         {
-            return hectareas * Conversion.HECTARES_TO_ACRES;
         }
         
-        public double AcresAHectareas(double acres)
         {
-            return acres / Conversion.HECTARES_TO_ACRES;
         }
         
         // ========== MÉTODO PRINCIPAL DE CONVERSIÓN ==========
@@ -177,10 +160,6 @@ namespace CONUNI_RESTFUL_DOTNET_GR9S.Models
                     return ConvertirLongitud(valor, operacion);
                 case Conversion.CATEGORIA_PESO:
                     return ConvertirPeso(valor, operacion);
-                case Conversion.CATEGORIA_VOLUMEN:
-                    return ConvertirVolumen(valor, operacion);
-                case Conversion.CATEGORIA_AREA:
-                    return ConvertirArea(valor, operacion);
                 default:
                     throw new ArgumentException($"Categoría no soportada: {categoria}");
             }
@@ -226,30 +205,18 @@ namespace CONUNI_RESTFUL_DOTNET_GR9S.Models
             }
         }
         
-        private double ConvertirVolumen(double valor, string operacion)
         {
             switch (operacion)
             {
-                case "litrosAgalones": return LitrosAGalones(valor);
-                case "galonesAlitros": return GalonesALitros(valor);
-                case "mililitrosAonzasFluidas": return MililitrosAOnzasFluidas(valor);
-                case "onzasFluidasAmililitros": return OnzasFluidasAMililitros(valor);
-                default: throw new ArgumentException($"Operación de volumen no soportada: {operacion}");
             }
         }
         
-        private double ConvertirArea(double valor, string operacion)
         {
             switch (operacion)
             {
-                case "metrosCuadradosApiesCuadrados": return MetrosCuadradosAPiesCuadrados(valor);
-                case "piesCuadradosAmetrosCuadrados": return PiesCuadradosAMetrosCuadrados(valor);
-                case "hectareasAacres": return HectareasAAcres(valor);
-                case "acresAhectareas": return AcresAHectareas(valor);
                 default: throw new ArgumentException($"Operación de área no soportada: {operacion}");
             }
         }
     }
 }
-
 

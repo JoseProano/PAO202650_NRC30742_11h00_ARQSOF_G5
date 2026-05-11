@@ -387,12 +387,8 @@ public class ConversionService {
         }
     }
 
-    // ========== CONVERSIONES DE VOLUMEN ==========
 
-    public ConversionResponse litrosAGalones(double litros) {
         try {
-            WebTarget target = baseTarget.path("/volumen/litros-to-galones")
-                    .queryParam("litros", litros);
             
             Response response = target.request(MediaType.APPLICATION_JSON).get();
             
@@ -400,20 +396,13 @@ public class ConversionService {
                 return response.readEntity(ConversionResponse.class);
             } else {
                 // Cálculo local si el servidor no responde
-                double resultado = litros * 0.264172;
-                return ConversionResponse.crearExito(litros, resultado, "litros", "galones", "volumen");
             }
         } catch (Exception e) {
             // Cálculo local si hay error de conexión
-            double resultado = litros * 0.264172;
-            return ConversionResponse.crearExito(litros, resultado, "litros", "galones", "volumen");
         }
     }
 
-    public ConversionResponse galonesALitros(double galones) {
         try {
-            WebTarget target = baseTarget.path("/volumen/galones-to-litros")
-                    .queryParam("galones", galones);
             
             Response response = target.request(MediaType.APPLICATION_JSON).get();
             
@@ -421,20 +410,13 @@ public class ConversionService {
                 return response.readEntity(ConversionResponse.class);
             } else {
                 // Cálculo local si el servidor no responde
-                double resultado = galones / 0.264172;
-                return ConversionResponse.crearExito(galones, resultado, "galones", "litros", "volumen");
             }
         } catch (Exception e) {
             // Cálculo local si hay error de conexión
-            double resultado = galones / 0.264172;
-            return ConversionResponse.crearExito(galones, resultado, "galones", "litros", "volumen");
         }
     }
 
-    public ConversionResponse mililitrosAOnzasFluidas(double mililitros) {
         try {
-            WebTarget target = baseTarget.path("/volumen/mililitros-to-onzas-fluidas")
-                    .queryParam("mililitros", mililitros);
             
             Response response = target.request(MediaType.APPLICATION_JSON).get();
             
@@ -442,19 +424,13 @@ public class ConversionService {
                 return response.readEntity(ConversionResponse.class);
             } else {
                 // Cálculo local si el servidor no responde
-                double resultado = mililitros * 0.033814;
-                return ConversionResponse.crearExito(mililitros, resultado, "mililitros", "onzasFluidas", "volumen");
             }
         } catch (Exception e) {
             // Cálculo local si hay error de conexión
-            double resultado = mililitros * 0.033814;
-            return ConversionResponse.crearExito(mililitros, resultado, "mililitros", "onzasFluidas", "volumen");
         }
     }
 
-    public ConversionResponse onzasFluidasAMililitros(double onzasFluidas) {
         try {
-            WebTarget target = baseTarget.path("/volumen/onzas-fluidas-to-mililitros")
                     .queryParam("onzasFluidas", onzasFluidas);
             
             Response response = target.request(MediaType.APPLICATION_JSON).get();
@@ -464,20 +440,16 @@ public class ConversionService {
             } else {
                 // Cálculo local si el servidor no responde
                 double resultado = onzasFluidas / 0.033814;
-                return ConversionResponse.crearExito(onzasFluidas, resultado, "onzasFluidas", "mililitros", "volumen");
             }
         } catch (Exception e) {
             // Cálculo local si hay error de conexión
             double resultado = onzasFluidas / 0.033814;
-            return ConversionResponse.crearExito(onzasFluidas, resultado, "onzasFluidas", "mililitros", "volumen");
         }
     }
 
     // ========== CONVERSIONES DE ÁREA ==========
 
-    public ConversionResponse metrosCuadradosAPiesCuadrados(double metrosCuadrados) {
         try {
-            WebTarget target = baseTarget.path("/area/metros-cuadrados-to-pies-cuadrados")
                     .queryParam("metrosCuadrados", metrosCuadrados);
             
             Response response = target.request(MediaType.APPLICATION_JSON).get();
@@ -487,18 +459,14 @@ public class ConversionService {
             } else {
                 // Cálculo local si el servidor no responde
                 double resultado = metrosCuadrados * 10.7639;
-                return ConversionResponse.crearExito(metrosCuadrados, resultado, "metrosCuadrados", "piesCuadrados", "area");
             }
         } catch (Exception e) {
             // Cálculo local si hay error de conexión
             double resultado = metrosCuadrados * 10.7639;
-            return ConversionResponse.crearExito(metrosCuadrados, resultado, "metrosCuadrados", "piesCuadrados", "area");
         }
     }
 
-    public ConversionResponse piesCuadradosAMetrosCuadrados(double piesCuadrados) {
         try {
-            WebTarget target = baseTarget.path("/area/pies-cuadrados-to-metros-cuadrados")
                     .queryParam("piesCuadrados", piesCuadrados);
             
             Response response = target.request(MediaType.APPLICATION_JSON).get();
@@ -508,19 +476,14 @@ public class ConversionService {
             } else {
                 // Cálculo local si el servidor no responde
                 double resultado = piesCuadrados / 10.7639;
-                return ConversionResponse.crearExito(piesCuadrados, resultado, "piesCuadrados", "metrosCuadrados", "area");
             }
         } catch (Exception e) {
             // Cálculo local si hay error de conexión
             double resultado = piesCuadrados / 10.7639;
-            return ConversionResponse.crearExito(piesCuadrados, resultado, "piesCuadrados", "metrosCuadrados", "area");
         }
     }
 
-    public ConversionResponse hectareasAAcres(double hectareas) {
         try {
-            WebTarget target = baseTarget.path("/area/hectareas-to-acres")
-                    .queryParam("hectareas", hectareas);
             
             Response response = target.request(MediaType.APPLICATION_JSON).get();
             
@@ -528,20 +491,13 @@ public class ConversionService {
                 return response.readEntity(ConversionResponse.class);
             } else {
                 // Cálculo local si el servidor no responde
-                double resultado = hectareas * 2.47105;
-                return ConversionResponse.crearExito(hectareas, resultado, "hectareas", "acres", "area");
             }
         } catch (Exception e) {
             // Cálculo local si hay error de conexión
-            double resultado = hectareas * 2.47105;
-            return ConversionResponse.crearExito(hectareas, resultado, "hectareas", "acres", "area");
         }
     }
 
-    public ConversionResponse acresAHectareas(double acres) {
         try {
-            WebTarget target = baseTarget.path("/area/acres-to-hectareas")
-                    .queryParam("acres", acres);
             
             Response response = target.request(MediaType.APPLICATION_JSON).get();
             
@@ -549,13 +505,9 @@ public class ConversionService {
                 return response.readEntity(ConversionResponse.class);
             } else {
                 // Cálculo local si el servidor no responde
-                double resultado = acres / 2.47105;
-                return ConversionResponse.crearExito(acres, resultado, "acres", "hectareas", "area");
             }
         } catch (Exception e) {
             // Cálculo local si hay error de conexión
-            double resultado = acres / 2.47105;
-            return ConversionResponse.crearExito(acres, resultado, "acres", "hectareas", "area");
         }
     }
 
@@ -575,8 +527,6 @@ public class ConversionService {
             }
         } catch (Exception e) {
             return ConversionResponse.crearError(MensajesErrorMonstruosos.generarMensajeErrorConexion(e));
-        }
-    }
 
     // ========== INFORMACIÓN DEL SERVICIO ==========
 
@@ -590,15 +540,9 @@ public class ConversionService {
                 return response.readEntity(String.class);
             } else {
                 return MensajesErrorMonstruosos.generarMensajeErrorServidor(response.getStatus());
-            }
         } catch (Exception e) {
             return MensajesErrorMonstruosos.generarMensajeErrorConexion(e);
-        }
-    }
 
     public void cerrar() {
         if (client != null) {
             client.close();
-        }
-    }
-}

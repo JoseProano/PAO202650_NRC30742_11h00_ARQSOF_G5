@@ -198,12 +198,10 @@
             background-color: var(--monster-pink);
         }
 
-        .category-btn.volumen {
             background-color: var(--monster-yellow);
             color: var(--monster-dark);
         }
 
-        .category-btn.area {
             background-color: var(--monster-light-blue);
             color: var(--monster-dark);
         }
@@ -657,13 +655,9 @@
                     <i class="fas fa-weight"></i>
                     Peso
                 </button>
-                <button class="category-btn volumen" data-category="volumen">
                     <i class="fas fa-flask"></i>
-                    Volumen
                 </button>
-                <button class="category-btn area" data-category="area">
                     <i class="fas fa-square"></i>
-                    Area
                 </button>
             </div>
         </div>
@@ -751,25 +745,16 @@
             </div>
         </div>
 
-        <!-- VOLUMEN -->
-        <div class="conversion-section conversion-content" id="volumen">
-            <h3 class="conversion-title">CONVERSIONES DE VOLUMEN</h3>
             <div class="form-row">
                 <div class="form-group">
                     <label for="volumeValue">Valor a convertir:</label>
-                    <input type="number" id="volumeValue" step="0.01" placeholder="Ingrese el volumen">
                 </div>
                 <div class="form-group">
                     <label for="volumeConversion">Tipo de conversión:</label>
                     <select id="volumeConversion">
-                        <option value="litrosAGalones">Litros → Galones</option>
-                        <option value="galonesALitros">Galones → Litros</option>
-                        <option value="mililitrosAOnzasFluidas">Mililitros → Onzas fluidas</option>
-                        <option value="onzasFluidasAMililitros">Onzas fluidas → Mililitros</option>
                     </select>
                 </div>
             </div>
-            <button class="convert-btn" onclick="convertirVolumen()">
                 <i class="fas fa-exchange-alt"></i> CONVERTIR
             </button>
             <div class="results-section" id="volumeResults">
@@ -778,27 +763,16 @@
         </div>
 
         <!-- ÁREA -->
-        <div class="conversion-section conversion-content" id="area">
             <h3 class="conversion-title">CONVERSIONES DE ÁREA</h3>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="areaValue">Valor a convertir:</label>
-                    <input type="number" id="areaValue" step="0.01" placeholder="Ingrese el área">
                 </div>
                 <div class="form-group">
-                    <label for="areaConversion">Tipo de conversión:</label>
-                    <select id="areaConversion">
-                        <option value="metrosCuadradosAPiesCuadrados">Metros cuadrados → Pies cuadrados</option>
-                        <option value="piesCuadradosAMetrosCuadrados">Pies cuadrados → Metros cuadrados</option>
-                        <option value="hectareasAAcres">Hectáreas → Acres</option>
-                        <option value="acresAHectareas">Acres → Hectáreas</option>
                     </select>
                 </div>
             </div>
-            <button class="convert-btn" onclick="convertirArea()">
                 <i class="fas fa-exchange-alt"></i> CONVERTIR
             </button>
-            <div class="results-section" id="areaResults">
                 <div class="result-text">Resultado aparecerá aquí</div>
             </div>
         </div>
@@ -835,7 +809,6 @@
                     <li><strong>TEMPERATURA:</strong> Celsius, Fahrenheit, Kelvin</li>
                     <li><strong>LONGITUD:</strong> Metros, Pies, Pulgadas, Yardas</li>
                     <li><strong>PESO:</strong> Kilogramos, Libras, Onzas</li>
-                    <li><strong>VOLUMEN:</strong> Litros, Galones, Metros cúbicos</li>
                     <li><strong>ÁREA:</strong> Metros cuadrados, Pies cuadrados</li>
                 </ul>
                 
@@ -922,16 +895,11 @@
             realizarConversion(operacion, valor, 'weightResults');
         }
 
-        function convertirVolumen() {
             const valor = document.getElementById('volumeValue').value;
             const operacion = document.getElementById('volumeConversion').value;
             realizarConversion(operacion, valor, 'volumeResults');
         }
 
-        function convertirArea() {
-            const valor = document.getElementById('areaValue').value;
-            const operacion = document.getElementById('areaConversion').value;
-            realizarConversion(operacion, valor, 'areaResults');
         }
 
         function realizarConversion(operacion, valor, resultId) {
@@ -1032,10 +1000,6 @@
                 return 'longitud';
             } else if (operacion.includes('kilogramos') || operacion.includes('libras') || operacion.includes('gramos') || operacion.includes('onzas')) {
                 return 'peso';
-            } else if (operacion.includes('litros') || operacion.includes('galones') || operacion.includes('mililitros') || operacion.includes('onzasFluidas')) {
-                return 'volumen';
-            } else if (operacion.includes('metrosCuadrados') || operacion.includes('piesCuadrados') || operacion.includes('hectareas') || operacion.includes('acres')) {
-                return 'area';
             }
             return 'temperatura'; // Default
         }
@@ -1058,14 +1022,6 @@
                 'librasAKilogramos': 'libras',
                 'gramosAOnzas': 'gramos',
                 'onzasAGramos': 'onzas',
-                'litrosAGalones': 'litros',
-                'galonesALitros': 'galones',
-                'mililitrosAOnzasFluidas': 'mililitros',
-                'onzasFluidasAMililitros': 'onzasFluidas',
-                'metrosCuadradosAPiesCuadrados': 'metrosCuadrados',
-                'piesCuadradosAMetrosCuadrados': 'piesCuadrados',
-                'hectareasAAcres': 'hectareas',
-                'acresAHectareas': 'acres'
             };
             return paramMap[operacion] || 'valor';
         }
@@ -1172,14 +1128,6 @@
                 'librasAKilogramos': 'lb → kg',
                 'gramosAOnzas': 'g → oz',
                 'onzasAGramos': 'oz → g',
-                'litrosAGalones': 'L → gal',
-                'galonesALitros': 'gal → L',
-                'mililitrosAOnzasFluidas': 'mL → fl oz',
-                'onzasFluidasAMililitros': 'fl oz → mL',
-                'metrosCuadradosAPiesCuadrados': 'm² → ft²',
-                'piesCuadradosAMetrosCuadrados': 'ft² → m²',
-                'hectareasAAcres': 'ha → ac',
-                'acresAHectareas': 'ac → ha'
             };
         }
 

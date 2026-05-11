@@ -33,15 +33,11 @@ public class VentanaPrincipal extends JFrame {
     private JButton btnTemperatura;
     private JButton btnLongitud;
     private JButton btnPeso;
-    private JButton btnVolumen;
-    private JButton btnArea;
     
     // Paneles de conversión
     private PanelTemperatura panelTemperatura;
     private PanelLongitud panelLongitud;
     private PanelPeso panelPeso;
-    private PanelVolumen panelVolumen;
-    private PanelArea panelArea;
     
     public VentanaPrincipal() {
         inicializarComponentes();
@@ -87,15 +83,11 @@ public class VentanaPrincipal extends JFrame {
         btnTemperatura = crearBotonNavegacion("TEMPERATURA", AZUL_PRINCIPAL);
         btnLongitud = crearBotonNavegacion("LONGITUD", PURPURA_MONSTER);
         btnPeso = crearBotonNavegacion("PESO", ROJO_MONSTER);
-        btnVolumen = crearBotonNavegacion("VOLUMEN", AMARILLO_MONSTER);
-        btnArea = crearBotonNavegacion("AREA", AZUL_CLARO);
         
         // Paneles de conversión
         panelTemperatura = new PanelTemperatura();
         panelLongitud = new PanelLongitud();
         panelPeso = new PanelPeso();
-        panelVolumen = new PanelVolumen();
-        panelArea = new PanelArea();
     }
     
     /**
@@ -182,8 +174,6 @@ public class VentanaPrincipal extends JFrame {
         panelBotonesNav.add(btnTemperatura);
         panelBotonesNav.add(btnLongitud);
         panelBotonesNav.add(btnPeso);
-        panelBotonesNav.add(btnVolumen);
-        panelBotonesNav.add(btnArea);
         panelSuperior.add(panelBotonesNav, BorderLayout.EAST);
         
         panelCentral.add(panelSuperior, BorderLayout.NORTH);
@@ -340,8 +330,6 @@ public class VentanaPrincipal extends JFrame {
         btnTemperatura.addActionListener(e -> mostrarPanelTemperatura());
         btnLongitud.addActionListener(e -> mostrarPanelLongitud());
         btnPeso.addActionListener(e -> mostrarPanelPeso());
-        btnVolumen.addActionListener(e -> mostrarPanelVolumen());
-        btnArea.addActionListener(e -> mostrarPanelArea());
     }
     
     /**
@@ -369,19 +357,12 @@ public class VentanaPrincipal extends JFrame {
     }
     
     /**
-     * Muestra el panel de volumen
      */
-    private void mostrarPanelVolumen() {
-        cambiarPanel(panelVolumen);
-        actualizarBotonActivo(btnVolumen);
     }
     
     /**
      * Muestra el panel de área
      */
-    private void mostrarPanelArea() {
-        cambiarPanel(panelArea);
-        actualizarBotonActivo(btnArea);
     }
     
     /**
@@ -405,7 +386,6 @@ public class VentanaPrincipal extends JFrame {
      */
     private void actualizarBotonActivo(JButton botonActivo) {
         // Resetear todos los botones
-        JButton[] botones = {btnTemperatura, btnLongitud, btnPeso, btnVolumen, btnArea};
         Color[] colores = {AZUL_PRINCIPAL, PURPURA_MONSTER, ROJO_MONSTER, AMARILLO_MONSTER, AZUL_CLARO};
         
         for (int i = 0; i < botones.length; i++) {
@@ -451,7 +431,6 @@ public class VentanaPrincipal extends JFrame {
                          "• TEMPERATURA: Celsius, Fahrenheit, Kelvin\n" +
                          "• LONGITUD: Metros, Pies, Pulgadas, Yardas\n" +
                          "• PESO: Kilogramos, Libras, Onzas\n" +
-                         "• VOLUMEN: Litros, Galones, Metros cúbicos\n" +
                          "• ÁREA: Metros cuadrados, Pies cuadrados\n\n" +
                          "Simplemente selecciona el tipo de conversión, ingresa el valor y elige las unidades " +
                          "para obtener el resultado al instante.";
@@ -477,12 +456,8 @@ public class VentanaPrincipal extends JFrame {
             System.out.println("No se pudo cargar la imagen: " + ruta);
         }
         return null;
-    }
     
     // Getters para el controlador
     public PanelTemperatura getPanelTemperatura() { return panelTemperatura; }
     public PanelLongitud getPanelLongitud() { return panelLongitud; }
     public PanelPeso getPanelPeso() { return panelPeso; }
-    public PanelVolumen getPanelVolumen() { return panelVolumen; }
-    public PanelArea getPanelArea() { return panelArea; }
-}

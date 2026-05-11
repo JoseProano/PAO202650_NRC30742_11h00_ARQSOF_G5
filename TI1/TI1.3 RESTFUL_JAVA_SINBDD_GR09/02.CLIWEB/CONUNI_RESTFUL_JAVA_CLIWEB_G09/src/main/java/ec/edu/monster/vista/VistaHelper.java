@@ -18,14 +18,9 @@ public class VistaHelper {
             case "libras": return "lb";
             case "gramos": return "g";
             case "onzas": return "oz";
-            case "litros": return "L";
-            case "galones": return "gal";
-            case "mililitros": return "mL";
             case "onzasFluidas": return "fl oz";
             case "metrosCuadrados": return "m²";
             case "piesCuadrados": return "ft²";
-            case "hectareas": return "ha";
-            case "acres": return "ac";
             default: return unidad;
         }
     }
@@ -34,7 +29,6 @@ public class VistaHelper {
         return String.format("%.4f %s → %.4f %s", original, simboloUnidad(uOrigen), convertido, simboloUnidad(uDestino));
     }
 }
-
 
 
 

@@ -237,11 +237,7 @@ public class ControladorWeb extends HttpServlet {
                 case "peso":
                     resultado = convertirPeso(operacion, valor);
                     break;
-                case "volumen":
-                    resultado = convertirVolumen(operacion, valor);
                     break;
-                case "area":
-                    resultado = convertirArea(operacion, valor);
                     break;
                 default:
                     resultado.setExitosa(false);
@@ -328,22 +324,11 @@ public class ControladorWeb extends HttpServlet {
     }
     
     /**
-     * Convierte volumen
      */
-    private Conversion convertirVolumen(String operacion, double valor) {
         switch (operacion) {
-            case "litrosAGalones":
-                return getClienteRESTFUL().litrosAGalones(valor);
-            case "galonesALitros":
-                return getClienteRESTFUL().galonesALitros(valor);
-            case "mililitrosAOnzasFluidas":
-                return getClienteRESTFUL().mililitrosAOnzasFluidas(valor);
-            case "onzasFluidasAMililitros":
-                return getClienteRESTFUL().onzasFluidasAMililitros(valor);
             default:
                 Conversion error = new Conversion();
                 error.setExitosa(false);
-                error.setMensajeError("Operación de volumen no válida: " + operacion);
                 return error;
         }
     }
@@ -351,16 +336,7 @@ public class ControladorWeb extends HttpServlet {
     /**
      * Convierte área
      */
-    private Conversion convertirArea(String operacion, double valor) {
         switch (operacion) {
-            case "metrosCuadradosAPiesCuadrados":
-                return getClienteRESTFUL().metrosCuadradosAPiesCuadrados(valor);
-            case "piesCuadradosAMetrosCuadrados":
-                return getClienteRESTFUL().piesCuadradosAMetrosCuadrados(valor);
-            case "hectareasAAcres":
-                return getClienteRESTFUL().hectareasAAcres(valor);
-            case "acresAHectareas":
-                return getClienteRESTFUL().acresAHectareas(valor);
             default:
                 Conversion error = new Conversion();
                 error.setExitosa(false);
@@ -391,7 +367,3 @@ public class ControladorWeb extends HttpServlet {
                    .replace("\n", "\\n")
                    .replace("\r", "\\r")
                    .replace("\t", "\\t");
-    }
-}
-
-

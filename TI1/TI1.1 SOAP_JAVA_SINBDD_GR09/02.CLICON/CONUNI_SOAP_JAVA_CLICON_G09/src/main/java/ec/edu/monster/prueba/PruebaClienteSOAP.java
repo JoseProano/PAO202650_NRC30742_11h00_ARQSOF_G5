@@ -54,31 +54,20 @@ public class PruebaClienteSOAP {
         Conversion peso3 = cliente.convertirPeso("gramosAOnzas", 1000.0);
         mostrarResultado(peso3);
         
-        // Pruebas de volumen
-        System.out.println("\nPRUEBAS DE VOLUMEN:");
         System.out.println("-".repeat(40));
         
-        Conversion vol1 = cliente.convertirVolumen("litrosAGalones", 3.785);
         mostrarResultado(vol1);
         
-        Conversion vol2 = cliente.convertirVolumen("galonesALitros", 1.0);
         mostrarResultado(vol2);
         
-        Conversion vol3 = cliente.convertirVolumen("mililitrosAOnzasFluidas", 1000.0);
         mostrarResultado(vol3);
         
         // Pruebas de área
         System.out.println("\nPRUEBAS DE ÁREA:");
         System.out.println("-".repeat(40));
         
-        Conversion area1 = cliente.convertirArea("metrosCuadradosAPiesCuadrados", 100.0);
-        mostrarResultado(area1);
         
-        Conversion area2 = cliente.convertirArea("hectareasAAcres", 1.0);
-        mostrarResultado(area2);
         
-        Conversion area3 = cliente.convertirArea("acresAHectareas", 2.47);
-        mostrarResultado(area3);
         
         System.out.println("\nTODAS LAS PRUEBAS COMPLETADAS EXITOSAMENTE");
         System.out.println("=".repeat(60));

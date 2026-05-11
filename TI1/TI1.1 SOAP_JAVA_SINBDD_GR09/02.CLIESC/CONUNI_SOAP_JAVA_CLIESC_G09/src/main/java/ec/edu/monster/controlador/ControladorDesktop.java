@@ -68,22 +68,6 @@ public class ControladorDesktop {
     }
     
     /**
-     * Convierte volumen
-     */
-    public void convertirVolumen(String operacion, double valor) {
-        Conversion resultado = clienteSOAP.convertirVolumen(operacion, valor);
-        mostrarResultado(resultado);
-    }
-    
-    /**
-     * Convierte área
-     */
-    public void convertirArea(String operacion, double valor) {
-        Conversion resultado = clienteSOAP.convertirArea(operacion, valor);
-        mostrarResultado(resultado);
-    }
-    
-    /**
      * Muestra el resultado en el panel correspondiente
      * NOTA: Ahora cada panel maneja su propio resultado localmente
      */

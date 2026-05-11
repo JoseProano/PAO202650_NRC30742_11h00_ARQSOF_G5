@@ -103,11 +103,8 @@ namespace ec.edu.monster.servicios
         }
         
         /// <summary>
-        /// Realiza una conversión de volumen
         /// </summary>
-        public Conversion ConvertirVolumen(string operacion, double valor)
         {
-            var conversion = new Conversion("Volumen", operacion, valor, 
                 GetUnidadOriginal(operacion), GetUnidadDestino(operacion));
             
             try
@@ -128,7 +125,6 @@ namespace ec.edu.monster.servicios
         /// <summary>
         /// Realiza una conversión de área
         /// </summary>
-        public Conversion ConvertirArea(string operacion, double valor)
         {
             var conversion = new Conversion("Área", operacion, valor, 
                 GetUnidadOriginal(operacion), GetUnidadDestino(operacion));
@@ -193,25 +189,8 @@ namespace ec.edu.monster.servicios
                 case "onzasAGramos":
                     return clienteSOAP.onzasAGramos(valor);
 
-                // Volumen
-                case "litrosAGalones":
-                    return clienteSOAP.litrosAGalones(valor);
-                case "galonesALitros":
-                    return clienteSOAP.galonesALitros(valor);
-                case "mililitrosAOnzasFluidas":
-                    return clienteSOAP.mililitrosAOnzasFluidas(valor);
-                case "onzasFluidasAMililitros":
-                    return clienteSOAP.onzasFluidasAMililitros(valor);
 
                 // Área
-                case "metrosCuadradosAPiesCuadrados":
-                    return clienteSOAP.metrosCuadradosAPiesCuadrados(valor);
-                case "piesCuadradosAMetrosCuadrados":
-                    return clienteSOAP.piesCuadradosAMetrosCuadrados(valor);
-                case "hectareasAAcres":
-                    return clienteSOAP.hectareasAAcres(valor);
-                case "acresAHectareas":
-                    return clienteSOAP.acresAHectareas(valor);
 
                 default:
                     throw new ArgumentException($"Operación no soportada: {operacion}");
@@ -235,14 +214,6 @@ namespace ec.edu.monster.servicios
             if (operacion.Contains("librasA")) return "lb";
             if (operacion.Contains("gramosA")) return "g";
             if (operacion.Contains("onzasA")) return "oz";
-            if (operacion.Contains("litrosA")) return "L";
-            if (operacion.Contains("galonesA")) return "gal";
-            if (operacion.Contains("mililitrosA")) return "mL";
-            if (operacion.Contains("onzasFluidasA")) return "fl oz";
-            if (operacion.Contains("metrosCuadradosA")) return "m²";
-            if (operacion.Contains("piesCuadradosA")) return "ft²";
-            if (operacion.Contains("hectareasA")) return "ha";
-            if (operacion.Contains("acresA")) return "ac";
             return "unidad";
         }
         
@@ -263,14 +234,9 @@ namespace ec.edu.monster.servicios
             if (operacion.Contains("AKilogramos")) return "kg";
             if (operacion.Contains("AOnzas")) return "oz";
             if (operacion.Contains("AGramos")) return "g";
-            if (operacion.Contains("AGalones")) return "gal";
-            if (operacion.Contains("ALitros")) return "L";
             if (operacion.Contains("AOnzasFluidas")) return "fl oz";
-            if (operacion.Contains("AMililitros")) return "mL";
             if (operacion.Contains("APiesCuadrados")) return "ft²";
             if (operacion.Contains("AMetrosCuadrados")) return "m²";
-            if (operacion.Contains("AAcres")) return "ac";
-            if (operacion.Contains("AHectareas")) return "ha";
             return "unidad";
         }
 

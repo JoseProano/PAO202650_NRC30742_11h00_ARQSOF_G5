@@ -172,8 +172,6 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
             cmbCategoria.Items.Add("Temperatura");
             cmbCategoria.Items.Add("Longitud");
             cmbCategoria.Items.Add("Peso");
-            cmbCategoria.Items.Add("Volumen");
-            cmbCategoria.Items.Add("Area");
         }
 
         private void CmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -197,13 +195,7 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
                     cmbUnidadOrigen.Items.AddRange(new[] { "kilogramos", "libras", "gramos", "onzas" });
                     cmbUnidadDestino.Items.AddRange(new[] { "kilogramos", "libras", "gramos", "onzas" });
                     break;
-                case "volumen":
-                    cmbUnidadOrigen.Items.AddRange(new[] { "litros", "galones", "mililitros", "onzasFluidas" });
-                    cmbUnidadDestino.Items.AddRange(new[] { "litros", "galones", "mililitros", "onzasFluidas" });
                     break;
-                case "area":
-                    cmbUnidadOrigen.Items.AddRange(new[] { "metrosCuadrados", "piesCuadrados", "hectareas", "acres" });
-                    cmbUnidadDestino.Items.AddRange(new[] { "metrosCuadrados", "piesCuadrados", "hectareas", "acres" });
                     break;
             }
         }
@@ -316,4 +308,3 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
         }
     }
 }
-

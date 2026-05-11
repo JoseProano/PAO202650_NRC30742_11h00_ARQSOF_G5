@@ -33,15 +33,11 @@ public class VentanaPrincipal extends JFrame {
     private JButton btnTemperatura;
     private JButton btnLongitud;
     private JButton btnPeso;
-    private JButton btnVolumen;
-    private JButton btnArea;
     
     // Paneles de conversión
     private PanelTemperatura panelTemperatura;
     private PanelLongitud panelLongitud;
     private PanelPeso panelPeso;
-    private PanelVolumen panelVolumen;
-    private PanelArea panelArea;
     
     // Controlador
     private ec.edu.monster.controlador.ControladorDesktop controlador;
@@ -90,15 +86,11 @@ public class VentanaPrincipal extends JFrame {
         btnTemperatura = crearBotonNavegacion("TEMPERATURA", AZUL_PRINCIPAL);
         btnLongitud = crearBotonNavegacion("LONGITUD", PURPURA_MONSTER);
         btnPeso = crearBotonNavegacion("PESO", ROJO_MONSTER);
-        btnVolumen = crearBotonNavegacion("VOLUMEN", AMARILLO_MONSTER);
-        btnArea = crearBotonNavegacion("AREA", AZUL_CLARO);
         
         // Paneles de conversión
         panelTemperatura = new PanelTemperatura();
         panelLongitud = new PanelLongitud();
         panelPeso = new PanelPeso();
-        panelVolumen = new PanelVolumen();
-        panelArea = new PanelArea();
         
         // Controlador
         controlador = ec.edu.monster.controlador.ControladorDesktop.getInstance();
@@ -189,8 +181,6 @@ public class VentanaPrincipal extends JFrame {
         panelBotonesNav.add(btnTemperatura);
         panelBotonesNav.add(btnLongitud);
         panelBotonesNav.add(btnPeso);
-        panelBotonesNav.add(btnVolumen);
-        panelBotonesNav.add(btnArea);
         panelSuperior.add(panelBotonesNav, BorderLayout.EAST);
         
         panelCentral.add(panelSuperior, BorderLayout.NORTH);
@@ -347,48 +337,21 @@ public class VentanaPrincipal extends JFrame {
         btnTemperatura.addActionListener(e -> mostrarPanelTemperatura());
         btnLongitud.addActionListener(e -> mostrarPanelLongitud());
         btnPeso.addActionListener(e -> mostrarPanelPeso());
-        btnVolumen.addActionListener(e -> mostrarPanelVolumen());
-        btnArea.addActionListener(e -> mostrarPanelArea());
     }
     
-    /**
-     * Muestra el panel de temperatura
-     */
     private void mostrarPanelTemperatura() {
         cambiarPanel(panelTemperatura);
         actualizarBotonActivo(btnTemperatura);
     }
     
-    /**
-     * Muestra el panel de longitud
-     */
     private void mostrarPanelLongitud() {
         cambiarPanel(panelLongitud);
         actualizarBotonActivo(btnLongitud);
     }
     
-    /**
-     * Muestra el panel de peso
-     */
     private void mostrarPanelPeso() {
         cambiarPanel(panelPeso);
         actualizarBotonActivo(btnPeso);
-    }
-    
-    /**
-     * Muestra el panel de volumen
-     */
-    private void mostrarPanelVolumen() {
-        cambiarPanel(panelVolumen);
-        actualizarBotonActivo(btnVolumen);
-    }
-    
-    /**
-     * Muestra el panel de área
-     */
-    private void mostrarPanelArea() {
-        cambiarPanel(panelArea);
-        actualizarBotonActivo(btnArea);
     }
     
     /**
@@ -412,8 +375,8 @@ public class VentanaPrincipal extends JFrame {
      */
     private void actualizarBotonActivo(JButton botonActivo) {
         // Resetear todos los botones
-        JButton[] botones = {btnTemperatura, btnLongitud, btnPeso, btnVolumen, btnArea};
-        Color[] colores = {AZUL_PRINCIPAL, PURPURA_MONSTER, ROJO_MONSTER, AMARILLO_MONSTER, AZUL_CLARO};
+        JButton[] botones = {btnTemperatura, btnLongitud, btnPeso};
+        Color[] colores = {AZUL_PRINCIPAL, PURPURA_MONSTER, ROJO_MONSTER};
         
         for (int i = 0; i < botones.length; i++) {
             botones[i].setBackground(colores[i]);
@@ -456,10 +419,8 @@ public class VentanaPrincipal extends JFrame {
         String mensaje = "¡Bienvenido al Sistema de Conversiones de Monsters Inc.!\n\n" +
                          "Esta aplicación te permite realizar conversiones entre diferentes unidades de medida:\n\n" +
                          "• TEMPERATURA: Celsius, Fahrenheit, Kelvin\n" +
-                         "• LONGITUD: Metros, Pies, Pulgadas, Yardas\n" +
-                         "• PESO: Kilogramos, Libras, Onzas\n" +
-                         "• VOLUMEN: Litros, Galones, Metros cúbicos\n" +
-                         "• ÁREA: Metros cuadrados, Pies cuadrados\n\n" +
+                         "• LONGITUD: Metros, Pies, Pulgadas, Kilómetros, Millas\n" +
+                         "• PESO/MASA: Kilogramos, Libras, Gramos, Onzas\n\n" +
                          "Simplemente selecciona el tipo de conversión, ingresa el valor y elige las unidades " +
                          "para obtener el resultado al instante.";
         
@@ -490,6 +451,4 @@ public class VentanaPrincipal extends JFrame {
     public PanelTemperatura getPanelTemperatura() { return panelTemperatura; }
     public PanelLongitud getPanelLongitud() { return panelLongitud; }
     public PanelPeso getPanelPeso() { return panelPeso; }
-    public PanelVolumen getPanelVolumen() { return panelVolumen; }
-    public PanelArea getPanelArea() { return panelArea; }
 }

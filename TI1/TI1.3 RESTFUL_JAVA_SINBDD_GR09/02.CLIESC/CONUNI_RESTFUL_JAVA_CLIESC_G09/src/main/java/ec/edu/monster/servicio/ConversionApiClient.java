@@ -335,29 +335,16 @@ public class ConversionApiClient {
         }
     }
     
-    // Conversiones de volumen
-    public ConversionResponse convertirVolumen(String operacion, double valor) {
         try {
             String unidadOrigen = "";
             String unidadDestino = "";
-            String categoria = "volumen";
             
             switch (operacion) {
-                case "litrosAGalones":
-                    unidadOrigen = "litros";
-                    unidadDestino = "galones";
                     break;
-                case "galonesALitros":
-                    unidadOrigen = "galones";
-                    unidadDestino = "litros";
                     break;
-                case "mililitrosAOnzasFluidas":
-                    unidadOrigen = "mililitros";
                     unidadDestino = "onzasFluidas";
                     break;
-                case "onzasFluidasAMililitros":
                     unidadOrigen = "onzasFluidas";
-                    unidadDestino = "mililitros";
                     break;
                 default:
                     ConversionResponse error = new ConversionResponse();
@@ -370,7 +357,6 @@ public class ConversionApiClient {
             String url = baseUrl + "/convertir";
             
             System.out.println("\n=========================================");
-            System.out.println("LLAMADA REST API - VOLUMEN");
             System.out.println("=========================================");
             System.out.println("URL: " + url);
             System.out.println("REQUEST JSON:");
@@ -422,28 +408,18 @@ public class ConversionApiClient {
     }
     
     // Conversiones de área
-    public ConversionResponse convertirArea(String operacion, double valor) {
         try {
             String unidadOrigen = "";
             String unidadDestino = "";
-            String categoria = "area";
             
             switch (operacion) {
-                case "metrosCuadradosAPiesCuadrados":
                     unidadOrigen = "metrosCuadrados";
                     unidadDestino = "piesCuadrados";
                     break;
-                case "piesCuadradosAMetrosCuadrados":
                     unidadOrigen = "piesCuadrados";
                     unidadDestino = "metrosCuadrados";
                     break;
-                case "hectareasAAcres":
-                    unidadOrigen = "hectareas";
-                    unidadDestino = "acres";
                     break;
-                case "acresAHectareas":
-                    unidadOrigen = "acres";
-                    unidadDestino = "hectareas";
                     break;
                 default:
                     ConversionResponse error = new ConversionResponse();
@@ -456,7 +432,6 @@ public class ConversionApiClient {
             String url = baseUrl + "/convertir";
             
             System.out.println("\n=========================================");
-            System.out.println("LLAMADA REST API - AREA");
             System.out.println("=========================================");
             System.out.println("URL: " + url);
             System.out.println("REQUEST JSON:");
@@ -514,5 +489,3 @@ public class ConversionApiClient {
         if (client != null) {
             client.close();
         }
-    }
-}

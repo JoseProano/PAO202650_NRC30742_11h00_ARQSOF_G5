@@ -29,14 +29,10 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
         private Button btnTemperatura;
         private Button btnLongitud;
         private Button btnPeso;
-        private Button btnVolumen;
-        private Button btnArea;
 
         private PanelTemperatura panelTemperatura;
         private PanelLongitud panelLongitud;
         private PanelPeso panelPeso;
-        private PanelVolumen panelVolumen;
-        private PanelArea panelArea;
 
         private ConversionApiClient apiClient;
 
@@ -71,14 +67,10 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
             btnTemperatura = CrearBotonNavegacion("TEMPERATURA", AZUL_PRINCIPAL);
             btnLongitud = CrearBotonNavegacion("LONGITUD", PURPURA_MONSTER);
             btnPeso = CrearBotonNavegacion("PESO", ROJO_MONSTER);
-            btnVolumen = CrearBotonNavegacion("VOLUMEN", AMARILLO_MONSTER);
-            btnArea = CrearBotonNavegacion("AREA", AZUL_CLARO);
 
             panelTemperatura = new PanelTemperatura(apiClient);
             panelLongitud = new PanelLongitud(apiClient);
             panelPeso = new PanelPeso(apiClient);
-            panelVolumen = new PanelVolumen(apiClient);
-            panelArea = new PanelArea(apiClient);
         }
 
         private Button CrearBotonNavegacion(string texto, Color color)
@@ -294,8 +286,6 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
             panelBotonesNav.Controls.Add(btnTemperatura);
             panelBotonesNav.Controls.Add(btnLongitud);
             panelBotonesNav.Controls.Add(btnPeso);
-            panelBotonesNav.Controls.Add(btnVolumen);
-            panelBotonesNav.Controls.Add(btnArea);
 
             panelBotonesContainer.Controls.Add(panelBotonesNav);
 
@@ -345,8 +335,6 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
             btnTemperatura.Click += (s, e) => MostrarPanelTemperatura();
             btnLongitud.Click += (s, e) => MostrarPanelLongitud();
             btnPeso.Click += (s, e) => MostrarPanelPeso();
-            btnVolumen.Click += (s, e) => MostrarPanelVolumen();
-            btnArea.Click += (s, e) => MostrarPanelArea();
         }
 
         private void MostrarPanelTemperatura()
@@ -367,16 +355,10 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
             ActualizarBotonActivo(btnPeso);
         }
 
-        private void MostrarPanelVolumen()
         {
-            CambiarPanel(panelVolumen);
-            ActualizarBotonActivo(btnVolumen);
         }
 
-        private void MostrarPanelArea()
         {
-            CambiarPanel(panelArea);
-            ActualizarBotonActivo(btnArea);
         }
 
         private void CambiarPanel(Panel nuevoPanel)
@@ -390,7 +372,6 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
 
         private void ActualizarBotonActivo(Button botonActivo)
         {
-            Button[] botones = { btnTemperatura, btnLongitud, btnPeso, btnVolumen, btnArea };
             Color[] colores = { AZUL_PRINCIPAL, PURPURA_MONSTER, ROJO_MONSTER, AMARILLO_MONSTER, AZUL_CLARO };
 
             for (int i = 0; i < botones.Length; i++)
@@ -426,7 +407,6 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
                            "• TEMPERATURA: Celsius, Fahrenheit, Kelvin\n" +
                            "• LONGITUD: Metros, Pies, Pulgadas, Yardas\n" +
                            "• PESO: Kilogramos, Libras, Onzas\n" +
-                           "• VOLUMEN: Litros, Galones, Metros cúbicos\n" +
                            "• ÁREA: Metros cuadrados, Pies cuadrados\n\n" +
                            "Simplemente selecciona el tipo de conversión, ingresa el valor y elige las unidades " +
                            "para obtener el resultado al instante.";
@@ -435,4 +415,3 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
         }
     }
 }
-

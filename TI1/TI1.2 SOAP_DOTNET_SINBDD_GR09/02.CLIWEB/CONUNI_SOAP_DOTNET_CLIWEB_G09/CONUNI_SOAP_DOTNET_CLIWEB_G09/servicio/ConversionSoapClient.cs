@@ -60,31 +60,14 @@ namespace CONUNI_SOAP_DOTNET_CLIWEB_G09.servicio
         [OperationContract(Name = "onzasAGramos")]
         double OnzasAGramos(double onzas);
 
-        // Conversiones de Volumen
-        [OperationContract(Name = "litrosAGalones")]
-        double LitrosAGalones(double litros);
 
-        [OperationContract(Name = "galonesALitros")]
-        double GalonesALitros(double galones);
 
-        [OperationContract(Name = "mililitrosAOnzasFluidas")]
-        double MililitrosAOnzasFluidas(double mililitros);
 
-        [OperationContract(Name = "onzasFluidasAMililitros")]
-        double OnzasFluidasAMililitros(double onzasFluidas);
 
         // Conversiones de Área
-        [OperationContract(Name = "metrosCuadradosAPiesCuadrados")]
-        double MetrosCuadradosAPiesCuadrados(double metrosCuadrados);
 
-        [OperationContract(Name = "piesCuadradosAMetrosCuadrados")]
-        double PiesCuadradosAMetrosCuadrados(double piesCuadrados);
 
-        [OperationContract(Name = "hectareasAAcres")]
-        double HectareasAAcres(double hectareas);
 
-        [OperationContract(Name = "acresAHectareas")]
-        double AcresAHectareas(double acres);
     }
 
     /// <summary>
@@ -140,17 +123,8 @@ namespace CONUNI_SOAP_DOTNET_CLIWEB_G09.servicio
         public double GramosAOnzas(double gramos) => Channel.GramosAOnzas(gramos);
         public double OnzasAGramos(double onzas) => Channel.OnzasAGramos(onzas);
 
-        // Implementación de métodos de volumen
-        public double LitrosAGalones(double litros) => Channel.LitrosAGalones(litros);
-        public double GalonesALitros(double galones) => Channel.GalonesALitros(galones);
-        public double MililitrosAOnzasFluidas(double mililitros) => Channel.MililitrosAOnzasFluidas(mililitros);
-        public double OnzasFluidasAMililitros(double onzasFluidas) => Channel.OnzasFluidasAMililitros(onzasFluidas);
 
         // Implementación de métodos de área
-        public double MetrosCuadradosAPiesCuadrados(double metrosCuadrados) => Channel.MetrosCuadradosAPiesCuadrados(metrosCuadrados);
-        public double PiesCuadradosAMetrosCuadrados(double piesCuadrados) => Channel.PiesCuadradosAMetrosCuadrados(piesCuadrados);
-        public double HectareasAAcres(double hectareas) => Channel.HectareasAAcres(hectareas);
-        public double AcresAHectareas(double acres) => Channel.AcresAHectareas(acres);
     }
 
     /// <summary>
@@ -185,8 +159,6 @@ namespace CONUNI_SOAP_DOTNET_CLIWEB_G09.servicio
                             "temperatura" => ConvertirTemperatura(client, request),
                             "longitud" => ConvertirLongitud(client, request),
                             "peso" => ConvertirPeso(client, request),
-                            "volumen" => ConvertirVolumen(client, request),
-                            "area" => ConvertirArea(client, request),
                             _ => throw new NotSupportedException("Categoría no válida")
                         };
                     }
@@ -359,37 +331,24 @@ namespace CONUNI_SOAP_DOTNET_CLIWEB_G09.servicio
             };
         }
 
-        private double ConvertirVolumen(ConversionSoapClient client, ConversionRequest request)
         {
             var from = request.UnidadOrigen.ToLower();
             var to = request.UnidadDestino.ToLower();
 
             return (from, to) switch
             {
-                ("litros", "galones") => client.LitrosAGalones(request.Valor),
-                ("galones", "litros") => client.GalonesALitros(request.Valor),
-                ("mililitros", "onzasfluidas") => client.MililitrosAOnzasFluidas(request.Valor),
-                ("onzasfluidas", "mililitros") => client.OnzasFluidasAMililitros(request.Valor),
                 _ => throw new NotSupportedException($"Conversión de {from} a {to} no soportada")
             };
         }
 
-        private double ConvertirArea(ConversionSoapClient client, ConversionRequest request)
         {
             var from = request.UnidadOrigen.ToLower();
             var to = request.UnidadDestino.ToLower();
 
             return (from, to) switch
             {
-                ("metroscuadrados", "piescuadrados") => client.MetrosCuadradosAPiesCuadrados(request.Valor),
-                ("piescuadrados", "metroscuadrados") => client.PiesCuadradosAMetrosCuadrados(request.Valor),
-                ("hectareas", "acres") => client.HectareasAAcres(request.Valor),
-                ("acres", "hectareas") => client.AcresAHectareas(request.Valor),
-                ("metros²", "pies²") => client.MetrosCuadradosAPiesCuadrados(request.Valor),
-                ("pies²", "metros²") => client.PiesCuadradosAMetrosCuadrados(request.Valor),
                 _ => throw new NotSupportedException($"Conversión de {from} a {to} no soportada")
             };
         }
     }
 }
-

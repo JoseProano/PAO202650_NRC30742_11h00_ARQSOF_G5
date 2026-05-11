@@ -42,10 +42,8 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.prueba
                         await MenuPesoAsync();
                         break;
                     case 4:
-                        await MenuVolumenAsync();
                         break;
                     case 5:
-                        await MenuAreaAsync();
                         break;
                     case 6:
                         await MenuConversionGenericaAsync();
@@ -223,10 +221,8 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.prueba
             _vista.MostrarPausa();
         }
 
-        private async Task MenuVolumenAsync()
         {
             Console.Clear();
-            _vista.MostrarSubmenuVolumen();
 
             try
             {
@@ -242,16 +238,12 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.prueba
                 switch (opcion)
                 {
                     case 1:
-                        resultado = await _client.LitrosAGalonesAsync(valor);
                         break;
                     case 2:
-                        resultado = await _client.GalonesALitrosAsync(valor);
                         break;
                     case 3:
-                        resultado = await _client.MililitrosAOnzasFluidasAsync(valor);
                         break;
                     case 4:
-                        resultado = await _client.OnzasFluidasAMililitrosAsync(valor);
                         break;
                     default:
                         _vista.MostrarOpcionNoValida();
@@ -272,10 +264,8 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.prueba
             _vista.MostrarPausa();
         }
 
-        private async Task MenuAreaAsync()
         {
             Console.Clear();
-            _vista.MostrarSubmenuArea();
 
             try
             {
@@ -291,16 +281,12 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.prueba
                 switch (opcion)
                 {
                     case 1:
-                        resultado = await _client.MetrosCuadradosAPiesCuadradosAsync(valor);
                         break;
                     case 2:
-                        resultado = await _client.PiesCuadradosAMetrosCuadradosAsync(valor);
                         break;
                     case 3:
-                        resultado = await _client.HectareasAAcresAsync(valor);
                         break;
                     case 4:
-                        resultado = await _client.AcresAHectareasAsync(valor);
                         break;
                     default:
                         _vista.MostrarOpcionNoValida();

@@ -43,8 +43,6 @@ public class ClienteController {
                     case 1 -> manejarTemperatura();
                     case 2 -> manejarLongitud();
                     case 3 -> manejarPeso();
-                    case 4 -> manejarVolumen();
-                    case 5 -> manejarArea();
                     case 6 -> manejarConversionGenerica();
                     case 7 -> mostrarInfoServicio();
                     case 0 -> continuar = false;
@@ -191,8 +189,6 @@ public class ClienteController {
         }
     }
 
-    private void manejarVolumen() {
-        vista.mostrarSubmenuVolumen();
         
         try {
             String entrada = scanner.nextLine().trim();
@@ -200,17 +196,14 @@ public class ClienteController {
             
             switch (opcion) {
             case 1 -> {
-                double litros = vista.solicitarValor("Litros");
                 ConversionResponse response = conversionService.litrosAGalones(litros);
                 vista.mostrarResultado(response);
             }
             case 2 -> {
-                double galones = vista.solicitarValor("Galones");
                 ConversionResponse response = conversionService.galonesALitros(galones);
                 vista.mostrarResultado(response);
             }
             case 3 -> {
-                double mililitros = vista.solicitarValor("Mililitros");
                 ConversionResponse response = conversionService.mililitrosAOnzasFluidas(mililitros);
                 vista.mostrarResultado(response);
             }
@@ -226,8 +219,6 @@ public class ClienteController {
         }
     }
 
-    private void manejarArea() {
-        vista.mostrarSubmenuArea();
         
         try {
             String entrada = scanner.nextLine().trim();
@@ -245,12 +236,10 @@ public class ClienteController {
                 vista.mostrarResultado(response);
             }
             case 3 -> {
-                double hectareas = vista.solicitarValor("Hectáreas");
                 ConversionResponse response = conversionService.hectareasAAcres(hectareas);
                 vista.mostrarResultado(response);
             }
             case 4 -> {
-                double acres = vista.solicitarValor("Acres");
                 ConversionResponse response = conversionService.acresAHectareas(acres);
                 vista.mostrarResultado(response);
             }
@@ -283,5 +272,3 @@ public class ClienteController {
     private void mostrarInfoServicio() {
         String info = conversionService.obtenerInfoServicio();
         vista.mostrarInfoServicio(info);
-    }
-}

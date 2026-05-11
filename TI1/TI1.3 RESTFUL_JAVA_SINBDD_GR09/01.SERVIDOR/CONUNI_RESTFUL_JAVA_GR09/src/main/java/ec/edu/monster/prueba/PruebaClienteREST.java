@@ -46,11 +46,8 @@ public class PruebaClienteREST {
             // Probar conversiones de peso
             tester.probarConversionesPeso();
             
-            // Probar conversiones de volumen
-            tester.probarConversionesVolumen();
             
             // Probar conversiones de área
-            tester.probarConversionesArea();
             
             // Probar endpoint genérico
             tester.probarEndpointGenerico();
@@ -164,22 +161,11 @@ public class PruebaClienteREST {
     }
     
     /**
-     * Prueba todas las conversiones de volumen
      */
-    public void probarConversionesVolumen() {
-        System.out.println("🧪 Probando conversiones de volumen...");
         
-        // Litros a galones
-        probarEndpoint("volumen/litros-to-galones", "litros", 1.0);
         
-        // Galones a litros
-        probarEndpoint("volumen/galones-to-litros", "galones", 1.0);
         
-        // Mililitros a onzas fluidas
-        probarEndpoint("volumen/mililitros-to-onzas-fluidas", "mililitros", 29.5735);
         
-        // Onzas fluidas a mililitros
-        probarEndpoint("volumen/onzas-fluidas-to-mililitros", "onzasFluidas", 1.0);
         
         System.out.println();
     }
@@ -187,20 +173,13 @@ public class PruebaClienteREST {
     /**
      * Prueba todas las conversiones de área
      */
-    public void probarConversionesArea() {
         System.out.println("📐 Probando conversiones de área...");
         
         // Metros cuadrados a pies cuadrados
-        probarEndpoint("area/metros-cuadrados-to-pies-cuadrados", "metrosCuadrados", 1.0);
         
         // Pies cuadrados a metros cuadrados
-        probarEndpoint("area/pies-cuadrados-to-metros-cuadrados", "piesCuadrados", 10.7639);
         
-        // Hectáreas a acres
-        probarEndpoint("area/hectareas-to-acres", "hectareas", 1.0);
         
-        // Acres a hectáreas
-        probarEndpoint("area/acres-to-hectareas", "acres", 2.47105);
         
         System.out.println();
     }
@@ -266,7 +245,3 @@ public class PruebaClienteREST {
         if (client != null) {
             client.close();
         }
-    }
-}
-
-

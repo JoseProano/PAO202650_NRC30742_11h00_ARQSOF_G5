@@ -81,10 +81,8 @@ namespace ec.edu.monster.controlador
                     ManejarPeso();
                     break;
                 case 4:
-                    ManejarVolumen();
                     break;
                 case 5:
-                    ManejarArea();
                     break;
                 case 6:
                     EjecutarPruebasAutomaticas();
@@ -167,19 +165,14 @@ namespace ec.edu.monster.controlador
         }
         
         /// <summary>
-        /// Maneja las conversiones de volumen
         /// </summary>
-        private void ManejarVolumen()
         {
-            vistaMenu.MostrarMenuVolumen();
             
             int subOpcion = vistaMenu.LeerOpcion();
-            string operacion = ObtenerOperacionVolumen(subOpcion);
             
             if (operacion != null)
             {
                 double valor = vistaMenu.LeerValor();
-                Conversion resultado = clienteSOAP.ConvertirVolumen(operacion, valor);
                 vistaMenu.MostrarResultado(resultado);
             }
             else
@@ -191,17 +184,13 @@ namespace ec.edu.monster.controlador
         /// <summary>
         /// Maneja las conversiones de área
         /// </summary>
-        private void ManejarArea()
         {
-            vistaMenu.MostrarMenuArea();
             
             int subOpcion = vistaMenu.LeerOpcion();
-            string operacion = ObtenerOperacionArea(subOpcion);
             
             if (operacion != null)
             {
                 double valor = vistaMenu.LeerValor();
-                Conversion resultado = clienteSOAP.ConvertirArea(operacion, valor);
                 vistaMenu.MostrarResultado(resultado);
             }
             else
@@ -324,26 +313,16 @@ namespace ec.edu.monster.controlador
             }
         }
         
-        private string ObtenerOperacionVolumen(int opcion)
         {
             switch (opcion)
             {
-                case 1: return "litrosAGalones";
-                case 2: return "galonesALitros";
-                case 3: return "mililitrosAOnzasFluidas";
-                case 4: return "onzasFluidasAMililitros";
                 default: return null;
             }
         }
         
-        private string ObtenerOperacionArea(int opcion)
         {
             switch (opcion)
             {
-                case 1: return "metrosCuadradosAPiesCuadrados";
-                case 2: return "piesCuadradosAMetrosCuadrados";
-                case 3: return "hectareasAAcres";
-                case 4: return "acresAHectareas";
                 default: return null;
             }
         }

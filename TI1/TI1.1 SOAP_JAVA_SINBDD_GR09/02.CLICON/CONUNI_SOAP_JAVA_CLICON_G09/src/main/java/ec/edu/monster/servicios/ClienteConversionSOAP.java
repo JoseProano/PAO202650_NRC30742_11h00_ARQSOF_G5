@@ -15,7 +15,7 @@ import java.io.OutputStream;
  */
 public class ClienteConversionSOAP {
     
-    private static final String WS_URL = "http://10.92.232.246:8080/CONUNI_SOAP_JAVA_GR09/WSConversion";
+    private static final String WS_URL = "http://localhost:8080/CONUNI_SOAP_JAVA_GR09/WSConversion";
 
     // ========== MÉTODO DE AUTENTICACIÓN ==========
 
@@ -109,10 +109,7 @@ public class ClienteConversionSOAP {
     }
     
     /**
-     * Realiza una conversión de volumen
      */
-    public Conversion convertirVolumen(String operacion, double valor) {
-        Conversion conversion = new Conversion("Volumen", operacion, valor, 
             getUnidadOriginal(operacion), getUnidadDestino(operacion));
         
         try {
@@ -121,7 +118,6 @@ public class ClienteConversionSOAP {
             conversion.setExitosa(true);
         } catch (Exception e) {
             conversion.setExitosa(false);
-            conversion.setMensajeError("Error en conversión de volumen: " + e.getMessage());
         }
         
         return conversion;
@@ -130,7 +126,6 @@ public class ClienteConversionSOAP {
     /**
      * Realiza una conversión de área
      */
-    public Conversion convertirArea(String operacion, double valor) {
         Conversion conversion = new Conversion("Área", operacion, valor, 
             getUnidadOriginal(operacion), getUnidadDestino(operacion));
         
@@ -254,22 +249,6 @@ public class ClienteConversionSOAP {
                 return "gramos";
             case "onzasAGramos":
                 return "onzas";
-            case "litrosAGalones":
-                return "litros";
-            case "galonesALitros":
-                return "galones";
-            case "mililitrosAOnzasFluidas":
-                return "mililitros";
-            case "onzasFluidasAMililitros":
-                return "onzasFluidas";
-            case "metrosCuadradosAPiesCuadrados":
-                return "metrosCuadrados";
-            case "piesCuadradosAMetrosCuadrados":
-                return "piesCuadrados";
-            case "hectareasAAcres":
-                return "hectareas";
-            case "acresAHectareas":
-                return "acres";
             default:
                 return "valor";
         }
@@ -291,14 +270,6 @@ public class ClienteConversionSOAP {
         if (operacion.contains("librasA")) return "lb";
         if (operacion.contains("gramosA")) return "g";
         if (operacion.contains("onzasA")) return "oz";
-        if (operacion.contains("litrosA")) return "L";
-        if (operacion.contains("galonesA")) return "gal";
-        if (operacion.contains("mililitrosA")) return "mL";
-        if (operacion.contains("onzasFluidasA")) return "fl oz";
-        if (operacion.contains("metrosCuadradosA")) return "m²";
-        if (operacion.contains("piesCuadradosA")) return "ft²";
-        if (operacion.contains("hectareasA")) return "ha";
-        if (operacion.contains("acresA")) return "ac";
         return "unidad";
     }
     
@@ -318,14 +289,4 @@ public class ClienteConversionSOAP {
         if (operacion.contains("AKilogramos")) return "kg";
         if (operacion.contains("AOnzas")) return "oz";
         if (operacion.contains("AGramos")) return "g";
-        if (operacion.contains("AGalones")) return "gal";
-        if (operacion.contains("ALitros")) return "L";
-        if (operacion.contains("AOnzasFluidas")) return "fl oz";
-        if (operacion.contains("AMililitros")) return "mL";
-        if (operacion.contains("APiesCuadrados")) return "ft²";
-        if (operacion.contains("AMetrosCuadrados")) return "m²";
-        if (operacion.contains("AAcres")) return "ac";
-        if (operacion.contains("AHectareas")) return "ha";
         return "unidad";
-    }
-}
