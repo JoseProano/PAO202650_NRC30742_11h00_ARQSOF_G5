@@ -87,8 +87,6 @@ namespace CONUNI_RESTFUL_DOTNET_GR9S.Controllers
                          "- GET /api/conversion/temperatura/* - Conversiones de temperatura\n" +
                          "- GET /api/conversion/longitud/* - Conversiones de longitud\n" +
                          "- GET /api/conversion/peso/* - Conversiones de peso/masa\n" +
-                         "- GET /api/conversion/volumen/* - Conversiones de volumen\n" +
-                         "- GET /api/conversion/area/* - Conversiones de área\n" +
                          "- POST /api/conversion/convertir - Conversión genérica\n\n" +
                          "Ejemplo: GET /api/conversion/temperatura/celsius-to-fahrenheit?celsius=100";
             return Ok(info);
@@ -191,20 +189,6 @@ namespace CONUNI_RESTFUL_DOTNET_GR9S.Controllers
                             "GET /peso/libras-to-kilogramos?libras=2.20462",
                             "GET /peso/gramos-to-onzas?gramos=28.3495",
                             "GET /peso/onzas-to-gramos?onzas=1"
-                        },
-                        volumen = new[]
-                        {
-                            "GET /volumen/litros-to-galones?litros=1",
-                            "GET /volumen/galones-to-litros?galones=1",
-                            "GET /volumen/mililitros-to-onzas-fluidas?mililitros=29.5735",
-                            "GET /volumen/onzas-fluidas-to-mililitros?onzasFluidas=1"
-                        },
-                        area = new[]
-                        {
-                            "GET /area/metros-cuadrados-to-pies-cuadrados?metrosCuadrados=1",
-                            "GET /area/pies-cuadrados-to-metros-cuadrados?piesCuadrados=10.7639",
-                            "GET /area/hectareas-to-acres?hectareas=1",
-                            "GET /area/acres-to-hectareas?acres=2.47105"
                         },
                         generico = new[]
                         {
@@ -498,146 +482,6 @@ namespace CONUNI_RESTFUL_DOTNET_GR9S.Controllers
             }
         }
         
-        // ========== ENDPOINTS DE VOLUMEN ==========
-        
-        [HttpGet]
-        [Route("volumen/litros-to-galones")]
-        public IHttpActionResult LitrosAGalones([FromUri] double litros)
-        {
-            try
-            {
-                double resultado = litros * 0.264172;
-                var response = ConversionResponse.CrearExito(litros, resultado, Conversion.LITROS, Conversion.GALONES, Conversion.CATEGORIA_VOLUMEN);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                var errorResponse = ConversionResponse.CrearError($"Error en conversión: {e.Message}");
-                return BadRequest(errorResponse.Mensaje);
-            }
-        }
-        
-        [HttpGet]
-        [Route("volumen/galones-to-litros")]
-        public IHttpActionResult GalonesALitros([FromUri] double galones)
-        {
-            try
-            {
-                double resultado = galones / 0.264172;
-                var response = ConversionResponse.CrearExito(galones, resultado, Conversion.GALONES, Conversion.LITROS, Conversion.CATEGORIA_VOLUMEN);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                var errorResponse = ConversionResponse.CrearError($"Error en conversión: {e.Message}");
-                return BadRequest(errorResponse.Mensaje);
-            }
-        }
-        
-        [HttpGet]
-        [Route("volumen/mililitros-to-onzas-fluidas")]
-        public IHttpActionResult MililitrosAOnzasFluidas([FromUri] double mililitros)
-        {
-            try
-            {
-                double resultado = mililitros * 0.033814;
-                var response = ConversionResponse.CrearExito(mililitros, resultado, Conversion.MILILITROS, Conversion.ONZAS_FLUIDAS, Conversion.CATEGORIA_VOLUMEN);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                var errorResponse = ConversionResponse.CrearError($"Error en conversión: {e.Message}");
-                return BadRequest(errorResponse.Mensaje);
-            }
-        }
-        
-        [HttpGet]
-        [Route("volumen/onzas-fluidas-to-mililitros")]
-        public IHttpActionResult OnzasFluidasAMililitros([FromUri] double onzasFluidas)
-        {
-            try
-            {
-                double resultado = onzasFluidas / 0.033814;
-                var response = ConversionResponse.CrearExito(onzasFluidas, resultado, Conversion.ONZAS_FLUIDAS, Conversion.MILILITROS, Conversion.CATEGORIA_VOLUMEN);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                var errorResponse = ConversionResponse.CrearError($"Error en conversión: {e.Message}");
-                return BadRequest(errorResponse.Mensaje);
-            }
-        }
-        
-        // ========== ENDPOINTS DE ÁREA ==========
-        
-        [HttpGet]
-        [Route("area/metros-cuadrados-to-pies-cuadrados")]
-        public IHttpActionResult MetrosCuadradosAPiesCuadrados([FromUri] double metrosCuadrados)
-        {
-            try
-            {
-                double resultado = metrosCuadrados * 10.7639;
-                var response = ConversionResponse.CrearExito(metrosCuadrados, resultado, Conversion.METROS_CUADRADOS, Conversion.PIES_CUADRADOS, Conversion.CATEGORIA_AREA);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                var errorResponse = ConversionResponse.CrearError($"Error en conversión: {e.Message}");
-                return BadRequest(errorResponse.Mensaje);
-            }
-        }
-        
-        [HttpGet]
-        [Route("area/pies-cuadrados-to-metros-cuadrados")]
-        public IHttpActionResult PiesCuadradosAMetrosCuadrados([FromUri] double piesCuadrados)
-        {
-            try
-            {
-                double resultado = piesCuadrados / 10.7639;
-                var response = ConversionResponse.CrearExito(piesCuadrados, resultado, Conversion.PIES_CUADRADOS, Conversion.METROS_CUADRADOS, Conversion.CATEGORIA_AREA);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                var errorResponse = ConversionResponse.CrearError($"Error en conversión: {e.Message}");
-                return BadRequest(errorResponse.Mensaje);
-            }
-        }
-        
-        [HttpGet]
-        [Route("area/hectareas-to-acres")]
-        public IHttpActionResult HectareasAAcres([FromUri] double hectareas)
-        {
-            try
-            {
-                double resultado = hectareas * 2.47105;
-                var response = ConversionResponse.CrearExito(hectareas, resultado, Conversion.HECTAREAS, Conversion.ACRES, Conversion.CATEGORIA_AREA);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                var errorResponse = ConversionResponse.CrearError($"Error en conversión: {e.Message}");
-                return BadRequest(errorResponse.Mensaje);
-            }
-        }
-        
-        [HttpGet]
-        [Route("area/acres-to-hectareas")]
-        public IHttpActionResult AcresAHectareas([FromUri] double acres)
-        {
-            try
-            {
-                double resultado = acres / 2.47105;
-                var response = ConversionResponse.CrearExito(acres, resultado, Conversion.ACRES, Conversion.HECTAREAS, Conversion.CATEGORIA_AREA);
-                return Ok(response);
-            }
-            catch (Exception e)
-            {
-                var errorResponse = ConversionResponse.CrearError($"Error en conversión: {e.Message}");
-                return BadRequest(errorResponse.Mensaje);
-            }
-        }
-        
         // ========== MÉTODO AUXILIAR PARA CONVERSIONES DIRECTAS ==========
         
         /// <summary>
@@ -656,10 +500,6 @@ namespace CONUNI_RESTFUL_DOTNET_GR9S.Controllers
                     return ConvertirLongitudDirecta(valor, operacion);
                 case Conversion.CATEGORIA_PESO:
                     return ConvertirPesoDirecta(valor, operacion);
-                case Conversion.CATEGORIA_VOLUMEN:
-                    return ConvertirVolumenDirecta(valor, operacion);
-                case Conversion.CATEGORIA_AREA:
-                    return ConvertirAreaDirecta(valor, operacion);
                 default:
                     throw new ArgumentException($"Categoría no soportada: {categoria}");
             }
@@ -705,29 +545,5 @@ namespace CONUNI_RESTFUL_DOTNET_GR9S.Controllers
             }
         }
         
-        private double ConvertirVolumenDirecta(double valor, string operacion)
-        {
-            switch (operacion)
-            {
-                case "litrosAgalones": return valor * 0.264172;
-                case "galonesAlitros": return valor / 0.264172;
-                case "mililitrosAonzasFluidas": return valor * 0.033814;
-                case "onzasFluidasAmililitros": return valor / 0.033814;
-                default: throw new ArgumentException($"Operación de volumen no soportada: {operacion}");
-            }
-        }
-        
-        private double ConvertirAreaDirecta(double valor, string operacion)
-        {
-            switch (operacion)
-            {
-                case "metrosCuadradosApiesCuadrados": return valor * 10.7639;
-                case "piesCuadradosAmetrosCuadrados": return valor / 10.7639;
-                case "hectareasAacres": return valor * 2.47105;
-                case "acresAhectareas": return valor / 2.47105;
-                default: throw new ArgumentException($"Operación de área no soportada: {operacion}");
-            }
-        }
     }
 }
-

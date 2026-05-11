@@ -129,58 +129,8 @@ namespace CONUNI_SOAP_DOTNET_GR09
             return onzas / 0.035274;
         }
 
-        // ========== MÉTODOS DE VOLUMEN ==========
-        
-        public double LitrosAGalones(double litros)
-        {
-            System.Diagnostics.Debug.WriteLine($"DEBUG: LitrosAGalones recibió litros={litros}");
-            return litros * 0.264172;
-        }
-
-        public double GalonesALitros(double galones)
-        {
-            System.Diagnostics.Debug.WriteLine($"DEBUG: GalonesALitros recibió galones={galones}");
-            return galones / 0.264172;
-        }
-
-        public double MililitrosAOnzasFluidas(double mililitros)
-        {
-            System.Diagnostics.Debug.WriteLine($"DEBUG: MililitrosAOnzasFluidas recibió mililitros={mililitros}");
-            return mililitros * 0.033814;
-        }
-
-        public double OnzasFluidasAMililitros(double onzasFluidas)
-        {
-            System.Diagnostics.Debug.WriteLine($"DEBUG: OnzasFluidasAMililitros recibió onzasFluidas={onzasFluidas}");
-            return onzasFluidas / 0.033814;
-        }
-
-        // ========== MÉTODOS DE ÁREA ==========
-        
-        public double MetrosCuadradosAPiesCuadrados(double metrosCuadrados)
-        {
-            System.Diagnostics.Debug.WriteLine($"DEBUG: MetrosCuadradosAPiesCuadrados recibió metrosCuadrados={metrosCuadrados}");
-            return metrosCuadrados * 10.7639;
-        }
-
-        public double PiesCuadradosAMetrosCuadrados(double piesCuadrados)
-        {
-            System.Diagnostics.Debug.WriteLine($"DEBUG: PiesCuadradosAMetrosCuadrados recibió piesCuadrados={piesCuadrados}");
-            return piesCuadrados / 10.7639;
-        }
-
-        public double HectareasAAcres(double hectareas)
-        {
-            System.Diagnostics.Debug.WriteLine($"DEBUG: HectareasAAcres recibió hectareas={hectareas}");
-            return hectareas * 2.47105;
-        }
-
-        public double AcresAHectareas(double acres)
-        {
-            System.Diagnostics.Debug.WriteLine($"DEBUG: AcresAHectareas recibió acres={acres}");
-            return acres / 2.47105;
-        }
     }
+
 
     /// <summary>
     /// Servicio de autenticación centralizado en el servidor.

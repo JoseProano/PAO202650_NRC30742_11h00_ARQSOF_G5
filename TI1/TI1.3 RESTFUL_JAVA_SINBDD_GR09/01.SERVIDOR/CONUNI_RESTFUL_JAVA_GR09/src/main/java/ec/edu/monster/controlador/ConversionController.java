@@ -33,8 +33,6 @@ public class ConversionController {
                      "- GET /api/conversion/temperatura/* - Conversiones de temperatura\n" +
                      "- GET /api/conversion/longitud/* - Conversiones de longitud\n" +
                      "- GET /api/conversion/peso/* - Conversiones de peso/masa\n" +
-                     "- GET /api/conversion/volumen/* - Conversiones de volumen\n" +
-                     "- GET /api/conversion/area/* - Conversiones de área\n" +
                      "- POST /api/conversion/convertir - Conversión genérica\n\n" +
                      "Ejemplo: GET /api/conversion/temperatura/celsius-to-fahrenheit?celsius=100";
         return Response.ok(info).build();
@@ -119,18 +117,6 @@ public class ConversionController {
                 "      \"GET /peso/libras-to-kilogramos?libras=2.20462\",\n" +
                 "      \"GET /peso/gramos-to-onzas?gramos=28.3495\",\n" +
                 "      \"GET /peso/onzas-to-gramos?onzas=1\"\n" +
-                "    ],\n" +
-                "    \"volumen\": [\n" +
-                "      \"GET /volumen/litros-to-galones?litros=1\",\n" +
-                "      \"GET /volumen/galones-to-litros?galones=1\",\n" +
-                "      \"GET /volumen/mililitros-to-onzas-fluidas?mililitros=29.5735\",\n" +
-                "      \"GET /volumen/onzas-fluidas-to-mililitros?onzasFluidas=1\"\n" +
-                "    ],\n" +
-                "    \"area\": [\n" +
-                "      \"GET /area/metros-cuadrados-to-pies-cuadrados?metrosCuadrados=1\",\n" +
-                "      \"GET /area/pies-cuadrados-to-metros-cuadrados?piesCuadrados=10.7639\",\n" +
-                "      \"GET /area/hectareas-to-acres?hectareas=1\",\n" +
-                "      \"GET /area/acres-to-hectareas?acres=2.47105\"\n" +
                 "    ],\n" +
                 "    \"generico\": [\n" +
                 "      \"POST /convertir\"\n" +
@@ -289,10 +275,6 @@ public class ConversionController {
                 return convertirLongitudDirecta(valor, operacion);
             case Conversion.CATEGORIA_PESO:
                 return convertirPesoDirecta(valor, operacion);
-            case Conversion.CATEGORIA_VOLUMEN:
-                return convertirVolumenDirecta(valor, operacion);
-            case Conversion.CATEGORIA_AREA:
-                return convertirAreaDirecta(valor, operacion);
             default:
                 throw new IllegalArgumentException("Categoría no soportada: " + categoria);
         }
@@ -332,23 +314,4 @@ public class ConversionController {
         }
     }
     
-    private double convertirVolumenDirecta(double valor, String operacion) {
-        switch (operacion) {
-            case "litrosAgalones": return valor * 0.264172;
-            case "galonesAlitros": return valor / 0.264172;
-            case "mililitrosAonzasFluidas": return valor * 0.033814;
-            case "onzasFluidasAmililitros": return valor / 0.033814;
-            default: throw new IllegalArgumentException("Operación de volumen no soportada: " + operacion);
-        }
-    }
-    
-    private double convertirAreaDirecta(double valor, String operacion) {
-        switch (operacion) {
-            case "metrosCuadradosApiesCuadrados": return valor * 10.7639;
-            case "piesCuadradosAmetrosCuadrados": return valor / 10.7639;
-            case "hectareasAacres": return valor * 2.47105;
-            case "acresAhectareas": return valor / 2.47105;
-            default: throw new IllegalArgumentException("Operación de área no soportada: " + operacion);
-        }
-    }
 }

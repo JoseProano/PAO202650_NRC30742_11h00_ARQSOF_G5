@@ -23,21 +23,11 @@ public class Conversion {
     public static final double KILOGRAMS_TO_POUNDS = 2.20462;
     public static final double GRAMS_TO_OUNCES = 0.035274;
     
-    // Volumen
-    public static final double LITERS_TO_GALLONS = 0.264172;
-    public static final double MILLILITERS_TO_FLUID_OUNCES = 0.033814;
-    
-    // Área
-    public static final double SQUARE_METERS_TO_SQUARE_FEET = 10.7639;
-    public static final double HECTARES_TO_ACRES = 2.47105;
-    
     // ========== CATEGORÍAS DE CONVERSIÓN ==========
     
     public static final String CATEGORIA_TEMPERATURA = "temperatura";
     public static final String CATEGORIA_LONGITUD = "longitud";
     public static final String CATEGORIA_PESO = "peso";
-    public static final String CATEGORIA_VOLUMEN = "volumen";
-    public static final String CATEGORIA_AREA = "area";
     
     // ========== UNIDADES POR CATEGORÍA ==========
     
@@ -59,17 +49,6 @@ public class Conversion {
     public static final String GRAMOS = "gramos";
     public static final String ONZAS = "onzas";
     
-    // Volumen
-    public static final String LITROS = "litros";
-    public static final String GALONES = "galones";
-    public static final String MILILITROS = "mililitros";
-    public static final String ONZAS_FLUIDAS = "onzasFluidas";
-    
-    // Área
-    public static final String METROS_CUADRADOS = "metrosCuadrados";
-    public static final String PIES_CUADRADOS = "piesCuadrados";
-    public static final String HECTAREAS = "hectareas";
-    public static final String ACRES = "acres";
     
     // ========== MÉTODOS AUXILIARES ==========
     
@@ -88,10 +67,6 @@ public class Conversion {
                 return esUnidadLongitud(unidadOrigen) && esUnidadLongitud(unidadDestino);
             case CATEGORIA_PESO:
                 return esUnidadPeso(unidadOrigen) && esUnidadPeso(unidadDestino);
-            case CATEGORIA_VOLUMEN:
-                return esUnidadVolumen(unidadOrigen) && esUnidadVolumen(unidadDestino);
-            case CATEGORIA_AREA:
-                return esUnidadArea(unidadOrigen) && esUnidadArea(unidadDestino);
             default:
                 return false;
         }
@@ -111,15 +86,6 @@ public class Conversion {
                GRAMOS.equals(unidad) || ONZAS.equals(unidad);
     }
     
-    private static boolean esUnidadVolumen(String unidad) {
-        return LITROS.equals(unidad) || GALONES.equals(unidad) || 
-               MILILITROS.equals(unidad) || ONZAS_FLUIDAS.equals(unidad);
-    }
-    
-    private static boolean esUnidadArea(String unidad) {
-        return METROS_CUADRADOS.equals(unidad) || PIES_CUADRADOS.equals(unidad) ||
-               HECTAREAS.equals(unidad) || ACRES.equals(unidad);
-    }
     
     /**
      * Obtiene el símbolo de una unidad
@@ -143,18 +109,6 @@ public class Conversion {
             case LIBRAS: return "lb";
             case GRAMOS: return "g";
             case ONZAS: return "oz";
-            
-            // Volumen
-            case LITROS: return "L";
-            case GALONES: return "gal";
-            case MILILITROS: return "mL";
-            case ONZAS_FLUIDAS: return "fl oz";
-            
-            // Área
-            case METROS_CUADRADOS: return "m²";
-            case PIES_CUADRADOS: return "ft²";
-            case HECTAREAS: return "ha";
-            case ACRES: return "ac";
             
             default: return unidad;
         }

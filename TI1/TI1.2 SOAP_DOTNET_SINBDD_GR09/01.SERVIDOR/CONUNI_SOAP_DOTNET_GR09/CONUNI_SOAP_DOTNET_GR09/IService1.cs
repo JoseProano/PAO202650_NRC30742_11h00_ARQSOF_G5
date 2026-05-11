@@ -69,31 +69,5 @@ namespace CONUNI_SOAP_DOTNET_GR09
 
         [OperationContract(Name = "onzasAGramos")]
         double OnzasAGramos(double onzas);
-
-        // Conversiones de Volumen
-        [OperationContract(Name = "litrosAGalones")]
-        double LitrosAGalones(double litros);
-
-        [OperationContract(Name = "galonesALitros")]
-        double GalonesALitros(double galones);
-
-        [OperationContract(Name = "mililitrosAOnzasFluidas")]
-        double MililitrosAOnzasFluidas(double mililitros);
-
-        [OperationContract(Name = "onzasFluidasAMililitros")]
-        double OnzasFluidasAMililitros(double onzasFluidas);
-
-        // Conversiones de Área
-        [OperationContract(Name = "metrosCuadradosAPiesCuadrados")]
-        double MetrosCuadradosAPiesCuadrados(double metrosCuadrados);
-
-        [OperationContract(Name = "piesCuadradosAMetrosCuadrados")]
-        double PiesCuadradosAMetrosCuadrados(double piesCuadrados);
-
-        [OperationContract(Name = "hectareasAAcres")]
-        double HectareasAAcres(double hectareas);
-
-        [OperationContract(Name = "acresAHectareas")]
-        double AcresAHectareas(double acres);
     }
 }

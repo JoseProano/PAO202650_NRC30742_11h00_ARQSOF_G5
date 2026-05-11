@@ -15,34 +15,37 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <tomcat.port>8082</tomcat.port>
     </properties>
     
     <dependencies>
-        <!-- Java EE / Jakarta EE API - Compatible con Tomcat 7/8/9 -->
-        <!-- Para Tomcat 7/8/9 usar javax.servlet, para Tomcat 10+ usar jakarta.servlet -->
+        <!-- Jakarta EE API - Compatible con Payara Server -->
         
-        <!-- Servlet API - Compatible con Tomcat 7/8/9 -->
+        <!-- Servlet API - Jakarta EE (Payara) -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
         
-        <!-- JSP API - Compatible con Tomcat 7/8/9 -->
+        <!-- JSP API - Jakarta EE (Payara) -->
         <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.3</version>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
         
-        <!-- JSTL para JSP (opcional pero útil) -->
+        <!-- JSTL para JSP - Jakarta EE -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>3.0.0</version>
         </dependency>
         
         <!-- JAX-WS Runtime -->
@@ -82,19 +85,9 @@
                 </configuration>
             </plugin>
             
-            <!-- Plugin de Tomcat embebido para ejecutar el cliente web de forma independiente -->
-            <!-- Usando Tomcat 7 para compatibilidad con Tomcat 7.0.47 -->
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <port>${tomcat.port}</port> <!-- Puerto diferente al servicio SOAP (8080) -->
-                    <path>/CONUNI_SOAP_JAVA_CLIWEB_G09</path>
-                    <contextReloadable>true</contextReloadable>
-                    <uriEncoding>UTF-8</uriEncoding>
-                </configuration>
-            </plugin>
+            <!-- Desplegar el WAR directamente en Payara Server -->
+            <!-- Generar el WAR con: mvn clean package -->
+            <!-- Luego desplegar en Payara desde NetBeans o la consola de admin -->
         </plugins>
     </build>
 </project>

@@ -132,56 +132,5 @@ public class WSConversion {
         return conversionService.onzasAGramos(onzas);
     }
 
-    // ========== MÉTODOS DE VOLUMEN ==========
-    
-    @WebMethod(operationName = "litrosAGalones")
-    public double litrosAGalones(@WebParam(name = "litros") double litros) {
-        System.out.println("DEBUG: litrosAGalones recibió litros=" + litros);
-        return conversionService.litrosAGalones(litros);
-    }
-
-    @WebMethod(operationName = "galonesALitros")
-    public double galonesALitros(@WebParam(name = "galones") double galones) {
-        System.out.println("DEBUG: galonesALitros recibió galones=" + galones);
-        return conversionService.galonesALitros(galones);
-    }
-
-    @WebMethod(operationName = "mililitrosAOnzasFluidas")
-    public double mililitrosAOnzasFluidas(@WebParam(name = "mililitros") double mililitros) {
-        System.out.println("DEBUG: mililitrosAOnzasFluidas recibió mililitros=" + mililitros);
-        return conversionService.mililitrosAOnzasFluidas(mililitros);
-    }
-
-    @WebMethod(operationName = "onzasFluidasAMililitros")
-    public double onzasFluidasAMililitros(@WebParam(name = "onzasFluidas") double onzasFluidas) {
-        System.out.println("DEBUG: onzasFluidasAMililitros recibió onzasFluidas=" + onzasFluidas);
-        return conversionService.onzasFluidasAMililitros(onzasFluidas);
-    }
-
-    // ========== MÉTODOS DE ÁREA ==========
-    
-    @WebMethod(operationName = "metrosCuadradosAPiesCuadrados")
-    public double metrosCuadradosAPiesCuadrados(@WebParam(name = "metrosCuadrados") double metrosCuadrados) {
-        System.out.println("DEBUG: metrosCuadradosAPiesCuadrados recibió metrosCuadrados=" + metrosCuadrados);
-        return conversionService.metrosCuadradosAPiesCuadrados(metrosCuadrados);
-    }
-
-    @WebMethod(operationName = "piesCuadradosAMetrosCuadrados")
-    public double piesCuadradosAMetrosCuadrados(@WebParam(name = "piesCuadrados") double piesCuadrados) {
-        System.out.println("DEBUG: piesCuadradosAMetrosCuadrados recibió piesCuadrados=" + piesCuadrados);
-        return conversionService.piesCuadradosAMetrosCuadrados(piesCuadrados);
-    }
-
-    @WebMethod(operationName = "hectareasAAcres")
-    public double hectareasAAcres(@WebParam(name = "hectareas") double hectareas) {
-        System.out.println("DEBUG: hectareasAAcres recibió hectareas=" + hectareas);
-        return conversionService.hectareasAAcres(hectareas);
-    }
-
-    @WebMethod(operationName = "acresAHectareas")
-    public double acresAHectareas(@WebParam(name = "acres") double acres) {
-        System.out.println("DEBUG: acresAHectareas recibió acres=" + acres);
-        return conversionService.acresAHectareas(acres);
-    }
 }
 

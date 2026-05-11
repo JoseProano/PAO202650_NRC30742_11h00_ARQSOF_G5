@@ -132,66 +132,6 @@ public class ConversionService {
         return onzas / Conversion.GRAMS_TO_OUNCES;
     }
     
-    // ========== CONVERSIONES DE VOLUMEN ==========
-    
-    /**
-     * Convierte litros a galones
-     */
-    public double litrosAGalones(double litros) {
-        return litros * Conversion.LITERS_TO_GALLONS;
-    }
-    
-    /**
-     * Convierte galones a litros
-     */
-    public double galonesALitros(double galones) {
-        return galones / Conversion.LITERS_TO_GALLONS;
-    }
-    
-    /**
-     * Convierte mililitros a onzas fluidas
-     */
-    public double mililitrosAOnzasFluidas(double mililitros) {
-        return mililitros * Conversion.MILLILITERS_TO_FLUID_OUNCES;
-    }
-    
-    /**
-     * Convierte onzas fluidas a mililitros
-     */
-    public double onzasFluidasAMililitros(double onzasFluidas) {
-        return onzasFluidas / Conversion.MILLILITERS_TO_FLUID_OUNCES;
-    }
-    
-    // ========== CONVERSIONES DE ÁREA ==========
-    
-    /**
-     * Convierte metros cuadrados a pies cuadrados
-     */
-    public double metrosCuadradosAPiesCuadrados(double metrosCuadrados) {
-        return metrosCuadrados * Conversion.SQUARE_METERS_TO_SQUARE_FEET;
-    }
-    
-    /**
-     * Convierte pies cuadrados a metros cuadrados
-     */
-    public double piesCuadradosAMetrosCuadrados(double piesCuadrados) {
-        return piesCuadrados / Conversion.SQUARE_METERS_TO_SQUARE_FEET;
-    }
-    
-    /**
-     * Convierte hectáreas a acres
-     */
-    public double hectareasAAcres(double hectareas) {
-        return hectareas * Conversion.HECTARES_TO_ACRES;
-    }
-    
-    /**
-     * Convierte acres a hectáreas
-     */
-    public double acresAHectareas(double acres) {
-        return acres / Conversion.HECTARES_TO_ACRES;
-    }
-    
     // ========== MÉTODO PRINCIPAL DE CONVERSIÓN ==========
     
     /**
@@ -235,10 +175,6 @@ public class ConversionService {
                 return convertirLongitud(valor, operacion);
             case Conversion.CATEGORIA_PESO:
                 return convertirPeso(valor, operacion);
-            case Conversion.CATEGORIA_VOLUMEN:
-                return convertirVolumen(valor, operacion);
-            case Conversion.CATEGORIA_AREA:
-                return convertirArea(valor, operacion);
             default:
                 throw new IllegalArgumentException("Categoría no soportada: " + categoria);
         }
@@ -278,25 +214,4 @@ public class ConversionService {
         }
     }
     
-    private double convertirVolumen(double valor, String operacion) {
-        switch (operacion) {
-            case "litrosAgalones": return litrosAGalones(valor);
-            case "galonesAlitros": return galonesALitros(valor);
-            case "mililitrosAonzasFluidas": return mililitrosAOnzasFluidas(valor);
-            case "onzasFluidasAmililitros": return onzasFluidasAMililitros(valor);
-            default: throw new IllegalArgumentException("Operación de volumen no soportada: " + operacion);
-        }
-    }
-    
-    private double convertirArea(double valor, String operacion) {
-        switch (operacion) {
-            case "metrosCuadradosApiesCuadrados": return metrosCuadradosAPiesCuadrados(valor);
-            case "piesCuadradosAmetrosCuadrados": return piesCuadradosAMetrosCuadrados(valor);
-            case "hectareasAacres": return hectareasAAcres(valor);
-            case "acresAhectareas": return acresAHectareas(valor);
-            default: throw new IllegalArgumentException("Operación de área no soportada: " + operacion);
-        }
-    }
 }
-
-

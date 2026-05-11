@@ -16,7 +16,6 @@ public class PruebaConversion {
         double temperaturaCelsius = 25.0;
         double metros = 10.0;
         double kilogramos = 5.0;
-        double litros = 2.5;
         
         //Proceso
         ConversionService service = new ConversionService();
@@ -33,11 +32,6 @@ public class PruebaConversion {
         double libras = service.kilogramosALibras(kilogramos);
         double gramos = kilogramos * 1000;
         double onzas = service.gramosAOnzas(gramos);
-        
-        // Pruebas de volumen
-        double galones = service.litrosAGalones(litros);
-        double mililitros = litros * 1000;
-        double onzasFluidas = service.mililitrosAOnzasFluidas(mililitros);
         
         //Reporte
         System.out.println("=== PRUEBAS DE CONVERSIÓN ===");
@@ -60,13 +54,6 @@ public class PruebaConversion {
         System.out.println("Libras: " + String.format("%.2f", libras) + " lb");
         System.out.println("Gramos: " + gramos + " g");
         System.out.println("Onzas: " + String.format("%.2f", onzas) + " oz");
-        System.out.println();
-        
-        System.out.println("--- VOLUMEN ---");
-        System.out.println("Litros: " + litros + " L");
-        System.out.println("Galones: " + String.format("%.2f", galones) + " gal");
-        System.out.println("Mililitros: " + mililitros + " mL");
-        System.out.println("Onzas fluidas: " + String.format("%.2f", onzasFluidas) + " fl oz");
         System.out.println();
         
         System.out.println("=== PRUEBAS COMPLETADAS ===");
