@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     // Backend en red local del hogar
-    private const val BASE_URL = "http://10.92.232.246:8080/"
+    private const val BASE_URL = "http://192.168.100.2:8080/"
 
     private val logging: HttpLoggingInterceptor by lazy {
         HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }

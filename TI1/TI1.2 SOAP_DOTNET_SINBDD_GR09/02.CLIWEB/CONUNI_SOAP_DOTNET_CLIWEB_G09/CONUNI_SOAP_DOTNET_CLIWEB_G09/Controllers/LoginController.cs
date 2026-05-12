@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Http;
-using System.Text;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using CONUNI_SOAP_DOTNET_CLIWEB_G09.servicio;
 using System.Threading.Tasks;
 
 namespace CONUNI_SOAP_DOTNET_CLIWEB_G09.Controllers
@@ -16,6 +17,12 @@ namespace CONUNI_SOAP_DOTNET_CLIWEB_G09.Controllers
     public class LoginController : Controller
     {
         private const string SESSION_KEY_USUARIO = "Usuario";
+        private readonly string _soapEndpoint;
+
+        public LoginController(IConfiguration configuration)
+        {
+            _soapEndpoint = configuration["SoapService:Endpoint"] ?? "http://localhost:62533/Service1.svc";
+        }
 
         [HttpGet]
         public IActionResult Index()
@@ -31,7 +38,7 @@ namespace CONUNI_SOAP_DOTNET_CLIWEB_G09.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string username, string password)
         {
-            bool autenticado = await ValidarCredencialesEnServidorAsync(username, password);
+            bool autenticado = ValidarCredencialesEnServidor(username, password);
 
             if (autenticado)
             {
@@ -54,36 +61,12 @@ namespace CONUNI_SOAP_DOTNET_CLIWEB_G09.Controllers
         /// Llama al servidor SOAP vía HTTP POST para validar las credenciales.
         /// El cliente NUNCA almacena ni conoce las credenciales correctas.
         /// </summary>
-        private static async Task<bool> ValidarCredencialesEnServidorAsync(string usuario, string contrasena)
+        private bool ValidarCredencialesEnServidor(string usuario, string contrasena)
         {
             try
             {
-                // Llamada SOAP raw al método login del servidor
-                string soapEnvelope =
-                    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-                    "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" " +
-                                    "xmlns:tns=\"http://CONUNI_SOAP_DOTNET_GR09/\">" +
-                    "  <soapenv:Body>" +
-                    "    <tns:login>" +
-                    $"      <usuario>{usuario}</usuario>" +
-                    $"      <contrasena>{contrasena}</contrasena>" +
-                    "    </tns:login>" +
-                    "  </soapenv:Body>" +
-                    "</soapenv:Envelope>";
-
-                using var httpClient = new HttpClient();
-                httpClient.Timeout = System.TimeSpan.FromSeconds(10);
-                var content = new StringContent(soapEnvelope, System.Text.Encoding.UTF8, "text/xml");
-                content.Headers.Add("SOAPAction", "login");
-
-                // URL del servicio SOAP .NET (ajustar según despliegue)
-                var response = await httpClient.PostAsync(
-                    "http://localhost/CONUNI_SOAP_DOTNET_GR09/WSConversion.svc", content);
-
-                if (!response.IsSuccessStatusCode) return false;
-
-                string body = await response.Content.ReadAsStringAsync();
-                return body.Contains("<return>true</return>") || body.Contains(">true<");
+                using var client = new ConversionSoapClient(_soapEndpoint);
+                return client.Login(usuario, contrasena);
             }
             catch
             {

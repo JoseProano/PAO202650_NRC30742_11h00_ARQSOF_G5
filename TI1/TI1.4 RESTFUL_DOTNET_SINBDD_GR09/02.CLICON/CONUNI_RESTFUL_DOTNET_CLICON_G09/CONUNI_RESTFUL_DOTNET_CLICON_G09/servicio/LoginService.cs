@@ -24,8 +24,8 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.servicio
         public LoginService(VistaLogin vista, string baseUrl)
         {
             _vista   = vista;
-            // El endpoint de login está en api/auth/login
-            _authUrl = baseUrl.TrimEnd('/') + "/auth/login";
+            // El endpoint de login está en /api/auth/login
+            _authUrl = baseUrl.TrimEnd('/') + "/api/auth/login";
         }
 
         /// <summary>

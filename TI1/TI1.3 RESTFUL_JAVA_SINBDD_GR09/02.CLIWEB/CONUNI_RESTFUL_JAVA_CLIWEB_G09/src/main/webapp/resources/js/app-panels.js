@@ -1,7 +1,7 @@
 /* Global helpers para cargar paneles y convertir via REST */
 (function(){
   const BASE_URL = (window.APP_BASE_URL) || (window.location.origin + window.location.pathname.replace(/\/$/, ''));
-  const API_BASE = (window.API_BASE_URL) ? window.API_BASE_URL.replace('/convertir', '') : (window.API_BASE || (window.location.origin + (window.CONTEXT_PATH || '') + '/CONUNI_RESTFUL_JAVA_GR09/api/conversion'));
+  const API_BASE = (window.API_BASE_URL) ? window.API_BASE_URL.replace('/convertir', '') : (window.API_BASE || 'http://192.168.100.2:8080/CONUNI_RESTFUL_JAVA_GR09/api/conversion');
 
   window.loadPanel = async function(nombre){
     const url = (window.CONTEXT_PATH || '') + '/resources/jsp/' + nombre + '-tailwind.jsp';
@@ -15,9 +15,7 @@
   const unitMap = {
     temperatura: { 'celsius':'celsius','fahrenheit':'fahrenheit','kelvin':'kelvin' },
     longitud: { 'metros':'metros','pies':'pies','pulgadas':'pulgadas','kilómetros':'kilometros','kilometros':'kilometros','millas':'millas' },
-    peso: { 'kilogramos':'kilogramos','libras':'libras','gramos':'gramos','onzas':'onzas' },
-    volumen: { 'litros':'litros','galones':'galones','mililitros':'mililitros','onzas fluidas':'onzasFluidas','onzas fluidas':'onzasFluidas' },
-    area: { 'metros cuadrados':'metrosCuadrados','pies cuadrados':'piesCuadrados','hectáreas':'hectareas','hectareas':'hectareas','acres':'acres' }
+    peso: { 'kilogramos':'kilogramos','libras':'libras','gramos':'gramos','onzas':'onzas' }
   };
 
   function normalize(str){

@@ -85,7 +85,7 @@ public class ClienteConversionRESTFUL {
      * @throws Exception si hay error
      */
     private ConversionResponse enviarPeticionRESTFUL(String jsonRequest) throws Exception {
-        URL url = new URL(BASE_URL);
+        URL url = new URL(BASE_URL + "/conversion/convertir");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         
         // Configurar la conexión para POST
@@ -215,13 +215,36 @@ public class ClienteConversionRESTFUL {
     }
     
     
+    // ========== MÉTODO DE AUTENTICACIÓN ==========
+    
+    public boolean login(String usuario, String contrasena) {
+        try {
+            System.out.println("INFO:   === INICIANDO LLAMADA RESTFUL LOGIN ===");
+            String jsonRequest = "{\"usuario\":\"" + usuario + "\",\"contrasena\":\"" + contrasena + "\"}";
+            
+            URL url = new URL(BASE_URL + "/auth/login");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            
+            connection.setRequestMethod("POST");
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+            connection.setRequestProperty("Accept", "application/json");
+            
+            connection.setConnectTimeout(TIMEOUT);
+            connection.setReadTimeout(TIMEOUT);
+            
+            try (OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(), StandardCharsets.UTF_8)) {
+                writer.write(jsonRequest);
+                writer.flush();
+            }
+            
+            int responseCode = connection.getResponseCode();
+            System.out.println("INFO:   Código de respuesta HTTP Login: " + responseCode);
+            
+            return responseCode == HttpURLConnection.HTTP_OK;
+        } catch (Exception e) {
+            System.out.println("SEVERE:   ERROR en llamada RESTFUL Login: " + e.getMessage());
+            return false;
+        }
     }
-    
-    
-    
-    
-    // ========== MÉTODOS DE ÁREA ==========
-    
-    
-    
-    
+}

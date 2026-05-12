@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config">
         <activity
-            android:name="EC.EDU.MONSTER.vista.MainActivity"
+            android:name="EC.EDU.MONSTER.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.CONUNI_SOAP_JAVA_CLIMOV_G09">
             <intent-filter>

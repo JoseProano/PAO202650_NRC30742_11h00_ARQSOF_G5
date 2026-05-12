@@ -387,130 +387,6 @@ public class ConversionService {
         }
     }
 
-
-        try {
-            
-            Response response = target.request(MediaType.APPLICATION_JSON).get();
-            
-            if (response.getStatus() == 200) {
-                return response.readEntity(ConversionResponse.class);
-            } else {
-                // Cálculo local si el servidor no responde
-            }
-        } catch (Exception e) {
-            // Cálculo local si hay error de conexión
-        }
-    }
-
-        try {
-            
-            Response response = target.request(MediaType.APPLICATION_JSON).get();
-            
-            if (response.getStatus() == 200) {
-                return response.readEntity(ConversionResponse.class);
-            } else {
-                // Cálculo local si el servidor no responde
-            }
-        } catch (Exception e) {
-            // Cálculo local si hay error de conexión
-        }
-    }
-
-        try {
-            
-            Response response = target.request(MediaType.APPLICATION_JSON).get();
-            
-            if (response.getStatus() == 200) {
-                return response.readEntity(ConversionResponse.class);
-            } else {
-                // Cálculo local si el servidor no responde
-            }
-        } catch (Exception e) {
-            // Cálculo local si hay error de conexión
-        }
-    }
-
-        try {
-                    .queryParam("onzasFluidas", onzasFluidas);
-            
-            Response response = target.request(MediaType.APPLICATION_JSON).get();
-            
-            if (response.getStatus() == 200) {
-                return response.readEntity(ConversionResponse.class);
-            } else {
-                // Cálculo local si el servidor no responde
-                double resultado = onzasFluidas / 0.033814;
-            }
-        } catch (Exception e) {
-            // Cálculo local si hay error de conexión
-            double resultado = onzasFluidas / 0.033814;
-        }
-    }
-
-    // ========== CONVERSIONES DE ÁREA ==========
-
-        try {
-                    .queryParam("metrosCuadrados", metrosCuadrados);
-            
-            Response response = target.request(MediaType.APPLICATION_JSON).get();
-            
-            if (response.getStatus() == 200) {
-                return response.readEntity(ConversionResponse.class);
-            } else {
-                // Cálculo local si el servidor no responde
-                double resultado = metrosCuadrados * 10.7639;
-            }
-        } catch (Exception e) {
-            // Cálculo local si hay error de conexión
-            double resultado = metrosCuadrados * 10.7639;
-        }
-    }
-
-        try {
-                    .queryParam("piesCuadrados", piesCuadrados);
-            
-            Response response = target.request(MediaType.APPLICATION_JSON).get();
-            
-            if (response.getStatus() == 200) {
-                return response.readEntity(ConversionResponse.class);
-            } else {
-                // Cálculo local si el servidor no responde
-                double resultado = piesCuadrados / 10.7639;
-            }
-        } catch (Exception e) {
-            // Cálculo local si hay error de conexión
-            double resultado = piesCuadrados / 10.7639;
-        }
-    }
-
-        try {
-            
-            Response response = target.request(MediaType.APPLICATION_JSON).get();
-            
-            if (response.getStatus() == 200) {
-                return response.readEntity(ConversionResponse.class);
-            } else {
-                // Cálculo local si el servidor no responde
-            }
-        } catch (Exception e) {
-            // Cálculo local si hay error de conexión
-        }
-    }
-
-        try {
-            
-            Response response = target.request(MediaType.APPLICATION_JSON).get();
-            
-            if (response.getStatus() == 200) {
-                return response.readEntity(ConversionResponse.class);
-            } else {
-                // Cálculo local si el servidor no responde
-            }
-        } catch (Exception e) {
-            // Cálculo local si hay error de conexión
-        }
-    }
-
     // ========== CONVERSIÓN GENÉRICA ==========
 
     public ConversionResponse convertir(ConversionRequest request) {
@@ -527,6 +403,8 @@ public class ConversionService {
             }
         } catch (Exception e) {
             return ConversionResponse.crearError(MensajesErrorMonstruosos.generarMensajeErrorConexion(e));
+        }
+    }
 
     // ========== INFORMACIÓN DEL SERVICIO ==========
 
@@ -540,9 +418,15 @@ public class ConversionService {
                 return response.readEntity(String.class);
             } else {
                 return MensajesErrorMonstruosos.generarMensajeErrorServidor(response.getStatus());
+            }
         } catch (Exception e) {
             return MensajesErrorMonstruosos.generarMensajeErrorConexion(e);
+        }
+    }
 
     public void cerrar() {
         if (client != null) {
             client.close();
+        }
+    }
+}

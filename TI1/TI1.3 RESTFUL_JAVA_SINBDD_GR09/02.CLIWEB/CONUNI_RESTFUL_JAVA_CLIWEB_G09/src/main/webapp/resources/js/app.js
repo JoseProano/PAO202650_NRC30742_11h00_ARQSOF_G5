@@ -1,10 +1,10 @@
-const BASE_URL = window.API_BASE_URL || 'http://10.92.232.246:8080/CONUNI_RESTFUL_JAVA_GR09/api/conversion/convertir';
+const BASE_URL = window.API_BASE_URL || 'http://192.168.100.2:8080/CONUNI_RESTFUL_JAVA_GR09/api/conversion/convertir';
 const unitBox = document.getElementById('unitBox');
 const res = document.getElementById('results');
 const resValue = document.getElementById('resValue');
 const debug = document.getElementById('debug');
 
-const units = { temperatura:'°C', longitud:'m', peso:'kg', volumen:'L', area:'m²' };
+const units = { temperatura:'°C', longitud:'m', peso:'kg' };
 document.querySelectorAll('.category-buttons .btn').forEach(b=>{
   b.addEventListener('click',()=>{
     document.querySelectorAll('.category-buttons .btn').forEach(x=>x.classList.remove('active'));
@@ -49,8 +49,7 @@ function pintaError(msg,dbg){res.className='res error';res.classList.remove('hid
 window.convertirTemperatura = (op)=> convertir(op, document.getElementById('tempValue').value, 'temperatura');
 window.convertirLongitud    = (op)=> convertir(op, document.getElementById('lengthValue').value, 'longitud');
 window.convertirPeso        = (op)=> convertir(op, document.getElementById('weightValue').value, 'peso');
-window.convertirVolumen     = (op)=> convertir(op, document.getElementById('volumeValue').value, 'volumen');
-window.convertirArea        = (op)=> convertir(op, document.getElementById('areaValue').value, 'area');
+
 
 
 

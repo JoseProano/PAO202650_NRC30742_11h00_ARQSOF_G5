@@ -65,14 +65,7 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.PesoFragment)
                 true
             }
-            R.id.action_volumen -> {
-                navController.navigate(R.id.VolumenFragment)
-                true
-            }
-            R.id.action_area -> {
-                navController.navigate(R.id.AreaFragment)
-                true
-            }
+
             R.id.action_settings -> {
                 // Mostrar información sobre la aplicación
                 Snackbar.make(binding.root, "Monsters Inc. Converter v1.0", Snackbar.LENGTH_SHORT).show()

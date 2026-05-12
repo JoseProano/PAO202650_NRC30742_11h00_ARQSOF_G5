@@ -356,15 +356,7 @@ public class VentanaPrincipal extends JFrame {
         actualizarBotonActivo(btnPeso);
     }
     
-    /**
-     */
-    }
-    
-    /**
-     * Muestra el panel de área
-     */
-    }
-    
+
     /**
      * Cambia el panel de contenido
      */
@@ -381,12 +373,10 @@ public class VentanaPrincipal extends JFrame {
         repaint();
     }
     
-    /**
-     * Actualiza el botón activo
-     */
     private void actualizarBotonActivo(JButton botonActivo) {
         // Resetear todos los botones
-        Color[] colores = {AZUL_PRINCIPAL, PURPURA_MONSTER, ROJO_MONSTER, AMARILLO_MONSTER, AZUL_CLARO};
+        Color[] colores = {AZUL_PRINCIPAL, PURPURA_MONSTER, ROJO_MONSTER};
+        JButton[] botones = {btnTemperatura, btnLongitud, btnPeso};
         
         for (int i = 0; i < botones.length; i++) {
             botones[i].setBackground(colores[i]);
@@ -430,8 +420,7 @@ public class VentanaPrincipal extends JFrame {
                          "Esta aplicación te permite realizar conversiones entre diferentes unidades de medida:\n\n" +
                          "• TEMPERATURA: Celsius, Fahrenheit, Kelvin\n" +
                          "• LONGITUD: Metros, Pies, Pulgadas, Yardas\n" +
-                         "• PESO: Kilogramos, Libras, Onzas\n" +
-                         "• ÁREA: Metros cuadrados, Pies cuadrados\n\n" +
+                         "• PESO: Kilogramos, Libras, Onzas\n\n" +
                          "Simplemente selecciona el tipo de conversión, ingresa el valor y elige las unidades " +
                          "para obtener el resultado al instante.";
         
@@ -456,8 +445,10 @@ public class VentanaPrincipal extends JFrame {
             System.out.println("No se pudo cargar la imagen: " + ruta);
         }
         return null;
+    }
     
     // Getters para el controlador
     public PanelTemperatura getPanelTemperatura() { return panelTemperatura; }
     public PanelLongitud getPanelLongitud() { return panelLongitud; }
     public PanelPeso getPanelPeso() { return panelPeso; }
+}

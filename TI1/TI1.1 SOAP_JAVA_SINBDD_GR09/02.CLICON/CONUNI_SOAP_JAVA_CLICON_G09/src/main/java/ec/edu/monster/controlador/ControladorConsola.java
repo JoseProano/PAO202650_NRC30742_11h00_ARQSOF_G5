@@ -72,10 +72,6 @@ public class ControladorConsola {
                 manejarPeso();
                 break;
             case 4:
-                break;
-            case 5:
-                break;
-            case 6:
                 ejecutarPruebasAutomaticas();
                 break;
             default:
@@ -139,32 +135,7 @@ public class ControladorConsola {
         }
     }
     
-    /**
-     */
-        
-        int subOpcion = vistaMenu.leerOpcion();
-        
-        if (operacion != null) {
-            double valor = vistaMenu.leerValor();
-            vistaMenu.mostrarResultado(resultado);
-        } else {
-            vistaMenu.mostrarOpcionInvalida();
-        }
-    }
-    
-    /**
-     * Maneja las conversiones de área
-     */
-        
-        int subOpcion = vistaMenu.leerOpcion();
-        
-        if (operacion != null) {
-            double valor = vistaMenu.leerValor();
-            vistaMenu.mostrarResultado(resultado);
-        } else {
-            vistaMenu.mostrarOpcionInvalida();
-        }
-    }
+
     
     /**
      * Ejecuta pruebas automáticas
@@ -233,22 +204,16 @@ public class ControladorConsola {
             default: return null;
         }
     }
-    
-        switch (opcion) {
-            default: return null;
-        }
-    }
-    
-        switch (opcion) {
-            default: return null;
-        }
-    }
-    
+
     /**
      * Cierra los recursos
      */
     private void cerrarRecursos() {
         if (vistaMenu != null) {
             vistaMenu.cerrar();
+        }
         if (autenticador != null) {
             autenticador.cerrar();
+        }
+    }
+}

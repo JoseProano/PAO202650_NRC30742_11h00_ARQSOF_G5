@@ -14,5 +14,15 @@ data class ConversionResponse(
     val mensaje: String? = null
 )
 
+data class LoginRequest(
+    val usuario: String,
+    val contrasena: String
+)
+
+data class LoginResponse(
+    val autenticado: Boolean? = null,
+    val mensaje: String? = null
+)
+
 
 

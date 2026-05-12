@@ -153,19 +153,9 @@ namespace ec.edu.monster.vista
             Console.WriteLine("                                       ║");
             Console.Write("║  ");
             AplicarColor(ConsoleColor.Green, "[4]");
-            Console.Write(" Conversiones de ");
-            AplicarColor(ConsoleColor.Yellow, "Volumen");
-            Console.WriteLine("                                         ║");
-            Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[5]");
-            Console.Write(" Conversiones de ");
-            AplicarColor(ConsoleColor.Yellow, "Área");
-            Console.WriteLine("                                             ║");
-            Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[6]");
             Console.WriteLine(" Pruebas Automáticas                                                      ║");
             Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[7]");
+            AplicarColor(ConsoleColor.Green, "[5]");
             Console.WriteLine(" Pruebas Individuales                                                   ║");
             Console.Write("║  ");
             AplicarColor(ConsoleColor.Red, "[0]");
@@ -364,61 +354,6 @@ namespace ec.edu.monster.vista
             AplicarColor(ConsoleColor.Green, "Seleccione una opción: ");
         }
 
-        /// <summary>
-        /// Muestra el menú de volumen
-        /// </summary>
-        public void MostrarMenuVolumen()
-        {
-            LimpiarPantallaCompleta();
-            MostrarEncabezado();
-            
-            AplicarColorLine(ConsoleColor.Cyan, "╔══════════════════════════════════════════════════════════════════════════════╗");
-            AplicarColorLine(ConsoleColor.Cyan, "║                       CONVERSIONES DE VOLUMEN                          ║");
-            AplicarColorLine(ConsoleColor.Cyan, "╠══════════════════════════════════════════════════════════════════════════════╣");
-            Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[1]");
-            Console.WriteLine(" Litros a Galones                                             ║");
-            Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[2]");
-            Console.WriteLine(" Galones a Litros                                              ║");
-            Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[3]");
-            Console.WriteLine(" Mililitros a Onzas Fluidas                                    ║");
-            Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[4]");
-            Console.WriteLine(" Onzas Fluidas a Mililitros                                   ║");
-            AplicarColorLine(ConsoleColor.Cyan, "╚══════════════════════════════════════════════════════════════════════════════╝");
-            Console.WriteLine();
-            AplicarColor(ConsoleColor.Green, "Seleccione una opción: ");
-        }
-
-        /// <summary>
-        /// Muestra el menú de área
-        /// </summary>
-        public void MostrarMenuArea()
-        {
-            LimpiarPantallaCompleta();
-            MostrarEncabezado();
-            
-            AplicarColorLine(ConsoleColor.Cyan, "╔══════════════════════════════════════════════════════════════════════════════╗");
-            AplicarColorLine(ConsoleColor.Cyan, "║                         CONVERSIONES DE ÁREA                          ║");
-            AplicarColorLine(ConsoleColor.Cyan, "╠══════════════════════════════════════════════════════════════════════════════╣");
-            Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[1]");
-            Console.WriteLine(" Metros Cuadrados a Pies Cuadrados                            ║");
-            Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[2]");
-            Console.WriteLine(" Pies Cuadrados a Metros Cuadrados                            ║");
-            Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[3]");
-            Console.WriteLine(" Hectáreas a Acres                                             ║");
-            Console.Write("║  ");
-            AplicarColor(ConsoleColor.Green, "[4]");
-            Console.WriteLine(" Acres a Hectáreas                                             ║");
-            AplicarColorLine(ConsoleColor.Cyan, "╚══════════════════════════════════════════════════════════════════════════════╝");
-            Console.WriteLine();
-            AplicarColor(ConsoleColor.Green, "Seleccione una opción: ");
-        }
 
         /// <summary>
         /// Muestra banner de pruebas

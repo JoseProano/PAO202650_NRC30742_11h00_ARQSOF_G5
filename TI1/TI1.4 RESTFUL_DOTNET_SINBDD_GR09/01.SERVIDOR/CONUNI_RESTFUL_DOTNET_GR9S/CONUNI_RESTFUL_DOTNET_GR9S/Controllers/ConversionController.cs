@@ -102,6 +102,15 @@ namespace CONUNI_RESTFUL_DOTNET_GR9S.Controllers
         {
             try
             {
+                if (request == null
+                    || string.IsNullOrWhiteSpace(request.Categoria)
+                    || string.IsNullOrWhiteSpace(request.UnidadOrigen)
+                    || string.IsNullOrWhiteSpace(request.UnidadDestino))
+                {
+                    var errorResponse = ConversionResponse.CrearError("Solicitud inválida o incompleta");
+                    return BadRequest(errorResponse.Mensaje);
+                }
+
                 // Log de la petición entrante
                 string ipCliente = GetClientIpAddress();
                 Log($"POST /api/conversion/convertir - IP Cliente: {ipCliente}");

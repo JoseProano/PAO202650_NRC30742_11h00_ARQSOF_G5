@@ -112,10 +112,6 @@ public class ClienteConsolaREST {
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[1]") + " Conversiones de " + aplicarColor(AMARILLO, "Temperatura") + "                                         " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[2]") + " Conversiones de " + aplicarColor(AMARILLO, "Longitud") + "                                       " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[3]") + " Conversiones de " + aplicarColor(AMARILLO, "Peso/Masa") + "                                    " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[4]") + " Conversiones de " + aplicarColor(AMARILLO, "Volumen") + "                                    " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[5]") + " Conversiones de " + aplicarColor(AMARILLO, "Área") + "                                              " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[6]") + " Conversión Genérica                                                      " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[7]") + " Información del Servicio                                                 " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(ROJO, "[0]") + " Salir                                                                   " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
         System.out.println();
@@ -184,48 +180,6 @@ public class ClienteConsolaREST {
         System.out.print(aplicarColor(VERDE, "Seleccione la conversión: "));
     }
 
-    public void mostrarSubmenuVolumen() {
-        System.out.println(aplicarColor(VERDE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-        System.out.println(aplicarColor(VERDE, "                     CONVERSIONES DE VOLUMEN                                  "));
-        System.out.println(aplicarColor(VERDE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-        System.out.println();
-        System.out.println(aplicarColor(CELESTE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-        System.out.println(aplicarColor(CELESTE, "                              MENÚ VOLUMEN                                    "));
-        System.out.println(aplicarColor(CELESTE, "╠══════════════════════════════════════════════════════════════════════════════╣"));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[1]") + " " + aplicarColor(AMARILLO, "Litros") + " → " + aplicarColor(AMARILLO, "Galones") + "                                         " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[2]") + " " + aplicarColor(AMARILLO, "Galones") + " → " + aplicarColor(AMARILLO, "Litros") + "                                         " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[3]") + " " + aplicarColor(AMARILLO, "Mililitros") + " → " + aplicarColor(AMARILLO, "Onzas fluidas") + "                               " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[4]") + " " + aplicarColor(AMARILLO, "Onzas fluidas") + " → " + aplicarColor(AMARILLO, "Mililitros") + "                               " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-        System.out.println();
-        System.out.print(aplicarColor(VERDE, "Seleccione la conversión: "));
-    }
-
-    public void mostrarSubmenuArea() {
-        System.out.println(aplicarColor(VERDE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-        System.out.println(aplicarColor(VERDE, "                     CONVERSIONES DE ÁREA                                     "));
-        System.out.println(aplicarColor(VERDE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-        System.out.println();
-        System.out.println(aplicarColor(CELESTE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-        System.out.println(aplicarColor(CELESTE, "                              MENÚ ÁREA                                       "));
-        System.out.println(aplicarColor(CELESTE, "╠══════════════════════════════════════════════════════════════════════════════╣"));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[1]") + " " + aplicarColor(AMARILLO, "Metros cuadrados") + " → " + aplicarColor(AMARILLO, "Pies cuadrados") + "                            " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[2]") + " " + aplicarColor(AMARILLO, "Pies cuadrados") + " → " + aplicarColor(AMARILLO, "Metros cuadrados") + "                            " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[3]") + " " + aplicarColor(AMARILLO, "Hectáreas") + " → " + aplicarColor(AMARILLO, "Acres") + "                                        " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[4]") + " " + aplicarColor(AMARILLO, "Acres") + " → " + aplicarColor(AMARILLO, "Hectáreas") + "                                        " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-        System.out.println();
-        System.out.print(aplicarColor(VERDE, "Seleccione la conversión: "));
-    }
-
-    public void mostrarSubmenuConversionGenerica() {
-        System.out.println("\n╔══════════════════════════════════════════════════════════════╗");
-        System.out.println("║                    🔄 CONVERSIÓN GENÉRICA 🔄                 ║");
-        System.out.println("╚══════════════════════════════════════════════════════════════╝");
-        System.out.println("1. Realizar conversión genérica");
-        System.out.println();
-        System.out.print("Seleccione una opción (1): ");
-    }
 
     public double solicitarValor(String unidad) {
         while (true) {
@@ -258,27 +212,6 @@ public class ClienteConsolaREST {
         System.out.println(aplicarColor(ROJO, "ERROR: " + mensaje));
     }
 
-    public ConversionRequest solicitarConversionGenerica() {
-        System.out.println("\n╔══════════════════════════════════════════════════════════════╗");
-        System.out.println("║                    CONVERSIÓN GENÉRICA                        ║");
-        System.out.println("╚══════════════════════════════════════════════════════════════╝");
-        
-        System.out.print("Ingrese el valor a convertir: ");
-        double valor = scanner.nextDouble();
-        scanner.nextLine(); // Limpiar buffer
-        
-        System.out.print("Ingrese la unidad de origen: ");
-        String unidadOrigen = scanner.nextLine();
-        
-        System.out.print("Ingrese la unidad de destino: ");
-        String unidadDestino = scanner.nextLine();
-        
-        System.out.print("Ingrese la categoría (temperatura, longitud, peso, volumen, área): ");
-        String categoria = scanner.nextLine();
-        
-        return new ConversionRequest(valor, unidadOrigen, unidadDestino, categoria);
-    }
-
     public void mostrarResultado(ConversionResponse response) {
         System.out.println();
         
@@ -301,13 +234,6 @@ public class ClienteConsolaREST {
             System.out.println(aplicarColor(AMARILLO, "╚══════════════════════════════════════════════════════════════════════════════╝"));
         }
         System.out.println();
-    }
-
-    public void mostrarInfoServicio(String info) {
-        System.out.println("\n╔══════════════════════════════════════════════════════════════╗");
-        System.out.println("║                    INFORMACIÓN DEL SERVICIO                   ║");
-        System.out.println("╚══════════════════════════════════════════════════════════════╝");
-        System.out.println(info);
     }
 
     public void mostrarError(String mensaje) {

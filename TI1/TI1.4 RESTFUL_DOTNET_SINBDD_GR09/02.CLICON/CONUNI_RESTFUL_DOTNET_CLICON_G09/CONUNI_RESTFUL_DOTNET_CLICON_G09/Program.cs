@@ -15,7 +15,14 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09
             var vistaLogin = new VistaLogin();
             
             // Crear servicio de login
-            var loginService = new LoginService(vistaLogin);
+            string authBaseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
+            if (string.IsNullOrEmpty(authBaseUrl))
+            {
+                Console.WriteLine("Error: La URL del servicio API no está configurada en App.config");
+                return;
+            }
+
+            var loginService = new LoginService(vistaLogin, authBaseUrl);
 
             // Proceso de autenticación
             if (!await loginService.AutenticarAsync())
@@ -24,15 +31,8 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09
             }
 
             // Obtener URL del servicio desde App.config
-            string apiBaseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
-            if (string.IsNullOrEmpty(apiBaseUrl))
-            {
-                Console.WriteLine("Error: La URL del servicio API no está configurada en App.config");
-                return;
-            }
-            
             // Crear cliente API
-            var apiClient = new ConversionApiClient(apiBaseUrl);
+            var apiClient = new ConversionApiClient(authBaseUrl);
 
             // Crear instancia de prueba
             var prueba = new PruebaConversion(apiClient);

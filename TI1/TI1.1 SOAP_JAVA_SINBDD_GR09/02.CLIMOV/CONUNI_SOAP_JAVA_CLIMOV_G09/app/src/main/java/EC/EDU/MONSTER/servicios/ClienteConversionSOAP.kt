@@ -19,7 +19,7 @@ class
 ClienteConversionSOAP {
     
     companion object {
-        private const val BASE_URL = "http://10.92.232.246:8080/CONUNI_SOAP_JAVA_GR09/WSConversion"
+        private const val BASE_URL = "http://192.168.100.2:8080/CONUNI_SOAP_JAVA_GR09/WSConversion"
         private const val TIMEOUT = 30000 // 30 segundos
     }
     
@@ -60,6 +60,36 @@ ClienteConversionSOAP {
         
         println("Resultado obtenido: ${conversion.getResultadoFormateado()}")
         conversion
+    }
+
+    suspend fun login(usuario: String, contrasena: String): ResultadoLoginSOAP = withContext(Dispatchers.IO) {
+        try {
+            val soapEnvelope = """<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="http://servicios.monster.edu.ec/">
+    <soap:Body>
+        <tns:login>
+            <usuario>$usuario</usuario>
+            <contrasena>$contrasena</contrasena>
+        </tns:login>
+    </soap:Body>
+</soap:Envelope>"""
+
+            val response = enviarPeticionSOAP(soapEnvelope, "login")
+            val autenticado = Regex("<return>(.*?)</return>", RegexOption.IGNORE_CASE)
+                .find(response)
+                ?.groupValues
+                ?.get(1)
+                ?.trim()
+                ?.toBoolean()
+                ?: false
+
+            ResultadoLoginSOAP(
+                autenticado = autenticado,
+                mensaje = if (autenticado) "Autenticación exitosa" else "Credenciales incorrectas"
+            )
+        } catch (e: Exception) {
+            ResultadoLoginSOAP(false, "Error de conexión: ${e.message}")
+        }
     }
     
     /**
@@ -339,6 +369,11 @@ ClienteConversionSOAP {
         return llamadaSOAP("acresAHectareas", acres)
     }
     
+
+data class ResultadoLoginSOAP(
+    val autenticado: Boolean,
+    val mensaje: String
+)
     /**
      * Conversión local como fallback cuando el servidor no está disponible
      */

@@ -28,7 +28,7 @@
       const out = document.getElementById('out');
       out.textContent = 'Ejecutando...';
       try{
-        const apiUrl = window.API_BASE_URL || 'http://10.92.232.246:8080/CONUNI_RESTFUL_JAVA_GR09/api/conversion/convertir';
+        const apiUrl = window.API_BASE_URL || 'http://192.168.100.2:8080/CONUNI_RESTFUL_JAVA_GR09/api/conversion/convertir';
         const res = await fetch(apiUrl, {
           method:'POST', headers:{'Content-Type':'application/json'},
           body: JSON.stringify({ valor: 100, unidadOrigen: 'celsius', unidadDestino: 'fahrenheit', categoria: 'temperatura' })

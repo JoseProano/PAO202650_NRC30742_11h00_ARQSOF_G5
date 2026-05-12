@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import EC.EDU.MONSTER.R
 import EC.EDU.MONSTER.databinding.FragmentLoginBinding
+import EC.EDU.MONSTER.servicios.ClienteConversionSOAP
+import kotlinx.coroutines.launch
 
 /**
  * Fragmento de login para autenticación
@@ -20,10 +23,6 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    // Credenciales fijas
-    private val USUARIO_VALIDO = "MONSTER"
-    private val PASSWORD_VALIDO = "MONSTER9"
-    
     // Estado de visibilidad de contraseña
     private var isPasswordVisible = false
 
@@ -81,27 +80,18 @@ class LoginFragment : Fragment() {
             return
         }
 
-        // Mostrar loading
         mostrarLoading(true)
 
-        // Simular validación (en una app real sería asíncrona)
-        validarCredenciales(usuario, password)
-    }
+        viewLifecycleOwner.lifecycleScope.launch {
+            val resultado = ClienteConversionSOAP().login(usuario, password)
+            mostrarLoading(false)
 
-    private fun validarCredenciales(usuario: String, password: String) {
-        // Simular delay de red
-        binding.root.postDelayed({
-            if (usuario.equals(USUARIO_VALIDO, ignoreCase = true) && 
-                password == PASSWORD_VALIDO) {
-                // Login exitoso
-                mostrarLoading(false)
+            if (resultado.autenticado) {
                 navegarAMain()
             } else {
-                // Login fallido
-                mostrarLoading(false)
-                mostrarError("Usuario o contraseña incorrectos")
+                mostrarError(resultado.mensaje)
             }
-        }, 1000) // 1 segundo de delay
+        }
     }
 
     private fun navegarAMain() {

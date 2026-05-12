@@ -22,11 +22,9 @@ object ClienteConversionSoap {
     private const val TAG = "ClienteSOAP"
     private const val NAMESPACE = "http://tempuri.org/"
     
-    // URL del servicio SOAP - Cambiar según necesidad
-    // Para desarrollo local: localhost
-    // Para dispositivo físico: usar IP de la computadora (ej: 10.92.232.246)
-    private const val SERVER_IP = "10.92.232.246" // Cambiar por tu IP o usar "localhost" para emulador
-    private const val SERVER_PORT = "8085"
+    // URL del servicio SOAP para emulador Android local.
+    private const val SERVER_IP = "192.168.100.2"
+    private const val SERVER_PORT = "62533"
     private const val URL = "http://$SERVER_IP:$SERVER_PORT/Service1.svc"
     
     private const val INTERFAZ_NOMBRE = "WSConversion" // (De [ServiceContract(Name = ...)])
@@ -116,16 +114,7 @@ object ClienteConversionSoap {
             methodName.contains("Kilogramos") -> "kilogramos"
             methodName.contains("Onzas") -> "onzas"
             methodName.contains("Gramos") -> "gramos"
-            // Volumen
-            methodName.contains("Galones") -> "galones"
-            methodName.contains("Litros") -> "litros"
-            methodName.contains("OnzasFluidas") -> "onzasFluidas"
-            methodName.contains("Mililitros") -> "mililitros"
-            // Área
-            methodName.contains("PiesCuadrados") -> "piesCuadrados"
-            methodName.contains("MetrosCuadrados") -> "metrosCuadrados"
-            methodName.contains("Acres") -> "acres"
-            methodName.contains("Hectareas") -> "hectareas"
+
 
             else -> "desconocida"
         }
@@ -187,29 +176,4 @@ object ClienteConversionSoap {
     suspend fun onzasAGramos(onzas: Double) =
         callConversionMethod("onzasAGramos", "onzas", onzas)
 
-    // --- Volumen ---
-    suspend fun litrosAGalones(litros: Double) =
-        callConversionMethod("litrosAGalones", "litros", litros)
-
-    suspend fun galonesALitros(galones: Double) =
-        callConversionMethod("galonesALitros", "galones", galones)
-
-    suspend fun mililitrosAOnzasFluidas(mililitros: Double) =
-        callConversionMethod("mililitrosAOnzasFluidas", "mililitros", mililitros)
-
-    suspend fun onzasFluidasAMililitros(onzasFluidas: Double) =
-        callConversionMethod("onzasFluidasAMililitros", "onzasFluidas", onzasFluidas)
-
-    // --- Área ---
-    suspend fun metrosCuadradosAPiesCuadrados(metrosCuadrados: Double) =
-        callConversionMethod("metrosCuadradosAPiesCuadrados", "metrosCuadrados", metrosCuadrados)
-
-    suspend fun piesCuadradosAMetrosCuadrados(piesCuadrados: Double) =
-        callConversionMethod("piesCuadradosAMetrosCuadrados", "piesCuadrados", piesCuadrados)
-
-    suspend fun hectareasAAcres(hectareas: Double) =
-        callConversionMethod("hectareasAAcres", "hectareas", hectareas)
-
-    suspend fun acresAHectareas(acres: Double) =
-        callConversionMethod("acresAHectareas", "acres", acres)
 }

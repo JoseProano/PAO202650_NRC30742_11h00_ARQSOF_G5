@@ -30,7 +30,7 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
         /// Las credenciales residen SOLO en el servidor.
         /// </summary>
         private static readonly string AUTH_URL =
-            "http://localhost/CONUNI_RESTFUL_DOTNET_GR9S/api/auth/login";
+            "http://192.168.100.2:44385/api/auth/login";
 
         private Panel panelPrincipal;
         private Panel panelIzquierdo;

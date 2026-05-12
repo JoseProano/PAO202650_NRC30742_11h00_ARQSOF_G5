@@ -81,13 +81,9 @@ namespace ec.edu.monster.controlador
                     ManejarPeso();
                     break;
                 case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
                     EjecutarPruebasAutomaticas();
                     break;
-                case 7:
+                case 5:
                     EjecutarPruebasIndividuales();
                     break;
                 default:
@@ -164,41 +160,7 @@ namespace ec.edu.monster.controlador
             }
         }
         
-        /// <summary>
-        /// </summary>
-        {
-            
-            int subOpcion = vistaMenu.LeerOpcion();
-            
-            if (operacion != null)
-            {
-                double valor = vistaMenu.LeerValor();
-                vistaMenu.MostrarResultado(resultado);
-            }
-            else
-            {
-                vistaMenu.MostrarOpcionInvalida();
-            }
-        }
-        
-        /// <summary>
-        /// Maneja las conversiones de área
-        /// </summary>
-        {
-            
-            int subOpcion = vistaMenu.LeerOpcion();
-            
-            if (operacion != null)
-            {
-                double valor = vistaMenu.LeerValor();
-                vistaMenu.MostrarResultado(resultado);
-            }
-            else
-            {
-                vistaMenu.MostrarOpcionInvalida();
-            }
-        }
-        
+
         /// <summary>
         /// Ejecuta pruebas automáticas
         /// </summary>
@@ -313,19 +275,7 @@ namespace ec.edu.monster.controlador
             }
         }
         
-        {
-            switch (opcion)
-            {
-                default: return null;
-            }
-        }
-        
-        {
-            switch (opcion)
-            {
-                default: return null;
-            }
-        }
+
         
         /// <summary>
         /// Cierra los recursos

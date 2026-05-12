@@ -9,6 +9,10 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
     [ServiceContract(Name = "WSConversion", Namespace = "http://tempuri.org/")]
     public interface IWSConversion
     {
+        // Autenticación
+        [OperationContract(Name = "login")]
+        bool Login(string usuario, string contrasena);
+
         // Conversiones de Temperatura
         [OperationContract(Name = "celsiusAFahrenheit")]
         double CelsiusAFahrenheit(double celsius);

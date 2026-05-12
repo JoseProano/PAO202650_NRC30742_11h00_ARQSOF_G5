@@ -31,20 +31,7 @@
         android:icon="@android:drawable/ic_menu_edit"
         app:showAsAction="ifRoom" />
     
-    <item
-        android:id="@+id/action_volumen"
-        android:orderInCategory="4"
-        android:title="🧪 Volumen"
-        android:icon="@android:drawable/ic_menu_edit"
-        app:showAsAction="ifRoom" />
-    
-    <item
-        android:id="@+id/action_area"
-        android:orderInCategory="5"
-        android:title="📐 Área"
-        android:icon="@android:drawable/ic_menu_edit"
-        app:showAsAction="ifRoom" />
-    
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

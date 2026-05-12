@@ -93,10 +93,7 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.vista
             Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[1]") + " Conversiones de " + AplicarColor(AMARILLO, "Temperatura") + "                                         " + AplicarColor(CELESTE, ""));
             Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[2]") + " Conversiones de " + AplicarColor(AMARILLO, "Longitud") + "                                       " + AplicarColor(CELESTE, ""));
             Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[3]") + " Conversiones de " + AplicarColor(AMARILLO, "Peso/Masa") + "                                    " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[4]") + " Conversiones de " + AplicarColor(AMARILLO, "Volumen") + "                                    " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[5]") + " Conversiones de " + AplicarColor(AMARILLO, "Área") + "                                              " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[6]") + " Conversión Genérica                                                      " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[7]") + " Información del Servicio                                                 " + AplicarColor(CELESTE, ""));
+            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[4]") + " Información del Servicio                                                 " + AplicarColor(CELESTE, ""));
             Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(ROJO, "[0]") + " Salir                                                                   " + AplicarColor(CELESTE, ""));
             Console.WriteLine(AplicarColor(CELESTE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
             Console.WriteLine();
@@ -174,43 +171,7 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.vista
             Console.Write(AplicarColor(VERDE, "Seleccione la conversión: "));
         }
 
-        public void MostrarSubmenuVolumen()
-        {
-            Console.WriteLine(AplicarColor(VERDE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-            Console.WriteLine(AplicarColor(VERDE, "                         CONVERSIONES DE VOLUMEN                              "));
-            Console.WriteLine(AplicarColor(VERDE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-            Console.WriteLine();
-            Console.WriteLine(AplicarColor(CELESTE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-            Console.WriteLine(AplicarColor(CELESTE, "                              MENÚ VOLUMEN                                   "));
-            Console.WriteLine(AplicarColor(CELESTE, "╠══════════════════════════════════════════════════════════════════════════════╣"));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[1]") + " " + AplicarColor(AMARILLO, "Litros") + " → " + AplicarColor(AMARILLO, "Galones") + "                                        " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[2]") + " " + AplicarColor(AMARILLO, "Galones") + " → " + AplicarColor(AMARILLO, "Litros") + "                                        " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[3]") + " " + AplicarColor(AMARILLO, "Mililitros") + " → " + AplicarColor(AMARILLO, "Onzas Fluidas") + "                                    " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[4]") + " " + AplicarColor(AMARILLO, "Onzas Fluidas") + " → " + AplicarColor(AMARILLO, "Mililitros") + "                                    " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(ROJO, "[0]") + " Volver al menú principal                                               " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-            Console.WriteLine();
-            Console.Write(AplicarColor(VERDE, "Seleccione la conversión: "));
-        }
 
-        public void MostrarSubmenuArea()
-        {
-            Console.WriteLine(AplicarColor(VERDE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-            Console.WriteLine(AplicarColor(VERDE, "                         CONVERSIONES DE ÁREA                                 "));
-            Console.WriteLine(AplicarColor(VERDE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-            Console.WriteLine();
-            Console.WriteLine(AplicarColor(CELESTE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-            Console.WriteLine(AplicarColor(CELESTE, "                              MENÚ ÁREA                                      "));
-            Console.WriteLine(AplicarColor(CELESTE, "╠══════════════════════════════════════════════════════════════════════════════╣"));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[1]") + " " + AplicarColor(AMARILLO, "Metros Cuadrados") + " → " + AplicarColor(AMARILLO, "Pies Cuadrados") + "                                " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[2]") + " " + AplicarColor(AMARILLO, "Pies Cuadrados") + " → " + AplicarColor(AMARILLO, "Metros Cuadrados") + "                                " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[3]") + " " + AplicarColor(AMARILLO, "Hectáreas") + " → " + AplicarColor(AMARILLO, "Acres") + "                                          " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(VERDE, "[4]") + " " + AplicarColor(AMARILLO, "Acres") + " → " + AplicarColor(AMARILLO, "Hectáreas") + "                                          " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "") + "  " + AplicarColor(ROJO, "[0]") + " Volver al menú principal                                               " + AplicarColor(CELESTE, ""));
-            Console.WriteLine(AplicarColor(CELESTE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-            Console.WriteLine();
-            Console.Write(AplicarColor(VERDE, "Seleccione la conversión: "));
-        }
 
         public double SolicitarValor(string unidad)
         {
@@ -248,29 +209,6 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.vista
         public void MostrarErrorEntrada(string mensaje)
         {
             Console.WriteLine(AplicarColor(ROJO, "ERROR: " + mensaje));
-        }
-
-        public ConversionRequest SolicitarConversionGenerica()
-        {
-            Console.WriteLine();
-            Console.WriteLine(AplicarColor(VERDE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-            Console.WriteLine(AplicarColor(VERDE, "                         CONVERSIÓN GENÉRICA                                  "));
-            Console.WriteLine(AplicarColor(VERDE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-            Console.WriteLine();
-            
-            Console.Write(AplicarColor(AMARILLO, "Ingrese el valor a convertir: "));
-            double valor = SolicitarValor("");
-            
-            Console.Write(AplicarColor(AMARILLO, "Ingrese la unidad de origen: "));
-            string unidadOrigen = Console.ReadLine()?.Trim() ?? "";
-            
-            Console.Write(AplicarColor(AMARILLO, "Ingrese la unidad de destino: "));
-            string unidadDestino = Console.ReadLine()?.Trim() ?? "";
-            
-            Console.Write(AplicarColor(AMARILLO, "Ingrese la categoría (temperatura, longitud, peso, volumen, área): "));
-            string categoria = Console.ReadLine()?.Trim() ?? "";
-            
-            return new ConversionRequest(valor, unidadOrigen, unidadDestino, categoria);
         }
 
         public void MostrarResultado(ConversionResponse response)

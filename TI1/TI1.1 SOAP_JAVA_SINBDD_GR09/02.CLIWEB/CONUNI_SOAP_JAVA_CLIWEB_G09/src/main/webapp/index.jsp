@@ -198,14 +198,6 @@
             background-color: var(--monster-pink);
         }
 
-            background-color: var(--monster-yellow);
-            color: var(--monster-dark);
-        }
-
-            background-color: var(--monster-light-blue);
-            color: var(--monster-dark);
-        }
-
         .category-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
@@ -655,10 +647,6 @@
                     <i class="fas fa-weight"></i>
                     Peso
                 </button>
-                    <i class="fas fa-flask"></i>
-                </button>
-                    <i class="fas fa-square"></i>
-                </button>
             </div>
         </div>
 
@@ -744,38 +732,6 @@
                 <div class="result-text">Resultado aparecerá aquí</div>
             </div>
         </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="volumeValue">Valor a convertir:</label>
-                </div>
-                <div class="form-group">
-                    <label for="volumeConversion">Tipo de conversión:</label>
-                    <select id="volumeConversion">
-                    </select>
-                </div>
-            </div>
-                <i class="fas fa-exchange-alt"></i> CONVERTIR
-            </button>
-            <div class="results-section" id="volumeResults">
-                <div class="result-text">Resultado aparecerá aquí</div>
-            </div>
-        </div>
-
-        <!-- ÁREA -->
-            <h3 class="conversion-title">CONVERSIONES DE ÁREA</h3>
-            <div class="form-row">
-                <div class="form-group">
-                </div>
-                <div class="form-group">
-                    </select>
-                </div>
-            </div>
-                <i class="fas fa-exchange-alt"></i> CONVERTIR
-            </button>
-                <div class="result-text">Resultado aparecerá aquí</div>
-            </div>
-        </div>
     </div>
 
     <!-- Footer -->
@@ -809,7 +765,6 @@
                     <li><strong>TEMPERATURA:</strong> Celsius, Fahrenheit, Kelvin</li>
                     <li><strong>LONGITUD:</strong> Metros, Pies, Pulgadas, Yardas</li>
                     <li><strong>PESO:</strong> Kilogramos, Libras, Onzas</li>
-                    <li><strong>ÁREA:</strong> Metros cuadrados, Pies cuadrados</li>
                 </ul>
                 
                 <p style="margin-top: 15px;">Simplemente selecciona el tipo de conversión, ingresa el valor y elige las unidades para obtener el resultado al instante.</p>
@@ -893,13 +848,6 @@
             const valor = document.getElementById('weightValue').value;
             const operacion = document.getElementById('weightConversion').value;
             realizarConversion(operacion, valor, 'weightResults');
-        }
-
-            const valor = document.getElementById('volumeValue').value;
-            const operacion = document.getElementById('volumeConversion').value;
-            realizarConversion(operacion, valor, 'volumeResults');
-        }
-
         }
 
         function realizarConversion(operacion, valor, resultId) {

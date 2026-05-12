@@ -2,7 +2,6 @@ package ec.edu.monster.prueba;
 
 import ec.edu.monster.modelo.ConversionRequest;
 import ec.edu.monster.modelo.ConversionResponse;
-import ec.edu.monster.servicios.ConversionService;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
@@ -45,10 +44,7 @@ public class PruebaClienteREST {
             
             // Probar conversiones de peso
             tester.probarConversionesPeso();
-            
-            
-            // Probar conversiones de área
-            
+
             // Probar endpoint genérico
             tester.probarEndpointGenerico();
             
@@ -159,31 +155,7 @@ public class PruebaClienteREST {
         
         System.out.println();
     }
-    
-    /**
-     */
-        
-        
-        
-        
-        
-        System.out.println();
-    }
-    
-    /**
-     * Prueba todas las conversiones de área
-     */
-        System.out.println("📐 Probando conversiones de área...");
-        
-        // Metros cuadrados a pies cuadrados
-        
-        // Pies cuadrados a metros cuadrados
-        
-        
-        
-        System.out.println();
-    }
-    
+
     /**
      * Prueba el endpoint genérico de conversión
      */
@@ -245,3 +217,5 @@ public class PruebaClienteREST {
         if (client != null) {
             client.close();
         }
+    }
+}

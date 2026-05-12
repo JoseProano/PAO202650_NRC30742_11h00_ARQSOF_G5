@@ -12,8 +12,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jakartaee>10.0.0</jakartaee>
-    <!-- Compila con JDK 17 -->
-    <maven.compiler.release>17</maven.compiler.release>
+    <!-- Compila con JDK 11+, suficiente para Payara 6 / Jakarta EE 10 -->
+    <maven.compiler.release>11</maven.compiler.release>
   </properties>
 
   <dependencies>
@@ -91,7 +91,7 @@
             <configuration>
               <rules>
                 <requireJavaVersion>
-                  <version>[17,)</version>
+                  <version>[11,)</version>
                 </requireJavaVersion>
               </rules>
               <fail>true</fail>

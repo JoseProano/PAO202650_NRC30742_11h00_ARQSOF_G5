@@ -1,6 +1,5 @@
 package ec.edu.monster.controlador;
 
-import ec.edu.monster.modelo.ConversionRequest;
 import ec.edu.monster.modelo.ConversionResponse;
 import ec.edu.monster.servicios.ConversionService;
 import ec.edu.monster.vista.ClienteConsolaREST;
@@ -43,13 +42,11 @@ public class ClienteController {
                     case 1 -> manejarTemperatura();
                     case 2 -> manejarLongitud();
                     case 3 -> manejarPeso();
-                    case 6 -> manejarConversionGenerica();
-                    case 7 -> mostrarInfoServicio();
                     case 0 -> continuar = false;
                     default -> vista.mostrarError("Opción inválida. Intente nuevamente.");
                 }
                 
-                if (continuar && opcion != 7) {
+                if (continuar) {
                     vista.mostrarPausa();
                 }
                 
@@ -188,87 +185,4 @@ public class ClienteController {
             vista.mostrarError("Debe ingresar un número válido.");
         }
     }
-
-        
-        try {
-            String entrada = scanner.nextLine().trim();
-            int opcion = Integer.parseInt(entrada);
-            
-            switch (opcion) {
-            case 1 -> {
-                ConversionResponse response = conversionService.litrosAGalones(litros);
-                vista.mostrarResultado(response);
-            }
-            case 2 -> {
-                ConversionResponse response = conversionService.galonesALitros(galones);
-                vista.mostrarResultado(response);
-            }
-            case 3 -> {
-                ConversionResponse response = conversionService.mililitrosAOnzasFluidas(mililitros);
-                vista.mostrarResultado(response);
-            }
-            case 4 -> {
-                double onzasFluidas = vista.solicitarValor("Onzas Fluidas");
-                ConversionResponse response = conversionService.onzasFluidasAMililitros(onzasFluidas);
-                vista.mostrarResultado(response);
-            }
-            default -> vista.mostrarError("Opción inválida.");
-            }
-        } catch (NumberFormatException e) {
-            vista.mostrarError("Debe ingresar un número válido.");
-        }
-    }
-
-        
-        try {
-            String entrada = scanner.nextLine().trim();
-            int opcion = Integer.parseInt(entrada);
-            
-            switch (opcion) {
-            case 1 -> {
-                double metrosCuadrados = vista.solicitarValor("Metros Cuadrados");
-                ConversionResponse response = conversionService.metrosCuadradosAPiesCuadrados(metrosCuadrados);
-                vista.mostrarResultado(response);
-            }
-            case 2 -> {
-                double piesCuadrados = vista.solicitarValor("Pies Cuadrados");
-                ConversionResponse response = conversionService.piesCuadradosAMetrosCuadrados(piesCuadrados);
-                vista.mostrarResultado(response);
-            }
-            case 3 -> {
-                ConversionResponse response = conversionService.hectareasAAcres(hectareas);
-                vista.mostrarResultado(response);
-            }
-            case 4 -> {
-                ConversionResponse response = conversionService.acresAHectareas(acres);
-                vista.mostrarResultado(response);
-            }
-            default -> vista.mostrarError("Opción inválida.");
-            }
-        } catch (NumberFormatException e) {
-            vista.mostrarError("Debe ingresar un número válido.");
-        }
-    }
-
-    private void manejarConversionGenerica() {
-        vista.mostrarSubmenuConversionGenerica();
-        
-        try {
-            String entrada = scanner.nextLine().trim();
-            int opcion = Integer.parseInt(entrada);
-            
-            if (opcion == 1) {
-                ConversionRequest request = vista.solicitarConversionGenerica();
-                ConversionResponse response = conversionService.convertir(request);
-                vista.mostrarResultado(response);
-            } else {
-                vista.mostrarError("Opción inválida.");
-            }
-        } catch (NumberFormatException e) {
-            vista.mostrarError("Debe ingresar un número válido.");
-        }
-    }
-
-    private void mostrarInfoServicio() {
-        String info = conversionService.obtenerInfoServicio();
-        vista.mostrarInfoServicio(info);
+}

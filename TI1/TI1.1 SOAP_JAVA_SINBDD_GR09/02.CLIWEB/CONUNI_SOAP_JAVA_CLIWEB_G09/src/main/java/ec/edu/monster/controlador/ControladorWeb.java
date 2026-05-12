@@ -151,7 +151,9 @@ public class ControladorWeb extends HttpServlet {
                 return;
             }
             
-            if ("MONSTER".equals(usuario) && "MONSTER9".equals(contrasena)) {
+            boolean loginExitoso = getClienteSOAP().login(usuario, contrasena);
+            
+            if (loginExitoso) {
                 // Crear sesión
                 HttpSession session = request.getSession(true);
                 session.setAttribute("usuario", usuario);
@@ -160,7 +162,7 @@ public class ControladorWeb extends HttpServlet {
                 System.out.println("Login exitoso para usuario: " + usuario);
                 out.print("{\"exitoso\": true, \"mensaje\": \"Login exitoso\"}");
             } else {
-                System.out.println("Credenciales incorrectas");
+                System.out.println("Credenciales incorrectas devueltas por el servidor SOAP");
                 out.print("{\"exitoso\": false, \"mensaje\": \"Usuario o contraseña incorrectos\"}");
             }
         } catch (Exception e) {
@@ -241,8 +243,7 @@ public class ControladorWeb extends HttpServlet {
                 case "peso":
                     resultado = convertirPeso(operacion, valor);
                     break;
-                    break;
-                    break;
+
                 default:
                     resultado.setExitosa(false);
                     resultado.setMensajeError("Tipo de conversión no válido");
@@ -327,29 +328,7 @@ public class ControladorWeb extends HttpServlet {
         }
     }
     
-    /**
-     */
-        switch (operacion) {
-            default:
-                Conversion error = new Conversion();
-                error.setExitosa(false);
-                return error;
-        }
-    }
-    
-    /**
-     * Convierte área
-     */
-        switch (operacion) {
-            default:
-                Conversion error = new Conversion();
-                error.setExitosa(false);
-                error.setMensajeError("Operación de área no válida: " + operacion);
-                return error;
-        }
-    }
-    
-    
+
     /**
      * Verifica si el servicio SOAP está disponible
      */
@@ -381,3 +360,5 @@ public class ControladorWeb extends HttpServlet {
             System.err.println("Error al enviar error: " + e.getMessage());
             out.print("{\"exitoso\": false, \"mensaje\": \"Error interno\"}");
         }
+    }
+}

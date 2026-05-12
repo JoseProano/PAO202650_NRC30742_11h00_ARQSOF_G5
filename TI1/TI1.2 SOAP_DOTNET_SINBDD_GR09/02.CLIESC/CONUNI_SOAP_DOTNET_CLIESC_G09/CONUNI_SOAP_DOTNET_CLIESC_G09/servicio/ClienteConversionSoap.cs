@@ -10,7 +10,7 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
     /// </summary>
     public class ClienteConversionSoap
     {
-        private const string URL_SERVICIO = "http://10.92.232.246:8085/Service1.svc";
+        private const string URL_SERVICIO = "http://192.168.100.2:62533/Service1.svc";
         private const string NAMESPACE = "http://tempuri.org/";
         private const string INTERFAZ_NOMBRE = "WSConversion";
 
@@ -64,6 +64,11 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
             {
                 throw new Exception($"Error al conectar con el servicio SOAP: {ex.Message}", ex);
             }
+        }
+
+        public bool Login(string usuario, string contrasena)
+        {
+            return _proxy.Login(usuario, contrasena);
         }
 
         // ========== TEMPERATURA ==========
@@ -474,178 +479,6 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
                     UnidadOrigen = "onzas",
                     UnidadDestino = "gramos",
                     Categoria = "peso",
-                    Exito = true,
-                    Mensaje = "Conversión exitosa"
-                };
-            }
-            catch (Exception ex)
-            {
-                return new ConversionResponse
-                {
-                    Exito = false,
-                    Mensaje = ObtenerMensajeErrorAmigable(ex)
-                };
-            }
-        }
-
-
-        {
-            try
-            {
-                return new ConversionResponse
-                {
-                    ValorConvertido = resultado,
-                    Exito = true,
-                    Mensaje = "Conversión exitosa"
-                };
-            }
-            catch (Exception ex)
-            {
-                return new ConversionResponse
-                {
-                    Exito = false,
-                    Mensaje = ObtenerMensajeErrorAmigable(ex)
-                };
-            }
-        }
-
-        {
-            try
-            {
-                return new ConversionResponse
-                {
-                    ValorConvertido = resultado,
-                    Exito = true,
-                    Mensaje = "Conversión exitosa"
-                };
-            }
-            catch (Exception ex)
-            {
-                return new ConversionResponse
-                {
-                    Exito = false,
-                    Mensaje = ObtenerMensajeErrorAmigable(ex)
-                };
-            }
-        }
-
-        {
-            try
-            {
-                return new ConversionResponse
-                {
-                    ValorConvertido = resultado,
-                    UnidadDestino = "onzasFluidas",
-                    Exito = true,
-                    Mensaje = "Conversión exitosa"
-                };
-            }
-            catch (Exception ex)
-            {
-                return new ConversionResponse
-                {
-                    Exito = false,
-                    Mensaje = ObtenerMensajeErrorAmigable(ex)
-                };
-            }
-        }
-
-        {
-            try
-            {
-                return new ConversionResponse
-                {
-                    ValorOriginal = onzasFluidas,
-                    ValorConvertido = resultado,
-                    UnidadOrigen = "onzasFluidas",
-                    Exito = true,
-                    Mensaje = "Conversión exitosa"
-                };
-            }
-            catch (Exception ex)
-            {
-                return new ConversionResponse
-                {
-                    Exito = false,
-                    Mensaje = ObtenerMensajeErrorAmigable(ex)
-                };
-            }
-        }
-
-        // ========== ÁREA ==========
-
-        {
-            try
-            {
-                return new ConversionResponse
-                {
-                    ValorOriginal = metrosCuadrados,
-                    ValorConvertido = resultado,
-                    UnidadOrigen = "metrosCuadrados",
-                    UnidadDestino = "piesCuadrados",
-                    Exito = true,
-                    Mensaje = "Conversión exitosa"
-                };
-            }
-            catch (Exception ex)
-            {
-                return new ConversionResponse
-                {
-                    Exito = false,
-                    Mensaje = ObtenerMensajeErrorAmigable(ex)
-                };
-            }
-        }
-
-        {
-            try
-            {
-                return new ConversionResponse
-                {
-                    ValorOriginal = piesCuadrados,
-                    ValorConvertido = resultado,
-                    UnidadOrigen = "piesCuadrados",
-                    UnidadDestino = "metrosCuadrados",
-                    Exito = true,
-                    Mensaje = "Conversión exitosa"
-                };
-            }
-            catch (Exception ex)
-            {
-                return new ConversionResponse
-                {
-                    Exito = false,
-                    Mensaje = ObtenerMensajeErrorAmigable(ex)
-                };
-            }
-        }
-
-        {
-            try
-            {
-                return new ConversionResponse
-                {
-                    ValorConvertido = resultado,
-                    Exito = true,
-                    Mensaje = "Conversión exitosa"
-                };
-            }
-            catch (Exception ex)
-            {
-                return new ConversionResponse
-                {
-                    Exito = false,
-                    Mensaje = ObtenerMensajeErrorAmigable(ex)
-                };
-            }
-        }
-
-        {
-            try
-            {
-                return new ConversionResponse
-                {
-                    ValorConvertido = resultado,
                     Exito = true,
                     Mensaje = "Conversión exitosa"
                 };

@@ -130,34 +130,7 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.servicio
             return await GetConversionAsync($"{_baseUrl}/api/conversion/peso/onzas-to-gramos?onzas={onzas}");
         }
 
-        
-        {
-        }
 
-        {
-        }
-
-        {
-        }
-
-        {
-        }
-
-        // ========== ÁREA ==========
-        
-        {
-        }
-
-        {
-        }
-
-        {
-        }
-
-        {
-        }
-
-        // ========== CONVERSIÓN GENÉRICA ==========
         
         public async Task<ConversionResponse> ConvertirAsync(ConversionRequest request)
         {

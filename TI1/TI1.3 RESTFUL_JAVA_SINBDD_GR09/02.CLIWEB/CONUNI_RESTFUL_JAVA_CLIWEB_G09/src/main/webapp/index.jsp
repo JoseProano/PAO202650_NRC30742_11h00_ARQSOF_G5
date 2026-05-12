@@ -205,13 +205,7 @@
             background-color: var(--monster-pink);
         }
 
-            background-color: var(--monster-yellow);
-            color: var(--monster-dark);
-        }
 
-            background-color: var(--monster-light-blue);
-            color: var(--monster-dark);
-        }
 
         .category-btn:hover {
             transform: translateY(-3px);
@@ -661,11 +655,6 @@
                 <button class="category-btn peso" data-category="peso">
                     <i class="fas fa-weight"></i>
                     Peso
-                </button>
-                    <i class="fas fa-flask"></i>
-                </button>
-                    <i class="fas fa-square"></i>
-                </button>
             </div>
         </div>
 
@@ -748,38 +737,6 @@
                 <i class="fas fa-exchange-alt"></i> CONVERTIR
             </button>
             <div class="results-section" id="weightResults">
-                <div class="result-text">Resultado aparecerá aquí</div>
-            </div>
-        </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="volumeValue">Valor a convertir:</label>
-                </div>
-                <div class="form-group">
-                    <label for="volumeConversion">Tipo de conversión:</label>
-                    <select id="volumeConversion">
-                    </select>
-                </div>
-            </div>
-                <i class="fas fa-exchange-alt"></i> CONVERTIR
-            </button>
-            <div class="results-section" id="volumeResults">
-                <div class="result-text">Resultado aparecerá aquí</div>
-            </div>
-        </div>
-
-        <!-- ÁREA -->
-            <h3 class="conversion-title">CONVERSIONES DE ÁREA</h3>
-            <div class="form-row">
-                <div class="form-group">
-                </div>
-                <div class="form-group">
-                    </select>
-                </div>
-            </div>
-                <i class="fas fa-exchange-alt"></i> CONVERTIR
-            </button>
                 <div class="result-text">Resultado aparecerá aquí</div>
             </div>
         </div>
@@ -902,12 +859,7 @@
             realizarConversion(operacion, valor, 'weightResults');
         }
 
-            const valor = document.getElementById('volumeValue').value;
-            const operacion = document.getElementById('volumeConversion').value;
-            realizarConversion(operacion, valor, 'volumeResults');
-        }
 
-        }
 
         function realizarConversion(operacion, valor, resultId) {
             if (!valor || valor === '') {

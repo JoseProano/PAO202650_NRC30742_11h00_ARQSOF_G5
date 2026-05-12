@@ -12,7 +12,7 @@ namespace CONUNI_RESTFUL_DOTNET_CLIESC_G09.vista
     {
         // Las credenciales residen SOLO en el servidor REST.
         private static readonly string AUTH_URL =
-            "http://localhost/CONUNI_RESTFUL_DOTNET_GR9S/api/auth/login";
+            "http://192.168.100.2:44385/api/auth/login";
         private int intentos = 0;
         private const int MAX_INTENTOS = 3;
 

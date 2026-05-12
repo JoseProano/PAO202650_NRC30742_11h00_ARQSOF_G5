@@ -353,11 +353,7 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.vista
             ActualizarBotonActivo(btnPeso);
         }
 
-        {
-        }
 
-        {
-        }
 
         private void CambiarPanel(Panel nuevoPanel)
         {
@@ -370,7 +366,8 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.vista
 
         private void ActualizarBotonActivo(Button botonActivo)
         {
-            Color[] colores = { AZUL_PRINCIPAL, PURPURA_MONSTER, ROJO_MONSTER, AMARILLO_MONSTER, AZUL_CLARO };
+            Color[] colores = { AZUL_PRINCIPAL, PURPURA_MONSTER, ROJO_MONSTER };
+            Button[] botones = { btnTemperatura, btnLongitud, btnPeso };
 
             for (int i = 0; i < botones.Length; i++)
             {
@@ -402,8 +399,7 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.vista
                            "Esta aplicación te permite realizar conversiones entre diferentes unidades de medida:\n\n" +
                            "• TEMPERATURA: Celsius, Fahrenheit, Kelvin\n" +
                            "• LONGITUD: Metros, Pies, Pulgadas, Yardas\n" +
-                           "• PESO: Kilogramos, Libras, Onzas\n" +
-                           "• ÁREA: Metros cuadrados, Pies cuadrados\n\n" +
+                           "• PESO: Kilogramos, Libras, Onzas\n\n" +
                            "Simplemente selecciona el tipo de conversión, ingresa el valor y elige las unidades " +
                            "para obtener el resultado al instante.";
 

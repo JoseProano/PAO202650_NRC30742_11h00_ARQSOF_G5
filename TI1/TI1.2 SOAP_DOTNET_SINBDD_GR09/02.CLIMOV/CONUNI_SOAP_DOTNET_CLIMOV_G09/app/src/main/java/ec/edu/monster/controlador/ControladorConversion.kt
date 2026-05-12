@@ -67,35 +67,6 @@ class ControladorConversion {
             }
         }
     }
-    suspend fun convertirVolumen(operacion: String, valor: Double): Conversion {
-        return when (operacion) {
-            "litrosAGalones" -> clienteSOAP.litrosAGalones(valor)
-            "galonesALitros" -> clienteSOAP.galonesALitros(valor)
-            "mililitrosAOnzasFluidas" -> clienteSOAP.mililitrosAOnzasFluidas(valor)
-            "onzasFluidasAMililitros" -> clienteSOAP.onzasFluidasAMililitros(valor)
-            else -> {
-                val error = Conversion()
-                error.exitosa = false
-                error.mensajeError = "Operación de volumen no válida: $operacion"
-                error
-            }
-        }
-    }
-
-    suspend fun convertirArea(operacion: String, valor: Double): Conversion {
-        return when (operacion) {
-            "metrosCuadradosAPiesCuadrados" -> clienteSOAP.metrosCuadradosAPiesCuadrados(valor)
-            "piesCuadradosAMetrosCuadrados" -> clienteSOAP.piesCuadradosAMetrosCuadrados(valor)
-            "hectareasAAcres" -> clienteSOAP.hectareasAAcres(valor)
-            "acresAHectareas" -> clienteSOAP.acresAHectareas(valor)
-            else -> {
-                val error = Conversion()
-                error.exitosa = false
-                error.mensajeError = "Operación de área no válida: $operacion"
-                error
-            }
-        }
-    }
 
 
     /**
@@ -127,23 +98,6 @@ class ControladorConversion {
             "librasAKilogramos" to "Libras -> Kilogramos",
             "gramosAOnzas" to "Gramos -> Onzas",
             "onzasAGramos" to "Onzas -> Gramos"
-        )
-    }
-    fun getOperacionesVolumen(): List<Pair<String, String>> {
-        return listOf(
-            "litrosAGalones" to "Litros -> Galones",
-            "galonesALitros" to "Galones -> Litros",
-            "mililitrosAOnzasFluidas" to "Mililitros -> Onzas Fluidas",
-            "onzasFluidasAMililitros" to "Onzas Fluidas -> Mililitros"
-        )
-    }
-
-    fun getOperacionesArea(): List<Pair<String, String>> {
-        return listOf(
-            "metrosCuadradosAPiesCuadrados" to "Metros² -> Pies²",
-            "piesCuadradosAMetrosCuadrados" to "Pies² -> Metros²",
-            "hectareasAAcres" to "Hectáreas -> Acres",
-            "acresAHectareas" to "Acres -> Hectáreas"
         )
     }
 

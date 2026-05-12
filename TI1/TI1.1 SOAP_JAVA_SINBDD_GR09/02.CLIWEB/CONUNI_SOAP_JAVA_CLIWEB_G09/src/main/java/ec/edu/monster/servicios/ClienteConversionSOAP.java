@@ -3,6 +3,7 @@ package ec.edu.monster.servicios;
 import ec.edu.monster.modelo.Conversion;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -17,6 +18,78 @@ public class ClienteConversionSOAP {
     private static final String BASE_URL = "http://localhost:8080/CONUNI_SOAP_JAVA_GR09/WSConversion";
     private static final int TIMEOUT = 30000; // 30 segundos
     
+    // ========== MÉTODO DE AUTENTICACIÓN ==========
+
+    /**
+     * Llama a la operación {@code login} del servidor SOAP para validar credenciales.
+     * El cliente NUNCA almacena ni conoce las credenciales correctas.
+     *
+     * @param usuario   nombre de usuario ingresado
+     * @param contrasena contraseña ingresada
+     * @return {@code true} si el servidor confirma las credenciales
+     * @throws Exception si hay error de comunicación con el servidor
+     */
+    public boolean login(String usuario, String contrasena) throws Exception {
+        String soapRequest =
+                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" " +
+                                "xmlns:tns=\"http://servicios.monster.edu.ec/\">\n" +
+                "    <soap:Body>\n" +
+                "        <tns:login>\n" +
+                "            <usuario>" + usuario + "</usuario>\n" +
+                "            <contrasena>" + contrasena + "</contrasena>\n" +
+                "        </tns:login>\n" +
+                "    </soap:Body>\n" +
+                "</soap:Envelope>";
+
+        String soapResponse = enviarPeticionSOAPRaw(soapRequest);
+
+        // El servidor devuelve <return>true</return> o <return>false</return>
+        int startIndex = soapResponse.indexOf("<return>");
+        int endIndex   = soapResponse.indexOf("</return>");
+        if (startIndex == -1 || endIndex == -1) {
+            throw new Exception("Respuesta de autenticación inválida del servidor");
+        }
+        String resultado = soapResponse.substring(startIndex + 8, endIndex).trim();
+        return Boolean.parseBoolean(resultado);
+    }
+
+    /**
+     * Envía una petición SOAP cruda y retorna la respuesta cruda.
+     */
+    private String enviarPeticionSOAPRaw(String soapRequest) throws Exception {
+        URL url = new URL(BASE_URL);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "text/xml;charset=UTF-8");
+        connection.setRequestProperty("Accept", "text/xml");
+        connection.setDoOutput(true);
+        connection.setConnectTimeout(TIMEOUT);
+        connection.setReadTimeout(TIMEOUT);
+        
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = soapRequest.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
+        }
+        
+        int responseCode = connection.getResponseCode();
+        
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            StringBuilder response = new StringBuilder();
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+            }
+            return response.toString();
+        } else {
+            throw new Exception("Error HTTP: " + responseCode);
+        }
+    }
+
     /**
      * Realiza una llamada SOAP al servicio web
      * @param method - Nombre del método SOAP
@@ -119,10 +192,6 @@ public class ClienteConversionSOAP {
                 return "gramos";
             case "onzasAGramos":
                 return "onzas";
-                return "onzasFluidas";
-            // Área
-                return "metrosCuadrados";
-                return "piesCuadrados";
             default:
                 return "valor";
         }
@@ -271,15 +340,4 @@ public class ClienteConversionSOAP {
     public Conversion onzasAGramos(double valor) {
         return llamadaSOAP("onzasAGramos", valor);
     }
-    
-    
-    }
-    
-    
-    
-    
-    // ========== MÉTODOS DE ÁREA ==========
-    
-    
-    
-    
+}

@@ -25,12 +25,6 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.vista
 
         private const int MAX_INTENTOS = 3;
 
-        /// <summary>
-        /// URL del endpoint de autenticación. Las credenciales residen SOLO en el servidor SOAP.
-        /// </summary>
-        private static readonly string AUTH_URL =
-            "http://localhost:8085/CONUNI_SOAP_DOTNET_GR09/WSConversion/login";
-
         private Panel panelPrincipal;
         private Panel panelIzquierdo;
         private Panel panelDerecho;

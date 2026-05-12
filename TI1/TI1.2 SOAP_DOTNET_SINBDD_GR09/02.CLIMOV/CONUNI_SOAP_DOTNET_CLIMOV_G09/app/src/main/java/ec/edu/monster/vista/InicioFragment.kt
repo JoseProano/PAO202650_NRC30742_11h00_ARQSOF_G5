@@ -62,14 +62,6 @@ class InicioFragment : Fragment() {
         binding.cardPeso.setOnClickListener {
             findNavController().navigate(R.id.PesoFragment)
         }
-        
-        binding.cardVolumen.setOnClickListener {
-            findNavController().navigate(R.id.VolumenFragment)
-        }
-        
-        binding.cardArea.setOnClickListener {
-            findNavController().navigate(R.id.AreaFragment)
-        }
     }
     
     private fun mostrarConfirmacionSalir() {

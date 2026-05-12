@@ -9,6 +9,10 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import ec.edu.monster.api.RetrofitClient
+import ec.edu.monster.model.LoginRequest
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var editUsuario: EditText
@@ -66,24 +70,38 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        // Validación simple: MONSTER / MONSTER9
-        if (usuario.equals("MONSTER", ignoreCase = true) && password == "MONSTER9") {
-            progressBar.visibility = View.VISIBLE
-            btnLogin.isEnabled = false
-            
-            // Simular validación (puedes agregar llamada REST aquí si tienes endpoint de login)
-            editUsuario.postDelayed({
+        progressBar.visibility = View.VISIBLE
+        btnLogin.isEnabled = false
+        hideError()
+
+        lifecycleScope.launch {
+            try {
+                val response = RetrofitClient.api.login(
+                    LoginRequest(usuario = usuario, contrasena = password)
+                )
+
                 progressBar.visibility = View.GONE
                 btnLogin.isEnabled = true
-                hideError()
-                
-                // Navegar a la pantalla principal
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            }, 500)
-        } else {
-            showError("Credenciales inválidas. Usuario: MONSTER, Contraseña: MONSTER9")
+
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    if (body?.autenticado == true) {
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        showError(body?.mensaje ?: "Credenciales inválidas")
+                    }
+                } else if (response.code() == 401) {
+                    showError("Credenciales inválidas. Usuario: MONSTER, Contraseña: MONSTER9")
+                } else {
+                    showError("Error del servidor (${response.code()})")
+                }
+            } catch (e: Exception) {
+                progressBar.visibility = View.GONE
+                btnLogin.isEnabled = true
+                showError("No se pudo conectar al servidor. Verifica que esté encendido.")
+            }
         }
     }
 

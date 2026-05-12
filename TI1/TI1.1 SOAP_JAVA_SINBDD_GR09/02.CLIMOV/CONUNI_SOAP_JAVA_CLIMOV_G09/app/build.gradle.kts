@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "EC.EDU.MONSTER"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "ec.edu.monster.soap5555555"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 2
         versionName = "1.0.1"
 

@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 
     /** URL del endpoint de autenticación en el servidor RESTful. */
     private static final String AUTH_URL =
-            "http://localhost:8080/CONUNI_RESTFUL_JAVA_GR09/api/auth/login";
+            "http://192.168.100.2:8080/CONUNI_RESTFUL_JAVA_GR09/api/auth/login";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

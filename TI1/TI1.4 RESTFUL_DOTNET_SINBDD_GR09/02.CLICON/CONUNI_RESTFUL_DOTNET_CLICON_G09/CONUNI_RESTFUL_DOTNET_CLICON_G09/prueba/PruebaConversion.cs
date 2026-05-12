@@ -42,13 +42,6 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.prueba
                         await MenuPesoAsync();
                         break;
                     case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        await MenuConversionGenericaAsync();
-                        break;
-                    case 7:
                         await MostrarInfoServicioAsync();
                         break;
                     case 0:
@@ -221,105 +214,6 @@ namespace CONUNI_RESTFUL_DOTNET_CLICON_G09.prueba
             _vista.MostrarPausa();
         }
 
-        {
-            Console.Clear();
-
-            try
-            {
-                string opcionStr = Console.ReadLine()?.Trim() ?? "";
-                int opcion = int.Parse(opcionStr);
-
-                if (opcion == 0) return;
-
-                double valor = _vista.SolicitarValor("");
-
-                ConversionResponse resultado = null;
-
-                switch (opcion)
-                {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    default:
-                        _vista.MostrarOpcionNoValida();
-                        _vista.MostrarPausa();
-                        return;
-                }
-
-                if (resultado != null)
-                {
-                    _vista.MostrarResultado(resultado);
-                }
-            }
-            catch
-            {
-                _vista.MostrarErrorEntrada("Opción inválida");
-            }
-
-            _vista.MostrarPausa();
-        }
-
-        {
-            Console.Clear();
-
-            try
-            {
-                string opcionStr = Console.ReadLine()?.Trim() ?? "";
-                int opcion = int.Parse(opcionStr);
-
-                if (opcion == 0) return;
-
-                double valor = _vista.SolicitarValor("");
-
-                ConversionResponse resultado = null;
-
-                switch (opcion)
-                {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    default:
-                        _vista.MostrarOpcionNoValida();
-                        _vista.MostrarPausa();
-                        return;
-                }
-
-                if (resultado != null)
-                {
-                    _vista.MostrarResultado(resultado);
-                }
-            }
-            catch
-            {
-                _vista.MostrarErrorEntrada("Opción inválida");
-            }
-
-            _vista.MostrarPausa();
-        }
-
-        private async Task MenuConversionGenericaAsync()
-        {
-            Console.Clear();
-            ConversionRequest request = _vista.SolicitarConversionGenerica();
-            
-            Console.WriteLine();
-            Console.WriteLine("Procesando conversión...");
-            
-            var resultado = await _client.ConvertirAsync(request);
-            _vista.MostrarResultado(resultado);
-
-            _vista.MostrarPausa();
-        }
 
         private async Task MostrarInfoServicioAsync()
         {

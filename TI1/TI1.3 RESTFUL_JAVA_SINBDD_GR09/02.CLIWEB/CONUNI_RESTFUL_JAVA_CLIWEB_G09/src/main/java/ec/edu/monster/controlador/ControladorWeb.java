@@ -147,7 +147,9 @@ public class ControladorWeb extends HttpServlet {
                 return;
             }
             
-            if ("MONSTER".equals(usuario) && "MONSTER9".equals(contrasena)) {
+            boolean esValido = getClienteRESTFUL().login(usuario, contrasena);
+            
+            if (esValido) {
                 // Crear sesión
                 HttpSession session = request.getSession(true);
                 session.setAttribute("usuario", usuario);
@@ -237,8 +239,6 @@ public class ControladorWeb extends HttpServlet {
                 case "peso":
                     resultado = convertirPeso(operacion, valor);
                     break;
-                    break;
-                    break;
                 default:
                     resultado.setExitosa(false);
                     resultado.setMensajeError("Tipo de conversión no válido");
@@ -322,29 +322,7 @@ public class ControladorWeb extends HttpServlet {
                 return error;
         }
     }
-    
-    /**
-     */
-        switch (operacion) {
-            default:
-                Conversion error = new Conversion();
-                error.setExitosa(false);
-                return error;
-        }
-    }
-    
-    /**
-     * Convierte área
-     */
-        switch (operacion) {
-            default:
-                Conversion error = new Conversion();
-                error.setExitosa(false);
-                error.setMensajeError("Operación de área no válida: " + operacion);
-                return error;
-        }
-    }
-    
+
     /**
      * Envía un error en formato JSON
      */
@@ -367,3 +345,5 @@ public class ControladorWeb extends HttpServlet {
                    .replace("\n", "\\n")
                    .replace("\r", "\\r")
                    .replace("\t", "\\t");
+    }
+}

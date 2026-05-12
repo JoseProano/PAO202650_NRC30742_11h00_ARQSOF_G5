@@ -1,157 +1,63 @@
 using System;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using ec.edu.monster.modelo;
-using ec.edu.monster.controlador;
 using CONUNI_SOAP_DOTNET_CLICON_G09.MiServicio;
+using ec.edu.monster.modelo;
 
 namespace ec.edu.monster.servicios
 {
     /// <summary>
-    /// Cliente SOAP para consumir el servicio de conversiones
-    /// Replicado desde Java - Adaptado para .NET
+    /// Cliente SOAP para consumir el servicio de conversiones.
     /// </summary>
     public class ClienteConversionSOAP
     {
-        private WSConversionClient clienteSOAP;
+        private readonly WSConversionClient clienteSOAP;
 
         public ClienteConversionSOAP()
         {
             clienteSOAP = new WSConversionClient();
         }
 
-        // ========== MÉTODO DE AUTENTICACIÓN ==========
-
-        /// <summary>
-        /// Llama a la operación Login del servidor SOAP para validar credenciales.
-        /// El cliente NUNCA almacena ni conoce las credenciales correctas.
-        /// </summary>
-        /// <param name="usuario">Nombre de usuario ingresado</param>
-        /// <param name="contrasena">Contraseña ingresada</param>
-        /// <returns><c>true</c> si el servidor confirma las credenciales</returns>
         public bool Login(string usuario, string contrasena)
         {
             return clienteSOAP.login(usuario, contrasena);
         }
 
-
         public Conversion ConvertirTemperatura(string operacion, double valor)
         {
-            var conversion = new Conversion("Temperatura", operacion, valor, 
-                GetUnidadOriginal(operacion), GetUnidadDestino(operacion));
-            
-            try
-            {
-                double resultado = RealizarConversion(operacion, valor);
-                conversion.ValorConvertido = resultado;
-                conversion.Exitosa = true;
-            }
-            catch (Exception e)
-            {
-                conversion.Exitosa = false;
-                conversion.MensajeError = MensajesMonster.ObtenerMensajeError(e);
-            }
-            
-            return conversion;
+            return EjecutarConversion("Temperatura", operacion, valor);
         }
-        
-        /// <summary>
-        /// Realiza una conversión de longitud
-        /// </summary>
+
         public Conversion ConvertirLongitud(string operacion, double valor)
         {
-            var conversion = new Conversion("Longitud", operacion, valor, 
-                GetUnidadOriginal(operacion), GetUnidadDestino(operacion));
-            
-            try
-            {
-                double resultado = RealizarConversion(operacion, valor);
-                conversion.ValorConvertido = resultado;
-                conversion.Exitosa = true;
-            }
-            catch (Exception e)
-            {
-                conversion.Exitosa = false;
-                conversion.MensajeError = MensajesMonster.ObtenerMensajeError(e);
-            }
-            
-            return conversion;
+            return EjecutarConversion("Longitud", operacion, valor);
         }
-        
-        /// <summary>
-        /// Realiza una conversión de peso/masa
-        /// </summary>
+
         public Conversion ConvertirPeso(string operacion, double valor)
         {
-            var conversion = new Conversion("Peso/Masa", operacion, valor, 
-                GetUnidadOriginal(operacion), GetUnidadDestino(operacion));
-            
-            try
-            {
-                double resultado = RealizarConversion(operacion, valor);
-                conversion.ValorConvertido = resultado;
-                conversion.Exitosa = true;
-            }
-            catch (Exception e)
-            {
-                conversion.Exitosa = false;
-                conversion.MensajeError = MensajesMonster.ObtenerMensajeError(e);
-            }
-            
-            return conversion;
+            return EjecutarConversion("Peso/Masa", operacion, valor);
         }
-        
-        /// <summary>
-        /// </summary>
+
+        private Conversion EjecutarConversion(string tipoConversion, string operacion, double valor)
         {
-                GetUnidadOriginal(operacion), GetUnidadDestino(operacion));
-            
+            var conversion = new Conversion(tipoConversion, operacion, valor, ObtenerUnidadOriginal(operacion), ObtenerUnidadDestino(operacion));
+
             try
             {
-                double resultado = RealizarConversion(operacion, valor);
-                conversion.ValorConvertido = resultado;
+                conversion.ValorConvertido = RealizarConversion(operacion, valor);
                 conversion.Exitosa = true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 conversion.Exitosa = false;
-                conversion.MensajeError = MensajesMonster.ObtenerMensajeError(e);
+                conversion.MensajeError = ex.Message;
             }
-            
+
             return conversion;
         }
-        
-        /// <summary>
-        /// Realiza una conversión de área
-        /// </summary>
-        {
-            var conversion = new Conversion("Área", operacion, valor, 
-                GetUnidadOriginal(operacion), GetUnidadDestino(operacion));
-            
-            try
-            {
-                double resultado = RealizarConversion(operacion, valor);
-                conversion.ValorConvertido = resultado;
-                conversion.Exitosa = true;
-            }
-            catch (Exception e)
-            {
-                conversion.Exitosa = false;
-                conversion.MensajeError = MensajesMonster.ObtenerMensajeError(e);
-            }
-            
-            return conversion;
-        }
-        
-        /// <summary>
-        /// Realiza la llamada SOAP al servicio web
-        /// </summary>
+
         private double RealizarConversion(string operacion, double valor)
         {
             switch (operacion)
             {
-                // Temperatura
                 case "celsiusAFahrenheit":
                     return clienteSOAP.celsiusAFahrenheit(valor);
                 case "fahrenheitACelsius":
@@ -165,7 +71,6 @@ namespace ec.edu.monster.servicios
                 case "kelvinAFahrenheit":
                     return clienteSOAP.kelvinAFahrenheit(valor);
 
-                // Longitud
                 case "metrosAPies":
                     return clienteSOAP.metrosAPies(valor);
                 case "piesAMetros":
@@ -179,7 +84,6 @@ namespace ec.edu.monster.servicios
                 case "millasAKilometros":
                     return clienteSOAP.millasAKilometros(valor);
 
-                // Peso/Masa
                 case "kilogramosALibras":
                     return clienteSOAP.kilogramosALibras(valor);
                 case "librasAKilogramos":
@@ -189,60 +93,87 @@ namespace ec.edu.monster.servicios
                 case "onzasAGramos":
                     return clienteSOAP.onzasAGramos(valor);
 
-
-                // Área
-
                 default:
-                    throw new ArgumentException($"Operación no soportada: {operacion}");
+                    throw new ArgumentException("Operación no soportada: " + operacion);
             }
         }
-        
-        /// <summary>
-        /// Obtiene la unidad original para la operación
-        /// </summary>
-        private string GetUnidadOriginal(string operacion)
+
+        private string ObtenerUnidadOriginal(string operacion)
         {
-            if (operacion.Contains("celsiusA")) return "°C";
-            if (operacion.Contains("fahrenheitA")) return "°F";
-            if (operacion.Contains("kelvinA")) return "K";
-            if (operacion.Contains("metrosA")) return "m";
-            if (operacion.Contains("piesA")) return "ft";
-            if (operacion.Contains("pulgadasA")) return "in";
-            if (operacion.Contains("kilometrosA")) return "km";
-            if (operacion.Contains("millasA")) return "mi";
-            if (operacion.Contains("kilogramosA")) return "kg";
-            if (operacion.Contains("librasA")) return "lb";
-            if (operacion.Contains("gramosA")) return "g";
-            if (operacion.Contains("onzasA")) return "oz";
-            return "unidad";
-        }
-        
-        /// <summary>
-        /// Obtiene la unidad destino para la operación
-        /// </summary>
-        private string GetUnidadDestino(string operacion)
-        {
-            if (operacion.Contains("AFahrenheit")) return "°F";
-            if (operacion.Contains("ACelsius")) return "°C";
-            if (operacion.Contains("AKelvin")) return "K";
-            if (operacion.Contains("APies")) return "ft";
-            if (operacion.Contains("AMetros")) return "m";
-            if (operacion.Contains("APulgadas")) return "in";
-            if (operacion.Contains("AMillas")) return "mi";
-            if (operacion.Contains("AKilometros")) return "km";
-            if (operacion.Contains("ALibras")) return "lb";
-            if (operacion.Contains("AKilogramos")) return "kg";
-            if (operacion.Contains("AOnzas")) return "oz";
-            if (operacion.Contains("AGramos")) return "g";
-            if (operacion.Contains("AOnzasFluidas")) return "fl oz";
-            if (operacion.Contains("APiesCuadrados")) return "ft²";
-            if (operacion.Contains("AMetrosCuadrados")) return "m²";
-            return "unidad";
+            switch (operacion)
+            {
+                case "celsiusAFahrenheit":
+                case "celsiusAKelvin":
+                    return "°C";
+                case "fahrenheitACelsius":
+                case "fahrenheitAKelvin":
+                    return "°F";
+                case "kelvinACelsius":
+                case "kelvinAFahrenheit":
+                    return "K";
+                case "metrosAPies":
+                case "metrosAPulgadas":
+                    return "m";
+                case "piesAMetros":
+                    return "ft";
+                case "pulgadasAMetros":
+                    return "in";
+                case "kilometrosAMillas":
+                    return "km";
+                case "millasAKilometros":
+                    return "mi";
+                case "kilogramosALibras":
+                    return "kg";
+                case "librasAKilogramos":
+                    return "lb";
+                case "gramosAOnzas":
+                    return "g";
+                case "onzasAGramos":
+                    return "oz";
+                default:
+                    return "unidad";
+            }
         }
 
-        /// <summary>
-        /// Cierra el cliente SOAP
-        /// </summary>
+        private string ObtenerUnidadDestino(string operacion)
+        {
+            switch (operacion)
+            {
+                case "celsiusAFahrenheit":
+                    return "°F";
+                case "fahrenheitACelsius":
+                    return "°C";
+                case "celsiusAKelvin":
+                case "fahrenheitAKelvin":
+                    return "K";
+                case "kelvinACelsius":
+                    return "°C";
+                case "kelvinAFahrenheit":
+                    return "°F";
+                case "metrosAPies":
+                    return "ft";
+                case "piesAMetros":
+                case "pulgadasAMetros":
+                    return "m";
+                case "metrosAPulgadas":
+                    return "in";
+                case "kilometrosAMillas":
+                    return "mi";
+                case "millasAKilometros":
+                    return "km";
+                case "kilogramosALibras":
+                    return "lb";
+                case "librasAKilogramos":
+                    return "kg";
+                case "gramosAOnzas":
+                    return "oz";
+                case "onzasAGramos":
+                    return "g";
+                default:
+                    return "unidad";
+            }
+        }
+
         public void Cerrar()
         {
             clienteSOAP?.Close();

@@ -108,38 +108,7 @@ public class ClienteConversionSOAP {
         return conversion;
     }
     
-    /**
-     */
-            getUnidadOriginal(operacion), getUnidadDestino(operacion));
-        
-        try {
-            double resultado = realizarConversion(operacion, valor);
-            conversion.setValorConvertido(resultado);
-            conversion.setExitosa(true);
-        } catch (Exception e) {
-            conversion.setExitosa(false);
-        }
-        
-        return conversion;
-    }
-    
-    /**
-     * Realiza una conversión de área
-     */
-        Conversion conversion = new Conversion("Área", operacion, valor, 
-            getUnidadOriginal(operacion), getUnidadDestino(operacion));
-        
-        try {
-            double resultado = realizarConversion(operacion, valor);
-            conversion.setValorConvertido(resultado);
-            conversion.setExitosa(true);
-        } catch (Exception e) {
-            conversion.setExitosa(false);
-            conversion.setMensajeError("Error en conversión de área: " + e.getMessage());
-        }
-        
-        return conversion;
-    }
+
     
     /**
      * Realiza la llamada SOAP al servicio web
@@ -290,3 +259,5 @@ public class ClienteConversionSOAP {
         if (operacion.contains("AOnzas")) return "oz";
         if (operacion.contains("AGramos")) return "g";
         return "unidad";
+    }
+}

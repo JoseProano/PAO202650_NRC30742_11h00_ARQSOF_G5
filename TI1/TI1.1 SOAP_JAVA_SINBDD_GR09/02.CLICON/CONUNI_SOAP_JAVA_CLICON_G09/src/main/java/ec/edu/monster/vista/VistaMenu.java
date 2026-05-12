@@ -118,9 +118,7 @@ public class VistaMenu {
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[1]") + " Conversiones de " + aplicarColor(AMARILLO, "Temperatura") + "                                         " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[2]") + " Conversiones de " + aplicarColor(AMARILLO, "Longitud") + "                                       " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[3]") + " Conversiones de " + aplicarColor(AMARILLO, "Peso/Masa") + "                                    " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[4]") + " Conversiones de " + aplicarColor(AMARILLO, "Volumen") + "                                    " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[5]") + " Conversiones de " + aplicarColor(AMARILLO, "Área") + "                                              " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[6]") + " Pruebas Automáticas                                                      " + aplicarColor(CELESTE, ""));
+        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[4]") + " Pruebas Automáticas                                                      " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(ROJO, "[0]") + " Salir                                                                   " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
         System.out.println();
@@ -198,46 +196,6 @@ public class VistaMenu {
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[2]") + " " + aplicarColor(AMARILLO, "Libras") + " → " + aplicarColor(AMARILLO, "Kilogramos") + "                                        " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[3]") + " " + aplicarColor(AMARILLO, "Gramos") + " → " + aplicarColor(AMARILLO, "Onzas") + "                                            " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[4]") + " " + aplicarColor(AMARILLO, "Onzas") + " → " + aplicarColor(AMARILLO, "Gramos") + "                                            " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-        System.out.println();
-        System.out.print(aplicarColor(VERDE, "Seleccione la conversión: "));
-    }
-    
-    /**
-     * Muestra el menú de conversiones de volumen
-     */
-    public void mostrarMenuVolumen() {
-        System.out.println(aplicarColor(VERDE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-        System.out.println(aplicarColor(VERDE, "                     CONVERSIONES DE VOLUMEN                                  "));
-        System.out.println(aplicarColor(VERDE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-        System.out.println();
-        System.out.println(aplicarColor(CELESTE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-        System.out.println(aplicarColor(CELESTE, "                              MENÚ VOLUMEN                                    "));
-        System.out.println(aplicarColor(CELESTE, "╠══════════════════════════════════════════════════════════════════════════════╣"));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[1]") + " " + aplicarColor(AMARILLO, "Litros") + " → " + aplicarColor(AMARILLO, "Galones") + "                                         " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[2]") + " " + aplicarColor(AMARILLO, "Galones") + " → " + aplicarColor(AMARILLO, "Litros") + "                                         " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[3]") + " " + aplicarColor(AMARILLO, "Mililitros") + " → " + aplicarColor(AMARILLO, "Onzas fluidas") + "                               " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[4]") + " " + aplicarColor(AMARILLO, "Onzas fluidas") + " → " + aplicarColor(AMARILLO, "Mililitros") + "                               " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-        System.out.println();
-        System.out.print(aplicarColor(VERDE, "Seleccione la conversión: "));
-    }
-    
-    /**
-     * Muestra el menú de conversiones de área
-     */
-    public void mostrarMenuArea() {
-        System.out.println(aplicarColor(VERDE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-        System.out.println(aplicarColor(VERDE, "                     CONVERSIONES DE ÁREA                                     "));
-        System.out.println(aplicarColor(VERDE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
-        System.out.println();
-        System.out.println(aplicarColor(CELESTE, "╔══════════════════════════════════════════════════════════════════════════════╗"));
-        System.out.println(aplicarColor(CELESTE, "                              MENÚ ÁREA                                       "));
-        System.out.println(aplicarColor(CELESTE, "╠══════════════════════════════════════════════════════════════════════════════╣"));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[1]") + " " + aplicarColor(AMARILLO, "Metros cuadrados") + " → " + aplicarColor(AMARILLO, "Pies cuadrados") + "                            " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[2]") + " " + aplicarColor(AMARILLO, "Pies cuadrados") + " → " + aplicarColor(AMARILLO, "Metros cuadrados") + "                            " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[3]") + " " + aplicarColor(AMARILLO, "Hectáreas") + " → " + aplicarColor(AMARILLO, "Acres") + "                                        " + aplicarColor(CELESTE, ""));
-        System.out.println(aplicarColor(CELESTE, "") + "  " + aplicarColor(VERDE, "[4]") + " " + aplicarColor(AMARILLO, "Acres") + " → " + aplicarColor(AMARILLO, "Hectáreas") + "                                        " + aplicarColor(CELESTE, ""));
         System.out.println(aplicarColor(CELESTE, "╚══════════════════════════════════════════════════════════════════════════════╝"));
         System.out.println();
         System.out.print(aplicarColor(VERDE, "Seleccione la conversión: "));

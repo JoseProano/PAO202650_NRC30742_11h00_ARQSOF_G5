@@ -54,21 +54,7 @@ public class PruebaClienteSOAP {
         Conversion peso3 = cliente.convertirPeso("gramosAOnzas", 1000.0);
         mostrarResultado(peso3);
         
-        System.out.println("-".repeat(40));
-        
-        mostrarResultado(vol1);
-        
-        mostrarResultado(vol2);
-        
-        mostrarResultado(vol3);
-        
-        // Pruebas de área
-        System.out.println("\nPRUEBAS DE ÁREA:");
-        System.out.println("-".repeat(40));
-        
-        
-        
-        
+
         System.out.println("\nTODAS LAS PRUEBAS COMPLETADAS EXITOSAMENTE");
         System.out.println("=".repeat(60));
     }

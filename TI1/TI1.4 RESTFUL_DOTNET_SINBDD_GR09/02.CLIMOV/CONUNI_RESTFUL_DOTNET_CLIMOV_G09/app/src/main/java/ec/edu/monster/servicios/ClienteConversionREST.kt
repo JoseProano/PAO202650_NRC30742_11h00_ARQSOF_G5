@@ -27,10 +27,10 @@ class ClienteConversionREST {
         // ============================================
         // CONFIGURACIÓN DE URL DEL SERVIDOR
         // ============================================
-        // Configura la IP de tu PC en la red local
-        private const val SERVER_IP = "10.92.232.246"
-        private const val HTTP_PORT = "8086"
-        private const val HTTPS_PORT = "8086"
+        // Alias del host local cuando se ejecuta en emulador Android.
+        private const val SERVER_IP = "192.168.100.2"
+        private const val HTTP_PORT = "44385"
+        private const val HTTPS_PORT = "44385"
         private const val USE_HTTPS = false
         
         // URL base del servicio
@@ -39,8 +39,6 @@ class ClienteConversionREST {
         } else {
             "http://$SERVER_IP:$HTTP_PORT/api/conversion"
         }
-        
-        // Para emulador Android: usar http://10.0.2.2:8086/api/conversion
         
         private const val TIMEOUT = 30000L // 30 segundos
         private val JSON_MEDIA_TYPE = "application/json; charset=utf-8".toMediaType()

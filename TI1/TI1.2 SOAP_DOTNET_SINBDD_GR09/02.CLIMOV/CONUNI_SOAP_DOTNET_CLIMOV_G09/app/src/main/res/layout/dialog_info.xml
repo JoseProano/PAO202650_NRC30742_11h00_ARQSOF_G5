@@ -94,20 +94,7 @@
                     android:textColor="@color/monster_dark"
                     android:layout_marginBottom="4dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="• Volumen: Convierte entre litros, galones, etc."
-                    android:textSize="14sp"
-                    android:textColor="@color/monster_dark"
-                    android:layout_marginBottom="4dp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="• Área: Convierte entre metros cuadrados, pies cuadrados, etc."
-                    android:textSize="14sp"
-                    android:textColor="@color/monster_dark" />
 
             </LinearLayout>
 

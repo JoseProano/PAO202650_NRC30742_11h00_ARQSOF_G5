@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +17,13 @@ namespace CONUNI_RESTFUL_DOTNET_CLIWEB_G09.controlador
     public class LoginController : Controller
     {
         private const string SESSION_KEY_USUARIO = "Usuario";
+        private readonly string _authUrl;
 
-        /// <summary>
-        /// URL del endpoint de autenticación en el servidor RESTful .NET.
-        /// Debe coincidir con la URL base configurada en la aplicación.
-        /// </summary>
-        private static readonly string AUTH_URL =
-            "http://localhost/CONUNI_RESTFUL_DOTNET_GR9S/api/auth/login";
+        public LoginController(IConfiguration configuration)
+        {
+            string apiBaseUrl = configuration["ApiBaseUrl"] ?? "http://192.168.100.2:44385";
+            _authUrl = apiBaseUrl.TrimEnd('/') + "/api/auth/login";
+        }
 
         [HttpGet]
         public IActionResult Index()
@@ -61,7 +62,7 @@ namespace CONUNI_RESTFUL_DOTNET_CLIWEB_G09.controlador
         /// Llama al endpoint REST del servidor para validar las credenciales.
         /// El cliente NUNCA almacena ni conoce las credenciales correctas.
         /// </summary>
-        private static async Task<bool> ValidarCredencialesEnServidorAsync(string usuario, string contrasena)
+        private async Task<bool> ValidarCredencialesEnServidorAsync(string usuario, string contrasena)
         {
             try
             {
@@ -71,7 +72,7 @@ namespace CONUNI_RESTFUL_DOTNET_CLIWEB_G09.controlador
                 string body = $"{{\"Usuario\":\"{usuario}\",\"Contrasena\":\"{contrasena}\"}}";
                 var content = new StringContent(body, Encoding.UTF8, "application/json");
 
-                var response = await httpClient.PostAsync(AUTH_URL, content);
+                var response = await httpClient.PostAsync(_authUrl, content);
                 return response.IsSuccessStatusCode;
             }
             catch

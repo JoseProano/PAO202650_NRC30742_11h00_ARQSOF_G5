@@ -46,6 +46,14 @@ public class ConversionController {
     @Path("/convertir")
     public Response convertir(ConversionRequest request) {
         try {
+            if (request == null
+                    || request.getCategoria() == null
+                    || request.getUnidadOrigen() == null
+                    || request.getUnidadDestino() == null) {
+                ConversionResponse errorResponse = ConversionResponse.crearError("Solicitud inválida o incompleta");
+                return Response.status(Response.Status.BAD_REQUEST).entity(errorResponse).build();
+            }
+
             // Validar entrada
             if (request.getValor() < 0 && !request.getCategoria().equals(Conversion.CATEGORIA_TEMPERATURA)) {
                 ConversionResponse errorResponse = ConversionResponse.crearError("El valor no puede ser negativo para esta categoría");

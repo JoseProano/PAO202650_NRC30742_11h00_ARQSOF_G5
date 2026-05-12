@@ -41,16 +41,6 @@ class MenuFragment : Fragment() {
             navegarAPeso()
         }
 
-        binding.cardVolumen.setOnClickListener {
-            navegarAVolumen()
-        }
-
-        binding.cardArea.setOnClickListener {
-            navegarAArea()
-        }
-
-
-
         binding.btnLogout.setOnClickListener {
             // Cierra la MenuActivity
             activity?.finish()
@@ -78,20 +68,6 @@ class MenuFragment : Fragment() {
     private fun navegarAPeso() {
         parentFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, PesoFragment()) // <-- Lanza PesoFragment
-            .addToBackStack(null)
-            .commit()
-    }
-
-    private fun navegarAVolumen() {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, VolumenFragment()) // <-- Lanza VolumenFragment
-            .addToBackStack(null)
-            .commit()
-    }
-
-    private fun navegarAArea() {
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, AreaFragment()) // <-- Launch AreaFragment
             .addToBackStack(null)
             .commit()
     }
