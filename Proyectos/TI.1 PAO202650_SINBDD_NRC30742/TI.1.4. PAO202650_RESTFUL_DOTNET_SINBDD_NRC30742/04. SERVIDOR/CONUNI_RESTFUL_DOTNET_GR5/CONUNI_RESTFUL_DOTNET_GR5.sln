@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11806.211 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CONUNI_RESTFUL_DOTNET_GR5", "CONUNI_RESTFUL_DOTNET_GR9S\CONUNI_RESTFUL_DOTNET_GR5.csproj", "{B9D5F34A-B97F-4BC4-887B-751A62A78F0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9D5F34A-B97F-4BC4-887B-751A62A78F0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D5F34A-B97F-4BC4-887B-751A62A78F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D5F34A-B97F-4BC4-887B-751A62A78F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D5F34A-B97F-4BC4-887B-751A62A78F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A340A6F6-C10B-4784-988F-7A623C2A380B}
+	EndGlobalSection
+EndGlobal
