@@ -13,7 +13,8 @@ import java.io.PrintWriter;
 
 /**
  * Controlador principal para la aplicación web
- * @author ACER NITRO V15
+ * @author GRUPO 5
+ * 
  */
 @WebServlet(name = "ControladorWeb", urlPatterns = {"/ControladorWeb", "/convertir"})
 public class ControladorWeb extends HttpServlet {

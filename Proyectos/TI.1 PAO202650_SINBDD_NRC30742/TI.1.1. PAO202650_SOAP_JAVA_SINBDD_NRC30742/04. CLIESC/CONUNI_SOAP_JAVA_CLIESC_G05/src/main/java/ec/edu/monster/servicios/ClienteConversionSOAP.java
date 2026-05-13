@@ -7,12 +7,12 @@ import jakarta.xml.ws.WebServiceException;
 
 /**
  * Cliente SOAP para consumir el servicio de conversiones
- * @author ACER NITRO V15
+ * @author grupo 5
  */
 public class ClienteConversionSOAP {
     
     // URL del servicio
-    private static final String URL_SERVICIO = "http://192.168.5.75:8080/CONUNI_SOAP_JAVA_GR09/WSConversion?wsdl";
+    private static final String URL_SERVICIO = "http://10.40.25.94:8080/CONUNI_SOAP_JAVA_GR05/WSConversion?wsdl";
     
     private WSConversion servicio;
     

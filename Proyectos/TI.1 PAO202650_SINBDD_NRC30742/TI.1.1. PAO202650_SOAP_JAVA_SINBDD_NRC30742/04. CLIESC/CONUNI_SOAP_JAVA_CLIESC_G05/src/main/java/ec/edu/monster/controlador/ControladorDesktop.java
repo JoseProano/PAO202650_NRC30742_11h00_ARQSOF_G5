@@ -7,7 +7,7 @@ import ec.edu.monster.vista.VentanaPrincipal;
 /**
  * Controlador para la aplicación de escritorio
  * Maneja la lógica de negocio y coordina entre la vista y el modelo
- * @author ACER NITRO V15
+ * @author grupo 5
  */
 public class ControladorDesktop {
     

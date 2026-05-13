@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <groupId>ec.edu.monster</groupId>
-    <artifactId>CONUNI_SOAP_JAVA_CLIWEB_G09</artifactId>
+    <artifactId>CONUNI_SOAP_JAVA_CLIWEB_G05</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     

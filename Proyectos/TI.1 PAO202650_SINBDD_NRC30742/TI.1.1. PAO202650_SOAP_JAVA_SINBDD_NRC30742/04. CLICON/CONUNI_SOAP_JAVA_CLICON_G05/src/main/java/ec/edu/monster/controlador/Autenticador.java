@@ -10,7 +10,7 @@ import ec.edu.monster.vista.VistaLogin;
  * se delega al servidor a través de la operación SOAP {@code login}.
  * </p>
  *
- * @author GR09 - Arquitectura de Software
+ * @author GR05 - Arquitectura de Software
  */
 public class Autenticador {
 

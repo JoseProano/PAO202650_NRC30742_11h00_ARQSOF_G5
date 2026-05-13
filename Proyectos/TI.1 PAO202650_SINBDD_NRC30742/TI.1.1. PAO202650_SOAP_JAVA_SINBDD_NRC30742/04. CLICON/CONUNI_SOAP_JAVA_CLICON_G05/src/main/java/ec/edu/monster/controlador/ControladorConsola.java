@@ -7,7 +7,8 @@ import ec.edu.monster.vista.VistaMenu;
 /**
  * Controlador para la aplicación de consola de conversiones - Patrón MVC
  * Maneja la lógica de negocio y coordina entre la vista y el modelo
- * @author ACER NITRO V15
+ * @author grupo 5
+ * 
  */
 public class ControladorConsola {
     

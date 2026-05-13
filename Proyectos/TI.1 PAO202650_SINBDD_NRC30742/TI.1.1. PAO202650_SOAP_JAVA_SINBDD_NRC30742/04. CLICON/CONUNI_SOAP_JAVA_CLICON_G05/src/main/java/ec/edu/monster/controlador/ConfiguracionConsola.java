@@ -5,7 +5,7 @@ import java.nio.charset.Charset;
 
 /**
  * Configuracion de codificacion para la consola
- * @author ACER NITRO V15
+ * @author grupo 5
  */
 public class ConfiguracionConsola {
     

@@ -19,7 +19,7 @@ class
 ClienteConversionSOAP {
     
     companion object {
-        private const val BASE_URL = "http://192.168.5.75:8080/CONUNI_SOAP_JAVA_GR09/WSConversion"
+        private const val BASE_URL = "http://10.40.25.94:8080/CONUNI_SOAP_JAVA_GR05/WSConversion"
         private const val TIMEOUT = 30000 // 30 segundos
     }
     

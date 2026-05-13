@@ -6,7 +6,8 @@ import java.util.Scanner;
 /**
  * Vista para el proceso de autenticación - Patrón MVC
  * Maneja la presentación del login y entrada de credenciales
- * @author ACER NITRO V15
+ * @author GRUPO 5
+ * 
  */
 public class VistaLogin {
     

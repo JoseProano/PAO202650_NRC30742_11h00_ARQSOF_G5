@@ -11,11 +11,12 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Cliente para consumir el servicio SOAP de conversiones
- * @author ACER NITRO V15
+ * @author grupo 5
+ * 
  */
 public class ClienteConversionSOAP {
     
-    private static final String BASE_URL = "http://192.168.5.75:8080/CONUNI_SOAP_JAVA_GR09/WSConversion";
+    private static final String BASE_URL = "http://10.40.25.94:8080/CONUNI_SOAP_JAVA_GR05/WSConversion";
     private static final int TIMEOUT = 30000; // 30 segundos
     
     // ========== MÉTODO DE AUTENTICACIÓN ==========

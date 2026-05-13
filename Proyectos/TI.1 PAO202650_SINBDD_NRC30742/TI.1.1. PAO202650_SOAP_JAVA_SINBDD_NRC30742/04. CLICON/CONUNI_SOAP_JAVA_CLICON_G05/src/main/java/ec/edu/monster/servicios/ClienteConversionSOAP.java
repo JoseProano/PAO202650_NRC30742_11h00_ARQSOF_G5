@@ -15,7 +15,7 @@ import java.io.OutputStream;
  */
 public class ClienteConversionSOAP {
     
-    private static final String WS_URL = "http://192.168.5.75:8080/CONUNI_SOAP_JAVA_GR09/WSConversion";
+    private static final String WS_URL = "http://10.40.25.94:8080/CONUNI_SOAP_JAVA_GR05/WSConversion";
 
     // ========== MÉTODO DE AUTENTICACIÓN ==========
 
