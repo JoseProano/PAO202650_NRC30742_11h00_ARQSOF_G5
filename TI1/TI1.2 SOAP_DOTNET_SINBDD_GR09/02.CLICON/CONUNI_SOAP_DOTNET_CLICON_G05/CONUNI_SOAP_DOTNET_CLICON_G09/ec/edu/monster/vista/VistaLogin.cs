@@ -87,12 +87,12 @@ namespace ec.edu.monster.vista
         private void MostrarLogo()
         {
             Console.WriteLine();
-            AplicarColorLine(ConsoleColor.Cyan, "███╗   ███╗ ██████╗ ███╗   ██╗███████╗████████╗███████╗██████╗     ██████╗ ██████╗ ██████╗");
-            AplicarColorLine(ConsoleColor.Cyan, "████╗ ████║██╔═══██╗████╗  ██║██╔════╝╚══██╔══╝██╔════╝██╔══██╗   ██╔════╝ ██╔══██╗╚═══██╗");
-            AplicarColorLine(ConsoleColor.Cyan, "██╔████╔██║██║   ██║██╔██╗ ██║███████╗   ██║   █████╗  ██████╔╝   ██║  ███╗██████╔╝  ███╔╝");
-            AplicarColorLine(ConsoleColor.Cyan, "██║╚██╔╝██║██║   ██║██║╚██╗██║╚════██║   ██║   ██╔══╝  ██╔══██╗   ██║   ██║██╔══██╗ ███╔╝");
-            AplicarColorLine(ConsoleColor.Cyan, "██║ ╚═╝ ██║╚██████╔╝██║ ╚████║███████║   ██║   ███████╗██║  ██║   ╚██████╔╝██║  ██║██████╗");
-            AplicarColorLine(ConsoleColor.Cyan, "╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═════╝");
+            AplicarColorLine(ConsoleColor.Cyan, "███╗   ███╗ ██████╗ ███╗   ██╗███████╗████████╗███████╗██████╗     ██████╗ ██████╗ ███████╗");
+            AplicarColorLine(ConsoleColor.Cyan, "████╗ ████║██╔═══██╗████╗  ██║██╔════╝╚══██╔══╝██╔════╝██╔══██╗   ██╔════╝ ██╔══██╗██╔════╝");
+            AplicarColorLine(ConsoleColor.Cyan, "██╔████╔██║██║   ██║██╔██╗ ██║███████╗   ██║   █████╗  ██████╔╝   ██║  ███╗██████╔╝███████╗");
+            AplicarColorLine(ConsoleColor.Cyan, "██║╚██╔╝██║██║   ██║██║╚██╗██║╚════██║   ██║   ██╔══╝  ██╔══██╗   ██║   ██║██╔══██╗╚════██║");
+            AplicarColorLine(ConsoleColor.Cyan, "██║ ╚═╝ ██║╚██████╔╝██║ ╚████║███████║   ██║   ███████╗██║  ██║   ╚██████╔╝██║  ██║███████║");
+            AplicarColorLine(ConsoleColor.Cyan, "╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝");
             Console.WriteLine();
         }
         
@@ -197,7 +197,7 @@ namespace ec.edu.monster.vista
         /// </summary>
         public void Cerrar()
         {
-            // En .NET no necesitamos cerrar Scanner como en Java
+            
         }
     }
 }

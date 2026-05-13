@@ -53,10 +53,15 @@
     <Compile Include="modelo\ConversionResponse.cs" />
     <Compile Include="servicio\ClienteConversionSoap.cs" />
     <Compile Include="servicio\IWSConversion.cs" />
-    <Compile Include="vista\PanelTemperatura.cs" />
-    <Compile Include="vista\PanelLongitud.cs" />
-    <Compile Include="vista\PanelPeso.cs" />
-
+    <Compile Include="vista\PanelTemperatura.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="vista\PanelLongitud.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="vista\PanelPeso.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="vista\VentanaLogin.cs">
       <SubType>Form</SubType>
     </Compile>

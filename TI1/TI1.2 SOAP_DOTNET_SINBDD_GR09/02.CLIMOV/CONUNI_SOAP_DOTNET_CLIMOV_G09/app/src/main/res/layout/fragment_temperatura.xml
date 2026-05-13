@@ -114,11 +114,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:text="Valor a Convertir"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/monster_dark"
-                            android:layout_marginBottom="8dp" />
+                            android:textStyle="bold" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
@@ -130,10 +130,10 @@
                                 android:id="@+id/edit_valor"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="@color/monster_dark"
                                 android:hint="Ej: 32"
                                 android:inputType="numberDecimal"
-                                android:textSize="16sp"
-                                android:background="@drawable/input_field_modern" />
+                                android:textSize="16sp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -149,17 +149,17 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:text="Tipo de Conversión"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/monster_dark"
-                            android:layout_marginBottom="8dp" />
+                            android:textStyle="bold" />
 
                         <Spinner
                             android:id="@+id/spinner_operacion"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:background="@drawable/input_field_modern" />
+                            android:background="@color/monster_dark" />
 
                     </LinearLayout>
 
@@ -171,14 +171,14 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_convertir"
-                            android:layout_width="0dp"
+                            android:layout_width="17dp"
                             android:layout_height="48dp"
-                            android:layout_weight="1"
                             android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
                             android:text="Convertir"
+                            android:textColor="@android:color/white"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/white"
                             app:backgroundTint="@color/monster_blue"
                             app:cornerRadius="8dp" />
 

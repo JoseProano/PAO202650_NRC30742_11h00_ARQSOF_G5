@@ -16,10 +16,18 @@ data class ResultadoLoginSoap(
 object ClienteAutenticacionSoap {
 
     private const val NAMESPACE = "http://tempuri.org/"
-    private const val SERVER_IP = "192.168.100.2"
-    private const val SERVER_PORT = "62533"
+    private const val INTERFAZ_NOMBRE = "WSConversion"
+
+    // Para celular real usando IIS:
+    private const val SERVER_IP = "192.168.5.75"
+    private const val SERVER_PORT = "8085"
+
+    // Para emulador usando IIS Express:
+    // private const val SERVER_IP = "10.0.2.2"
+    // private const val SERVER_PORT = "62533"
+
     private const val URL = "http://$SERVER_IP:$SERVER_PORT/Service1.svc"
-    private const val OPERATION = "Login"
+    private const val OPERATION = "login"
 
     suspend fun login(usuario: String, contrasena: String): ResultadoLoginSoap = withContext(Dispatchers.IO) {
         val request = SoapObject(NAMESPACE, OPERATION).apply {
@@ -34,10 +42,13 @@ object ClienteAutenticacionSoap {
 
         val transport = HttpTransportSE(URL, 60000)
 
-        try {
-            transport.call("$NAMESPACE$OPERATION", envelope)
+        return@withContext try {
+            val soapAction = "$NAMESPACE$INTERFAZ_NOMBRE/$OPERATION"
+            transport.call(soapAction, envelope)
+
             val response = envelope.response as? SoapPrimitive
             val autenticado = response?.toString()?.trim()?.toBoolean() ?: false
+
             ResultadoLoginSoap(
                 autenticado = autenticado,
                 mensaje = if (autenticado) "Autenticación exitosa" else "Credenciales incorrectas"
@@ -47,3 +58,4 @@ object ClienteAutenticacionSoap {
         }
     }
 }
+

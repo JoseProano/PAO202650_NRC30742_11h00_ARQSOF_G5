@@ -10,7 +10,7 @@ namespace CONUNI_SOAP_DOTNET_CLIESC_G09.servicio
     /// </summary>
     public class ClienteConversionSoap
     {
-        private const string URL_SERVICIO = "http://192.168.100.2:62533/Service1.svc";
+        private const string URL_SERVICIO = "http://192.168.5.75:8085/Service1.svc";
         private const string NAMESPACE = "http://tempuri.org/";
         private const string INTERFAZ_NOMBRE = "WSConversion";
 

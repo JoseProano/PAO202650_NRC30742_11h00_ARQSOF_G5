@@ -21,10 +21,13 @@ object ClienteConversionSoap {
     // --- Configuración Esencial ---
     private const val TAG = "ClienteSOAP"
     private const val NAMESPACE = "http://tempuri.org/"
+
+    private const val SERVER_IP = "192.168.5.75"
+    private const val SERVER_PORT = "8085"
     
     // URL del servicio SOAP para emulador Android local.
-    private const val SERVER_IP = "192.168.100.2"
-    private const val SERVER_PORT = "62533"
+    //private const val SERVER_IP = "192.168.100.2"
+    //private const val SERVER_PORT = "62533"
     private const val URL = "http://$SERVER_IP:$SERVER_PORT/Service1.svc"
     
     private const val INTERFAZ_NOMBRE = "WSConversion" // (De [ServiceContract(Name = ...)])
